@@ -71,7 +71,8 @@ sum(blackjack)
 
 
 c. What is your interpretation of this result? What do you need to do to address the problem? Recalculate how much you won or lost in blackjack over the week.  
-# the problem is that the vector blackjack has data that is missing. I need to remove those points. 
+
+the problem is that the vector blackjack has data that is missing. I need to remove those points. 
 ```{r}
 sum(blackjack, na.rm = TRUE)
 ```
