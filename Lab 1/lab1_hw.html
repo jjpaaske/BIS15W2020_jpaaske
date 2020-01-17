@@ -466,6 +466,12 @@ names(roulette) &lt;- days</code></pre>
 <pre class="r"><code>sum(blackjack, na.rm = TRUE) &gt; sum(roulette, na.rm = TRUE)</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <p>this shows that the total money that I got from blackjack is greater than the total money made from roulette.</p>
+<pre class="r"><code>sum_b &lt;- sum(blackjack, na.rm = TRUE)
+sum_r &lt;- sum(roulette, na.rm = TRUE)
+
+if (sum_b &gt; sum_r) {print(&quot;You should stick to blackjack&quot;)}</code></pre>
+<pre><code>## [1] &quot;You should stick to blackjack&quot;</code></pre>
+<pre class="r"><code>if (sum_b &lt; sum_r) {print(&quot;You should stick to roulette&quot;)}</code></pre>
 </div>
 <div id="push-your-final-code-to-github" class="section level2">
 <h2>Push your final code to <a href="https://github.com/FRS417-DataScienceBiologists">GitHub</a></h2>

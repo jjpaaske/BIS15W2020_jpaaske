@@ -151,4 +151,21 @@ sum(blackjack, na.rm = TRUE) > sum(roulette, na.rm = TRUE)
 ```
 this shows that the total money that I got from blackjack is greater than the total money made from roulette. 
 
+
+
+```r
+sum_b <- sum(blackjack, na.rm = TRUE)
+sum_r <- sum(roulette, na.rm = TRUE)
+
+if (sum_b > sum_r) {print("You should stick to blackjack")}
+```
+
+```
+## [1] "You should stick to blackjack"
+```
+
+```r
+if (sum_b < sum_r) {print("You should stick to roulette")}
+```
+
 ## Push your final code to [GitHub](https://github.com/FRS417-DataScienceBiologists)
