@@ -63,6 +63,8 @@ The same methods of selecting elements in a vector apply to data frames. We use 
 The first row.  
 ```{r}
 hbirds[1,]
+hbirds[2,]
+
 ```
 
 The third column.  
@@ -73,7 +75,11 @@ hbirds[,3]
 We can also select values in an entire column using the `$` sign. This can be useful for calculations. Here we calculate the mean of all of the birds weights. 
 ```{r}
 w <- hbirds$weight_oz
+w
 mean(w)
+
+l <- hbirds$length_in
+mean(l)
 ```
 
 ## Summaries
@@ -99,6 +105,12 @@ new_bird
 hbirds<- rbind(hbirds, new_bird)
 hbirds
 ```
+```{r}
+height <- c(2.0, 2.3, 4.7, 1.2)
+
+hbirds <- cbind(hbirds, height)
+hbirds
+```
 
 ## Adding Columns
 What if we come across more data and we want to add it to our data frame? We can do that with the `$` operator.
@@ -111,6 +123,9 @@ hbirds
 Great, we added our new column, but it's a character and not a factor. A factor is a special type of character vector with predefined levels. 
 ```{r}
 class(hbirds$neighborhood)
+
+```
+```{r}
 hbirds$neighborhood <- as.factor(hbirds$neighborhood)
 ```
 
@@ -121,6 +136,7 @@ class(hbirds$neighborhood)
 `levels()` will give you a list of the different levels within a factor.  
 ```{r}
 levels(hbirds$neighborhood)
+levels(hbirds$sex)
 ```
 
 ## Writing Data to File
@@ -138,19 +154,47 @@ spring <- c("Buckeye", "Buckeye", "Buckeye", "Benton", "Benton", "Benton", "Trav
 ```
 
 1. Build a data frame called `hsprings` with the above data. Name the temperature column `temp_C`. Print out the data frame.  
+```{r}
+hsprings <- data.frame(temp, name, spring)
+hsprings <- data.frame(temp_c = temp, name = name, spring = spring)
+hsprings
+```
 
 2. Change the column titled `name` to `scientist`, leave the other column names the same. Print out the data frame names.  
 
+```{r}
+hsprings <- data.frame(temp_c = temp, scientist = name, spring = spring)
+names(hsprings)
+```
+
 3. Our scientists forgot to record the depth data for each spring. Here it is as a vector, add it as a new column called depth_ft: `c(4.15, 4.13, 4.12, 3.21, 3.23, 3.20, 5.67, 5.65, 5.66)`. Print out the data frame.
+
+```{r}
+hsprings$depth_ft <- c(4.15, 4.13, 4.12, 3.21, 3.23, 3.20, 5.67, 5.65, 5.66)
+hsprings
+```
 
 
 4. Calculate the mean temperature of all of the temperature measurements.
+```{r}
+t <- hsprings$temp_c
+
+mean(t)
+```
 
 
 5. What is the class of the scientist column? Use the `levels()` command to see all the unique levels.  
 
+```{r}
+class(hsprings$scientist)
+
+levels(hsprings$scientist)
+```
 
 6. Save your hot springs data as a csv file! Do not allow row names. 
+```{r}
+write.csv(hsprings, "hsprings_data.csv", row.names = FALSE)
+```
 
 
 ## Wrap-up

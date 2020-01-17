@@ -66,6 +66,7 @@ Vectors `region` and `titles`, used for naming.
 ```{r}
 region <- c("US", "non-US")
 titles <- c("Philosophers_Stone", "Chamber_of_Secrets", "Prisoner_of_Azkaban", "Goblet_of_Fire", "Order_of_the_Phoenix", "Half_Blood_Prince", "Deathly_Hallows_1", "Deathly_Hallows_2")
+
 ```
 
 Name the columns using `colnames()` with the vector region.
@@ -99,12 +100,23 @@ all_harry_potter_matrix
 ## Practice
 1. What are the total earnings for each of the regions?  
 
+```{r}
+total <- colSums(all_harry_potter_matrix)
+total
+```
+
+
 2. Add this information to the data matrix. Hint: you are adding a row, not a column.  
+```{r}
+final_harry_potter_matrix <- rbind(all_harry_potter_matrix, total)
+final_harry_potter_matrix
+```
 
 ## Select elements in a data matrix
 The same methods of selecting elements in a vector apply to data matrices. We use `[]`. The following selects the value in the first column, second row.
 ```{r}
 all_harry_potter_matrix[1,2]
+all_harry_potter_matrix[1,3]
 ```
 
 Adding a colon `:` selects the specified elements in a column.  
@@ -133,7 +145,12 @@ spring_8 <- c(36.80, 36.45, 33.15)
 
 1. Build a data matrix that has the springs as rows and the columns as scientists.  
 ```{r}
-
+totalData <- c(spring_1, spring_2, spring_3, spring_4, spring_5, spring_6, spring_7, spring_8)
+totalData
+```
+```{r}
+springs_matrix <- matrix(totalData, nrow = 8, byrow = T)
+springs_matrix
 ```
 
 
@@ -145,18 +162,21 @@ springs <- c("Bluebell Spring", "Opal Spring", "Riverside Spring", "Too Hot Spri
 
 2. Use `colnames()` and `rownames()` to name the columns and rows.  
 ```{r}
-
+colnames(springs_matrix) <- scientists
+rownames(springs_matrix) <- springs
+springs_matrix
 ```
 
 Calculate the mean temperature of all three springs. Notice the command `rowMeans`.
 ```{r}
-#mean_vector <- rowMeans(springs_matrix)
-#mean_vector
+mean_temp <- rowMeans(springs_matrix)
+mean_temp
 ```
 
 3. Add `mean_vector` as a new column.  
 ```{r}
-
+new_springs_matrix <- cbind(springs_matrix, mean_temp)
+new_springs_matrix
 ```
 
 
