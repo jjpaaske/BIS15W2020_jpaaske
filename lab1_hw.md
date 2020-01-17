@@ -18,73 +18,121 @@ Answer the following questions and complete the exercises in RMarkdown. Please e
   + 5 - 3 * 2  
   + 8 / 2 ** 2  
   
-```{r}
+
+```r
 + 5 - 3 * 2
+```
+
+```
+## [1] -1
+```
+
+```r
 + 8 / 2 **2
+```
+
+```
+## [1] 2
 ```
   
   
 2. Did any of the results in #1 surprise you? Write two programs that calculate each expression such that the result for the first example is 4 and the second example is 16.  
 
-```{r}
+
+```r
 (+5 - 3)*2
+```
+
+```
+## [1] 4
+```
+
+```r
 (8/2)**2
+```
+
+```
+## [1] 16
 ```
 
 
 3. Make a new object `pi` as 3.14159265359.  
 
-```{r}
+
+```r
 pi <-  3.14159265359
 ```
 
 
 4. Is `pi` an integer or numeric? Why? Show your code.  
-```{r}
-class(pi)
 
+```r
+class(pi)
+```
+
+```
+## [1] "numeric"
 ```
 therefore pi is numeric
 
 5. You have decided to use your new analytical powers in R to become a professional gambler. Here are your winnings and losses this week. Note that you don't gamble on the weekends!  
-```{r}
+
+```r
 blackjack <- c(140, -20, 70, -120, 240, NA, NA)
 roulette <- c(60, 50, 120, -300, 10, NA, NA)
 ```
 
 a. Build a new vector called `days` for the days of the week. 
-```{r}
+
+```r
 days <- c("Monday", "Tuesday", "Wednesday", "Thrusday", "Friday", "Saturday", "Sunday")
 ```
 
 
 We will use `days` to name the elements in the poker and roulette vectors.
-```{r, eval=F, echo=T}
+
+```r
 names(blackjack) <- days
 names(roulette) <- days
 ```
 
 b. Calculate how much you won or lost in blackjack over the week.  
-```{r}
+
+```r
 sum(blackjack)
+```
+
+```
+## [1] NA
 ```
 
 
 c. What is your interpretation of this result? What do you need to do to address the problem? Recalculate how much you won or lost in blackjack over the week.  
 
 the problem is that the vector blackjack has data that is missing. I need to remove those points. 
-```{r}
+
+```r
 sum(blackjack, na.rm = TRUE)
 ```
 
+```
+## [1] 310
+```
+
 d. Calculate how much you won or lost in roulette over the week.  
-```{r}
+
+```r
 sum(roulette, na.rm = TRUE)
+```
+
+```
+## [1] -60
 ```
 
 
 e. Build a `total_week` vector to show how much you lost or won on each day over the week. Which days seem lucky or unlucky for you?
-```{r}
+
+```r
 total_week <- c(blackjack + roulette)
 ```
 tuesday is unlucky because I only made 30 dollars total, and thursday is extremely unlucky as I lost $420. 
@@ -93,8 +141,13 @@ f. Should you stick to blackjack or roulette? Write a program that verifies this
 
 I should stick to blackjack. 
 
-```{r}
+
+```r
 sum(blackjack, na.rm = TRUE) > sum(roulette, na.rm = TRUE)
+```
+
+```
+## [1] TRUE
 ```
 this shows that the total money that I got from blackjack is greater than the total money made from roulette. 
 
