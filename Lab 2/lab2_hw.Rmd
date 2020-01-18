@@ -3,9 +3,9 @@ title: "Lab 2 Homework"
 author: "Joel Ledford"
 date: "Winter 2020"
 output:
-  html_document:
+  html_document: 
+    keep_md: yes
     theme: spacelab
-    toc: no
 ---
 
 ## Instructions
@@ -24,34 +24,92 @@ msleep
 
 1. From which publication are these data taken from? Don't do an internet search; show the code that you would use to find out in R.
 
+```{r}
+?msleep
+```
+This comes from V.M. Savae and G.B. West (National Academy of Sciences)
+
 2. Put these data into a new object `sleep`. Make sure they are organized as a data frame.  
 
+```{r}
+sleep <- data.frame(msleep)
+sleep
+```
 
 3. Show a list of the column names is this data frame.
 
+```{r}
+names(sleep)
+```
 
 4. Use `glimpse()` to summarize the data in `sleep`.
+```{r}
+glimpse(sleep)
+```
 
 
 5. Use `summary()` to summarize the data in `sleep`.
 
+```{r}
+summary(sleep)
+```
 
 6. Print out the first column of the data frame and then print out the first row.
 
+```{r}
+#first column:
+sleep[,1]
+```
+
+```{r}
+#first row:
+sleep[1,]
+```
 
 7. We are interested in two groups; small and large mammals. Let's define small as less than or equal to 1kg body weight and large as greater than or equal to 200kg body weight. Make two new dataframes (large and small) based on these parameters.  
 
+```{r}
+small <- subset(sleep, bodywt <= 1)
+small
+```
+```{r}
+large <- subset(sleep, bodywt >= 200)
+large
+```
+
 
 8. What is the mean weight for both the large and small mammals?
+```{r}
+sw <- small$bodywt
+mean(sw)
+```
+The mean weight for small mammals is .259667 kg. 
 
+```{r}
+lw <- large$bodywt
+mean(lw)
+```
+The mean weight for large mammals is 1747.071 kg. 
 
 9. Let's try to figure out if large mammals sleep, on average, longer than small mammals. What is the average sleep duration for large mammals as we have defined them?
+```{r}
+lsleep <- large$sleep_total
+mean(lsleep)
+```
 
 
 10. What is the average sleep duration for small mammals as we have defined them?
+```{r}
+ssleep <- small$sleep_total
+mean(ssleep)
+```
 
 
 11. Which animals are the sleepiest? Which sleep least 18 hours per day?  
+```{r}
+sleepiest <- subset(sleep, sleep_total >= 18)
+sleepiest
+```
 
 
 ## Push your final code to GitHub
