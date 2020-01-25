@@ -3,11 +3,11 @@ title: "Lab 1 Homework"
 author: "Joshua Paaske"
 date: "Winter 2020"
 output:
+  html_document: 
+    keep_md: yes
+    theme: spacelab
   pdf_document: 
     keep_tex: yes
-  html_document:
-    theme: spacelab
-    toc: no
 ---
 
 
@@ -97,5 +97,18 @@ I should stick to blackjack.
 sum(blackjack, na.rm = TRUE) > sum(roulette, na.rm = TRUE)
 ```
 this shows that the total money that I got from blackjack is greater than the total money made from roulette. 
+
+I'm trying something like lily did here! Done after due date!
+```{r}
+sum_b <- sum(blackjack, na.rm = TRUE)
+sum_r <- sum(roulette, na.rm = TRUE)
+
+if (sum(blackjack, na.rm = TRUE) > sum(roulette, na.rm = TRUE)) {
+  print("You should stick to blackjack, roulette is bad for you")
+} else {
+  print("You should stick to roulette")
+}
+
+```
 
 ## Push your final code to [GitHub](https://github.com/FRS417-DataScienceBiologists)
