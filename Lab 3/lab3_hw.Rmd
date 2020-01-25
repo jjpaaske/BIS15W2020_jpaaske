@@ -3,9 +3,9 @@ title: "Lab 3 Homework"
 author: "Joshua Paaske"
 date: "Winter 2020"
 output:
-  html_document:
+  html_document: 
+    keep_md: yes
     theme: spacelab
-    toc: no
 ---
 
 ```{r}
@@ -38,19 +38,23 @@ spec(homerange)
 ```
 
 3. Explore the data. Show the dimensions, column names, classes for each variable, and a statistical summary. Keep these as separate code chunks.  
+
+### Dimensions
 ```{r}
 dim(homerange)
 ```
 
+### Column Names
 ```{r}
 names(homerange)
 ```
 
+### Classes of each variable (in second column)
 ```{r}
 glimpse(homerange)
 ```
-#this shows the classes for each variable in the second column. 
 
+### Statistical Summary
 ```{r}
 summary(homerange)
 ```
@@ -60,36 +64,98 @@ summary(homerange)
 ```{r}
 anyNA(homerange)
 ```
-#Yes there are NA's in my data. 
+### Yes there are NA's in my data. 
 
 5. Change the class of the variables `taxon` and `order` to factors and display their levels.
 
 ```{r}
-homerange <- data.frame(as.factor(homerange$taxon), as.factor(homerange$order))
+homerange$taxon <- as.factor(homerange$taxon)
 ```
 
+```{r}
+levels(homerange$taxon)
+```
 
 ```{r}
-is.factor(homerange$taxon)
+homerange$order <- as.factor(homerange$order)
+```
+
+```{r}
+levels(homerange$order)
 ```
 
 6. Make a new dataframe `deer` that is limited to the mean mass, log10 mass, family, genus, and species of deer in the database. The family for deer is cervidae. Arrange the data in descending order by log10 mass. Which is the largest deer?  
 
+```{r}
+deer <- homerange %>% 
+  select(mean.mass.g, log10.mass, family, genus, species) %>% 
+  filter(family == "cervidae") %>% 
+  arrange(desc(log10.mass))
+
+deer
+```
+### The largest deer is the alces alces.  
+
 7. As measured by the data, which snake species has the smallest homerange? Show all of your work, please. Look this species up online and tell me about it!  
 
+```{r}
+snake <- homerange %>% 
+  select(taxon, family, genus, species, mean.hra.m2, log10.hra) %>% 
+  filter(taxon == "snakes") %>% 
+  arrange(log10.hra)
 
-8. You suspect that homerange and mass are correlated in birds. We need a ratio that facilitates exploration of this prediction. First, build a new dataframe called `hra_ratio` that is limited to genus, species, mean.mass.g, log10.mass, log10.hra. Arrange it in ascending order by mean mass in grams.  
+snake
+```
+
+### The snake with the smallest homerange is the bitis schneideri, otherwise known as the namaqua dwarf adder. It's the smallest adder in the world, only being about 20 cm long on average. They seem to experience a higher mortality rate than average due to their small size, and can cause serious pain and swelling with their bite. 
+
+8. You suspect that homerange and mass are correlated in birds. We need a ratio that facilitates exploration of this prediction. First, build a new dataframe called `hra_ratio` that is limited to genus, species, mean.mass.g, log10.mass, log10.hra. Arrange it in ascending order by mean mass in grams. 
+
+```{r}
+hra_ratio <- homerange %>% 
+  filter(taxon == "birds") %>% 
+  select(genus, species, mean.mass.g, log10.mass, log10.hra) %>% 
+  arrange(mean.mass.g)
+
+hra_ratio
+```
 
 
 9. Replace the existing `hra_ratio` dataframe with a new dataframe that adds a column calculating the ratio of log 10 hra to log 10 mass. Call it `hra.mass.ratio`. Arrange it in descending order by mean mass in grams.  
+```{r}
+hra.mass.ratio <- hra_ratio %>% 
+  mutate(ratio = log10.hra/log10.mass) %>% 
+  arrange(desc(mean.mass.g))
 
+hra.mass.ratio
+```
 
 10. What is the lowest mass for birds with a `hra.mass.ratio` greater than or equal to 4.0?
-
+```{r}
+hra.mass.ratio %>% 
+  filter(ratio >= 4)
+```
+### The lowest mass for a bird with a mass ratio greater than or equal to 4.0 is the regulus regulus, that only weighs 5.15 g on average. 
 
 11. Do a search online; what is the common name of the bird from #8 above? Place a link in your markdown file that takes us to a webpage with information on its biology.  
 
+### The common name of regulus regulus is the [Goldcrest](https://www.iucnredlist.org/species/22734997/132183740)
+
 12. What is the `hra.mass.ratio` for an ostrich? Show your work, please.  
+```{r}
+homerange %>% 
+  filter(common.name == "ostrich") %>% 
+  select(genus, species)
+  
+```
+### The ostrich genus and species is struthio camelus
+
+```{r}
+hra.mass.ratio %>% 
+  filter(species == "camelus")
+```
+### The hra.mass.ratio for an ostrich is 1.602565 m^2/g. 
+
 
 ## Push your final code to GitHub!
 Please be sure that you have check the `keep md` file in the knit preferences.  
