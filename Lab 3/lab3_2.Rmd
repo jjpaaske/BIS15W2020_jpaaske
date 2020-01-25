@@ -58,9 +58,22 @@ Some additional options to select columns based on a specific criteria include:
 ## Practice
 1. What are the names of the columns in the `fish` data?
 
+```{r}
+names(fish)
+```
+
 2. We are only interested in the variables `lakeid`, `length`, and `scalelength`. Use `select()` to build a new dataframe focused on these variables.
 
+```{r}
+select(fish, lakeid, length, scalelength)
+```
+
 3. Repeat #2 above using the `-` operator.  
+
+```{r}
+select(fish, -fish_id, -annnumber, -radii_length_mm)
+```
+
 
 ## dplyr: Can we combine filter() and select()?
 Absolutely. This is one of the strengths of the tidyverse, it uses the same grammar to specify commands.
@@ -80,6 +93,15 @@ fish %>%
 ## Practice
 1. Build a dataframe focused on the lakes `AL` and `AR` and looking at radii length between 2 and 4 only. Use pipes!  
 
+```{r}
+fish %>% 
+  select(lakeid, radii_length_mm) %>% 
+  filter(lakeid %in% c("AL", "AR")) %>% 
+  filter(radii_length_mm >=2, radii_length_mm <=4) %>% 
+  arrange(radii_length_mm) #check the order for radii length to see if you filtered correctly
+```
+
+
 ## dplyr: arrange()
 The `arrange()` command is a bit like a sort command in excel.
 ```{r}
@@ -87,7 +109,7 @@ fish %>%
   arrange(scalelength)
 ```
 
-To sort in decreasing order, wrap the variable name in `desc()`.
+To sort in descending order, wrap the variable name in `desc()`.
 ```{r}
 fish %>% 
   arrange(desc(scalelength))
@@ -113,6 +135,12 @@ Note that if we had called our new variable length, R would overwrite the old va
 
 ## Practice
 1. Use `mutate()` to calculate the half length of each fish: length_half = length/2. Select only fish_id, length, and length_half, use pipes.
+```{r}
+fish %>% 
+  mutate(length_half = length/2) %>% 
+  select(fish_id, length, length_half) %>% 
+  arrange(desc(length_half))
+```
 
 ## That's it, let's take a break!   
 

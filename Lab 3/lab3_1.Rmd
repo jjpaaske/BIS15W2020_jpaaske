@@ -19,7 +19,7 @@ output:
 At this point, I expect that you have familiarity in RStudio, GitHub, and basic operations in R. You understand how to do arithmetic, assign values to objects, and work with vectors or data matrices. If you are confused or need some extra help, please [email me](mailto: jmledford@ucdavis.edu).  
 
 ## Load the tidyverse
-```{r message=FALSE, warning=FALSE}
+```{r}
 library("tidyverse")
 ```
 
@@ -69,7 +69,7 @@ tail(fish, n = 10) # print the last n rows of the data frame
 
 We can also click on the `fish` data frame in the Environment tab or type View(fish).
 ```{r}
-View(fish)
+#View(fish)
 ```
 
 `summary()` and `str()` are classic functions used by many R programmers. `glimpse()` is part of the tidyverse.
@@ -117,12 +117,12 @@ glimpse(mammals)
 
 5. Print out the first few rows of the data using the function `head()`.  
 ```{r}
-head(mammals)
+head(mammals, n = 5)
 ```
 
 6. Print out the last few rows using the function `tail()`.
 ```{r}
-tail(mammals)
+tail(mammals, n = 5)
 ```
 
 ## Tidyverse
@@ -174,18 +174,35 @@ filter(fish, length == 167 & length == 175)
 
 ## Practice
 1. Filter the `fish` data to include the samples from lake `DY`.
+```{r}
+filter(fish, lakeid == "DY")
+```
 
 
 2. Filter the data to include all lakes except AL.
 
+```{r}
+filter(fish, lakeid != "AL")
+```
 
 3. Filter the data to include all lakes except AL and DY.
+
+```{r}
+filter(fish, lakeid != "AL" & lakeid != "DY")
+```
 
 
 4. Filter the data to include all fish with a scale length greater than or equal to 11.
 
+```{r}
+filter(fish, scalelength >= 11)
+```
+
 
 5. Filter the data to include fish only from lake AL and with a scalelength greater than or equal to 2 and less than or equal to 4.
+```{r}
+filter(fish, lakeid == "AL" & scalelength >=2 & scalelength <= 4)
+```
 
 
 ## That's it, let's take a break!   

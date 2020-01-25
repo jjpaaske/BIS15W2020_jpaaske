@@ -1,6 +1,6 @@
 ---
 title: "Lab 3 Homework"
-author: "Please Add Your Name Here"
+author: "Joshua Paaske"
 date: "Winter 2020"
 output:
   html_document:
@@ -8,7 +8,7 @@ output:
     toc: no
 ---
 
-```{r setup, include=FALSE}
+```{r}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 Answer the following questions and complete the exercises in RMarkdown. Please embed all of your code and push your final work to your repository. Your final lab report should be organized, clean, and run free from errors. Remember, you must remove the `#` for the included code chunks to run.  
 
 ## Load the tidyverse
-```{r message=FALSE, warning=FALSE}
+```{r}
 library(tidyverse)
 ```
 
@@ -28,14 +28,50 @@ Reference: Tamburello N, Cote IM, Dulvy NK (2015) Energy and the scaling of anim
 Data: http://datadryad.org/resource/doi:10.5061/dryad.q5j65/1  
 
 1. Load the data into a new object called `homerange`.  
+```{r}
+homerange <- readr::read_csv("data/Tamburelloetal_HomeRangeDatabase.csv")
+```
 
 2. Use `spec()` to see the full details of the columns.  
+```{r}
+spec(homerange)
+```
 
 3. Explore the data. Show the dimensions, column names, classes for each variable, and a statistical summary. Keep these as separate code chunks.  
+```{r}
+dim(homerange)
+```
+
+```{r}
+names(homerange)
+```
+
+```{r}
+glimpse(homerange)
+```
+#this shows the classes for each variable in the second column. 
+
+```{r}
+summary(homerange)
+```
 
 4. Are there NA's in your data? Show the code that you would use to verify this, please.  
 
-5. Change the class of the variables `taxon` and `order` to factors and display their levels.  
+```{r}
+anyNA(homerange)
+```
+#Yes there are NA's in my data. 
+
+5. Change the class of the variables `taxon` and `order` to factors and display their levels.
+
+```{r}
+homerange <- data.frame(as.factor(homerange$taxon), as.factor(homerange$order))
+```
+
+
+```{r}
+is.factor(homerange$taxon)
+```
 
 6. Make a new dataframe `deer` that is limited to the mean mass, log10 mass, family, genus, and species of deer in the database. The family for deer is cervidae. Arrange the data in descending order by log10 mass. Which is the largest deer?  
 
