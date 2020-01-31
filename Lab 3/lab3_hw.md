@@ -23,18 +23,18 @@ library(tidyverse)
 ```
 
 ```
-## ── Attaching packages ───────────────────────────────────────── tidyverse 1.3.0 ──
+## <U+2500><U+2500> Attaching packages <U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500> tidyverse 1.3.0 <U+2500><U+2500>
 ```
 
 ```
-## ✓ ggplot2 3.2.1     ✓ purrr   0.3.3
-## ✓ tibble  2.1.3     ✓ dplyr   0.8.3
-## ✓ tidyr   1.0.0     ✓ stringr 1.4.0
-## ✓ readr   1.3.1     ✓ forcats 0.4.0
+## <U+2713> ggplot2 3.2.1     <U+2713> purrr   0.3.3
+## <U+2713> tibble  2.1.3     <U+2713> dplyr   0.8.3
+## <U+2713> tidyr   1.0.0     <U+2713> stringr 1.4.0
+## <U+2713> readr   1.3.1     <U+2713> forcats 0.4.0
 ```
 
 ```
-## ── Conflicts ──────────────────────────────────────────── tidyverse_conflicts() ──
+## <U+2500><U+2500> Conflicts <U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500> tidyverse_conflicts() <U+2500><U+2500>
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()
 ```
@@ -147,30 +147,30 @@ glimpse(homerange)
 ```
 ## Observations: 569
 ## Variables: 24
-## $ taxon                      <chr> "lake fishes", "river fishes", "river fish…
-## $ common.name                <chr> "american eel", "blacktail redhorse", "cen…
-## $ class                      <chr> "actinopterygii", "actinopterygii", "actin…
-## $ order                      <chr> "anguilliformes", "cypriniformes", "cyprin…
-## $ family                     <chr> "anguillidae", "catostomidae", "cyprinidae…
-## $ genus                      <chr> "anguilla", "moxostoma", "campostoma", "cl…
-## $ species                    <chr> "rostrata", "poecilura", "anomalum", "fund…
-## $ primarymethod              <chr> "telemetry", "mark-recapture", "mark-recap…
-## $ N                          <chr> "16", NA, "20", "26", "17", "5", "2", "2",…
-## $ mean.mass.g                <dbl> 887.00, 562.00, 34.00, 4.00, 4.00, 3525.00…
-## $ log10.mass                 <dbl> 2.9479236, 2.7497363, 1.5314789, 0.6020600…
-## $ alternative.mass.reference <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
-## $ mean.hra.m2                <dbl> 282750.00, 282.10, 116.11, 125.50, 87.10, …
-## $ log10.hra                  <dbl> 5.4514026, 2.4504031, 2.0648696, 2.0986437…
-## $ hra.reference              <chr> "Minns, C. K. 1995. Allometry of home rang…
-## $ realm                      <chr> "aquatic", "aquatic", "aquatic", "aquatic"…
-## $ thermoregulation           <chr> "ectotherm", "ectotherm", "ectotherm", "ec…
-## $ locomotion                 <chr> "swimming", "swimming", "swimming", "swimm…
-## $ trophic.guild              <chr> "carnivore", "carnivore", "carnivore", "ca…
-## $ dimension                  <chr> "3D", "2D", "2D", "2D", "2D", "2D", "2D", …
-## $ preymass                   <dbl> NA, NA, NA, NA, NA, NA, 1.39, NA, NA, NA, …
-## $ log10.preymass             <dbl> NA, NA, NA, NA, NA, NA, 0.1430148, NA, NA,…
-## $ PPMR                       <dbl> NA, NA, NA, NA, NA, NA, 530, NA, NA, NA, N…
-## $ prey.size.reference        <chr> NA, NA, NA, NA, NA, NA, "Brose U, et al. 2…
+## $ taxon                      <chr> "lake fishes", "river fishes", "river fish<U+2026>
+## $ common.name                <chr> "american eel", "blacktail redhorse", "cen<U+2026>
+## $ class                      <chr> "actinopterygii", "actinopterygii", "actin<U+2026>
+## $ order                      <chr> "anguilliformes", "cypriniformes", "cyprin<U+2026>
+## $ family                     <chr> "anguillidae", "catostomidae", "cyprinidae<U+2026>
+## $ genus                      <chr> "anguilla", "moxostoma", "campostoma", "cl<U+2026>
+## $ species                    <chr> "rostrata", "poecilura", "anomalum", "fund<U+2026>
+## $ primarymethod              <chr> "telemetry", "mark-recapture", "mark-recap<U+2026>
+## $ N                          <chr> "16", NA, "20", "26", "17", "5", "2", "2",<U+2026>
+## $ mean.mass.g                <dbl> 887.00, 562.00, 34.00, 4.00, 4.00, 3525.00<U+2026>
+## $ log10.mass                 <dbl> 2.9479236, 2.7497363, 1.5314789, 0.6020600<U+2026>
+## $ alternative.mass.reference <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA<U+2026>
+## $ mean.hra.m2                <dbl> 282750.00, 282.10, 116.11, 125.50, 87.10, <U+2026>
+## $ log10.hra                  <dbl> 5.4514026, 2.4504031, 2.0648696, 2.0986437<U+2026>
+## $ hra.reference              <chr> "Minns, C. K. 1995. Allometry of home rang<U+2026>
+## $ realm                      <chr> "aquatic", "aquatic", "aquatic", "aquatic"<U+2026>
+## $ thermoregulation           <chr> "ectotherm", "ectotherm", "ectotherm", "ec<U+2026>
+## $ locomotion                 <chr> "swimming", "swimming", "swimming", "swimm<U+2026>
+## $ trophic.guild              <chr> "carnivore", "carnivore", "carnivore", "ca<U+2026>
+## $ dimension                  <chr> "3D", "2D", "2D", "2D", "2D", "2D", "2D", <U+2026>
+## $ preymass                   <dbl> NA, NA, NA, NA, NA, NA, 1.39, NA, NA, NA, <U+2026>
+## $ log10.preymass             <dbl> NA, NA, NA, NA, NA, NA, 0.1430148, NA, NA,<U+2026>
+## $ PPMR                       <dbl> NA, NA, NA, NA, NA, NA, 530, NA, NA, NA, N<U+2026>
+## $ prey.size.reference        <chr> NA, NA, NA, NA, NA, NA, "Brose U, et al. 2<U+2026>
 ```
 
 ### Statistical Summary
@@ -279,23 +279,32 @@ levels(homerange$order)
 ```
 
 ```
-##  [1] "accipitriformes"    "afrosoricida"       "anguilliformes"    
-##  [4] "anseriformes"       "apterygiformes"     "artiodactyla"      
-##  [7] "caprimulgiformes"   "carnivora"          "charadriiformes"   
-## [10] "columbidormes"      "columbiformes"      "coraciiformes"     
-## [13] "cuculiformes"       "cypriniformes"      "dasyuromorpha"     
-## [16] "dasyuromorpia"      "didelphimorphia"    "diprodontia"       
-## [19] "diprotodontia"      "erinaceomorpha"     "esociformes"       
-## [22] "falconiformes"      "gadiformes"         "galliformes"       
-## [25] "gruiformes"         "lagomorpha"         "macroscelidea"     
-## [28] "monotrematae"       "passeriformes"      "pelecaniformes"    
-## [31] "peramelemorphia"    "perciformes"        "perissodactyla"    
-## [34] "piciformes"         "pilosa"             "proboscidea"       
-## [37] "psittaciformes"     "rheiformes"         "roden"             
-## [40] "rodentia"           "salmoniformes"      "scorpaeniformes"   
-## [43] "siluriformes"       "soricomorpha"       "squamata"          
-## [46] "strigiformes"       "struthioniformes"   "syngnathiformes"   
-## [49] "testudines"         "tetraodontiformes\xa0" "tinamiformes"
+##  [1] "accipitriformes"         "afrosoricida"           
+##  [3] "anguilliformes"          "anseriformes"           
+##  [5] "apterygiformes"          "artiodactyla"           
+##  [7] "caprimulgiformes"        "carnivora"              
+##  [9] "charadriiformes"         "columbidormes"          
+## [11] "columbiformes"           "coraciiformes"          
+## [13] "cuculiformes"            "cypriniformes"          
+## [15] "dasyuromorpha"           "dasyuromorpia"          
+## [17] "didelphimorphia"         "diprodontia"            
+## [19] "diprotodontia"           "erinaceomorpha"         
+## [21] "esociformes"             "falconiformes"          
+## [23] "gadiformes"              "galliformes"            
+## [25] "gruiformes"              "lagomorpha"             
+## [27] "macroscelidea"           "monotrematae"           
+## [29] "passeriformes"           "pelecaniformes"         
+## [31] "peramelemorphia"         "perciformes"            
+## [33] "perissodactyla"          "piciformes"             
+## [35] "pilosa"                  "proboscidea"            
+## [37] "psittaciformes"          "rheiformes"             
+## [39] "roden"                   "rodentia"               
+## [41] "salmoniformes"           "scorpaeniformes"        
+## [43] "siluriformes"            "soricomorpha"           
+## [45] "squamata"                "strigiformes"           
+## [47] "struthioniformes"        "syngnathiformes"        
+## [49] "testudines"              "tetraodontiformes<U+00A0>"
+## [51] "tinamiformes"
 ```
 
 6. Make a new dataframe `deer` that is limited to the mean mass, log10 mass, family, genus, and species of deer in the database. The family for deer is cervidae. Arrange the data in descending order by log10 mass. Which is the largest deer?  
@@ -355,7 +364,7 @@ snake
 ##  8 snakes viperidae  agkistrodon piscivorous       10655       4.03
 ##  9 snakes colubridae oocatochus  rufodorsatus      15400       4.19
 ## 10 snakes colubridae pituophis   catenifer         17400       4.24
-## # … with 31 more rows
+## # <U+2026> with 31 more rows
 ```
 
 ### The snake with the smallest homerange is the bitis schneideri, otherwise known as the namaqua dwarf adder. It's the smallest adder in the world, only being about 20 cm long on average. They seem to experience a higher mortality rate than average due to their small size, and can cause serious pain and swelling with their bite. 
@@ -386,7 +395,7 @@ hra_ratio
 ##  8 sylvia       undata              8.8       0.944      3.45
 ##  9 setophaga    ruticilla           9         0.954      3.29
 ## 10 setophaga    virens              9         0.954      3.81
-## # … with 130 more rows
+## # <U+2026> with 130 more rows
 ```
 
 
@@ -414,7 +423,7 @@ hra.mass.ratio
 ##  8 bubo       bubo                2191       3.34      7.20  2.16
 ##  9 hieraaetus fasciatus           2049       3.31      7.29  2.20
 ## 10 strigops   habroptilus         1941       3.29      5.29  1.61
-## # … with 130 more rows
+## # <U+2026> with 130 more rows
 ```
 
 10. What is the lowest mass for birds with a `hra.mass.ratio` greater than or equal to 4.0?
