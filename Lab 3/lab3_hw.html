@@ -485,36 +485,78 @@ Data: <a href="http://datadryad.org/resource/doi:10.5061/dryad.q5j65/1" class="u
 ## [19] &quot;trophic.guild&quot;              &quot;dimension&quot;                 
 ## [21] &quot;preymass&quot;                   &quot;log10.preymass&quot;            
 ## [23] &quot;PPMR&quot;                       &quot;prey.size.reference&quot;</code></pre>
-</div>
-<div id="classes-of-each-variable-in-second-column" class="section level3">
-<h3>Classes of each variable (in second column)</h3>
-<pre class="r"><code>glimpse(homerange)</code></pre>
-<pre><code>## Observations: 569
-## Variables: 24
-## $ taxon                      &lt;chr&gt; &quot;lake fishes&quot;, &quot;river fishes&quot;, &quot;river fish&lt;U+2026&gt;
-## $ common.name                &lt;chr&gt; &quot;american eel&quot;, &quot;blacktail redhorse&quot;, &quot;cen&lt;U+2026&gt;
-## $ class                      &lt;chr&gt; &quot;actinopterygii&quot;, &quot;actinopterygii&quot;, &quot;actin&lt;U+2026&gt;
-## $ order                      &lt;chr&gt; &quot;anguilliformes&quot;, &quot;cypriniformes&quot;, &quot;cyprin&lt;U+2026&gt;
-## $ family                     &lt;chr&gt; &quot;anguillidae&quot;, &quot;catostomidae&quot;, &quot;cyprinidae&lt;U+2026&gt;
-## $ genus                      &lt;chr&gt; &quot;anguilla&quot;, &quot;moxostoma&quot;, &quot;campostoma&quot;, &quot;cl&lt;U+2026&gt;
-## $ species                    &lt;chr&gt; &quot;rostrata&quot;, &quot;poecilura&quot;, &quot;anomalum&quot;, &quot;fund&lt;U+2026&gt;
-## $ primarymethod              &lt;chr&gt; &quot;telemetry&quot;, &quot;mark-recapture&quot;, &quot;mark-recap&lt;U+2026&gt;
-## $ N                          &lt;chr&gt; &quot;16&quot;, NA, &quot;20&quot;, &quot;26&quot;, &quot;17&quot;, &quot;5&quot;, &quot;2&quot;, &quot;2&quot;,&lt;U+2026&gt;
-## $ mean.mass.g                &lt;dbl&gt; 887.00, 562.00, 34.00, 4.00, 4.00, 3525.00&lt;U+2026&gt;
-## $ log10.mass                 &lt;dbl&gt; 2.9479236, 2.7497363, 1.5314789, 0.6020600&lt;U+2026&gt;
-## $ alternative.mass.reference &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA&lt;U+2026&gt;
-## $ mean.hra.m2                &lt;dbl&gt; 282750.00, 282.10, 116.11, 125.50, 87.10, &lt;U+2026&gt;
-## $ log10.hra                  &lt;dbl&gt; 5.4514026, 2.4504031, 2.0648696, 2.0986437&lt;U+2026&gt;
-## $ hra.reference              &lt;chr&gt; &quot;Minns, C. K. 1995. Allometry of home rang&lt;U+2026&gt;
-## $ realm                      &lt;chr&gt; &quot;aquatic&quot;, &quot;aquatic&quot;, &quot;aquatic&quot;, &quot;aquatic&quot;&lt;U+2026&gt;
-## $ thermoregulation           &lt;chr&gt; &quot;ectotherm&quot;, &quot;ectotherm&quot;, &quot;ectotherm&quot;, &quot;ec&lt;U+2026&gt;
-## $ locomotion                 &lt;chr&gt; &quot;swimming&quot;, &quot;swimming&quot;, &quot;swimming&quot;, &quot;swimm&lt;U+2026&gt;
-## $ trophic.guild              &lt;chr&gt; &quot;carnivore&quot;, &quot;carnivore&quot;, &quot;carnivore&quot;, &quot;ca&lt;U+2026&gt;
-## $ dimension                  &lt;chr&gt; &quot;3D&quot;, &quot;2D&quot;, &quot;2D&quot;, &quot;2D&quot;, &quot;2D&quot;, &quot;2D&quot;, &quot;2D&quot;, &lt;U+2026&gt;
-## $ preymass                   &lt;dbl&gt; NA, NA, NA, NA, NA, NA, 1.39, NA, NA, NA, &lt;U+2026&gt;
-## $ log10.preymass             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, 0.1430148, NA, NA,&lt;U+2026&gt;
-## $ PPMR                       &lt;dbl&gt; NA, NA, NA, NA, NA, NA, 530, NA, NA, NA, N&lt;U+2026&gt;
-## $ prey.size.reference        &lt;chr&gt; NA, NA, NA, NA, NA, NA, &quot;Brose U, et al. 2&lt;U+2026&gt;</code></pre>
+<pre class="r"><code>lapply(homerange, class)</code></pre>
+<pre><code>## $taxon
+## [1] &quot;character&quot;
+## 
+## $common.name
+## [1] &quot;character&quot;
+## 
+## $class
+## [1] &quot;character&quot;
+## 
+## $order
+## [1] &quot;character&quot;
+## 
+## $family
+## [1] &quot;character&quot;
+## 
+## $genus
+## [1] &quot;character&quot;
+## 
+## $species
+## [1] &quot;character&quot;
+## 
+## $primarymethod
+## [1] &quot;character&quot;
+## 
+## $N
+## [1] &quot;character&quot;
+## 
+## $mean.mass.g
+## [1] &quot;numeric&quot;
+## 
+## $log10.mass
+## [1] &quot;numeric&quot;
+## 
+## $alternative.mass.reference
+## [1] &quot;character&quot;
+## 
+## $mean.hra.m2
+## [1] &quot;numeric&quot;
+## 
+## $log10.hra
+## [1] &quot;numeric&quot;
+## 
+## $hra.reference
+## [1] &quot;character&quot;
+## 
+## $realm
+## [1] &quot;character&quot;
+## 
+## $thermoregulation
+## [1] &quot;character&quot;
+## 
+## $locomotion
+## [1] &quot;character&quot;
+## 
+## $trophic.guild
+## [1] &quot;character&quot;
+## 
+## $dimension
+## [1] &quot;character&quot;
+## 
+## $preymass
+## [1] &quot;numeric&quot;
+## 
+## $log10.preymass
+## [1] &quot;numeric&quot;
+## 
+## $PPMR
+## [1] &quot;numeric&quot;
+## 
+## $prey.size.reference
+## [1] &quot;character&quot;</code></pre>
 </div>
 <div id="statistical-summary" class="section level3">
 <h3>Statistical Summary</h3>

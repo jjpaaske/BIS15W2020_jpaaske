@@ -138,39 +138,84 @@ names(homerange)
 ## [23] "PPMR"                       "prey.size.reference"
 ```
 
-### Classes of each variable (in second column)
+
 
 ```r
-glimpse(homerange)
+lapply(homerange, class)
 ```
 
 ```
-## Observations: 569
-## Variables: 24
-## $ taxon                      <chr> "lake fishes", "river fishes", "river fish<U+2026>
-## $ common.name                <chr> "american eel", "blacktail redhorse", "cen<U+2026>
-## $ class                      <chr> "actinopterygii", "actinopterygii", "actin<U+2026>
-## $ order                      <chr> "anguilliformes", "cypriniformes", "cyprin<U+2026>
-## $ family                     <chr> "anguillidae", "catostomidae", "cyprinidae<U+2026>
-## $ genus                      <chr> "anguilla", "moxostoma", "campostoma", "cl<U+2026>
-## $ species                    <chr> "rostrata", "poecilura", "anomalum", "fund<U+2026>
-## $ primarymethod              <chr> "telemetry", "mark-recapture", "mark-recap<U+2026>
-## $ N                          <chr> "16", NA, "20", "26", "17", "5", "2", "2",<U+2026>
-## $ mean.mass.g                <dbl> 887.00, 562.00, 34.00, 4.00, 4.00, 3525.00<U+2026>
-## $ log10.mass                 <dbl> 2.9479236, 2.7497363, 1.5314789, 0.6020600<U+2026>
-## $ alternative.mass.reference <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA<U+2026>
-## $ mean.hra.m2                <dbl> 282750.00, 282.10, 116.11, 125.50, 87.10, <U+2026>
-## $ log10.hra                  <dbl> 5.4514026, 2.4504031, 2.0648696, 2.0986437<U+2026>
-## $ hra.reference              <chr> "Minns, C. K. 1995. Allometry of home rang<U+2026>
-## $ realm                      <chr> "aquatic", "aquatic", "aquatic", "aquatic"<U+2026>
-## $ thermoregulation           <chr> "ectotherm", "ectotherm", "ectotherm", "ec<U+2026>
-## $ locomotion                 <chr> "swimming", "swimming", "swimming", "swimm<U+2026>
-## $ trophic.guild              <chr> "carnivore", "carnivore", "carnivore", "ca<U+2026>
-## $ dimension                  <chr> "3D", "2D", "2D", "2D", "2D", "2D", "2D", <U+2026>
-## $ preymass                   <dbl> NA, NA, NA, NA, NA, NA, 1.39, NA, NA, NA, <U+2026>
-## $ log10.preymass             <dbl> NA, NA, NA, NA, NA, NA, 0.1430148, NA, NA,<U+2026>
-## $ PPMR                       <dbl> NA, NA, NA, NA, NA, NA, 530, NA, NA, NA, N<U+2026>
-## $ prey.size.reference        <chr> NA, NA, NA, NA, NA, NA, "Brose U, et al. 2<U+2026>
+## $taxon
+## [1] "character"
+## 
+## $common.name
+## [1] "character"
+## 
+## $class
+## [1] "character"
+## 
+## $order
+## [1] "character"
+## 
+## $family
+## [1] "character"
+## 
+## $genus
+## [1] "character"
+## 
+## $species
+## [1] "character"
+## 
+## $primarymethod
+## [1] "character"
+## 
+## $N
+## [1] "character"
+## 
+## $mean.mass.g
+## [1] "numeric"
+## 
+## $log10.mass
+## [1] "numeric"
+## 
+## $alternative.mass.reference
+## [1] "character"
+## 
+## $mean.hra.m2
+## [1] "numeric"
+## 
+## $log10.hra
+## [1] "numeric"
+## 
+## $hra.reference
+## [1] "character"
+## 
+## $realm
+## [1] "character"
+## 
+## $thermoregulation
+## [1] "character"
+## 
+## $locomotion
+## [1] "character"
+## 
+## $trophic.guild
+## [1] "character"
+## 
+## $dimension
+## [1] "character"
+## 
+## $preymass
+## [1] "numeric"
+## 
+## $log10.preymass
+## [1] "numeric"
+## 
+## $PPMR
+## [1] "numeric"
+## 
+## $prey.size.reference
+## [1] "character"
 ```
 
 ### Statistical Summary
