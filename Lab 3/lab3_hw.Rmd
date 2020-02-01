@@ -49,9 +49,9 @@ dim(homerange)
 names(homerange)
 ```
 
-### Classes of each variable (in second column)
+
 ```{r}
-glimpse(homerange)
+lapply(homerange, class)
 ```
 
 ### Statistical Summary
