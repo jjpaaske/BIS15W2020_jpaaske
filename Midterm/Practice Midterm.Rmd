@@ -1,0 +1,204 @@
+---
+title: "BIS 15L Practice Midterm"
+output:
+  html_document:
+    theme: spacelab
+    toc: no
+---
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## `gapminder`
+For this assignment, we are going to use the dataset [gapminder](https://cran.r-project.org/web/packages/gapminder/index.html). Gapminder includes information about economics, population, and life expectancy from countries all over the world. You will need to install it before use.
+```{r}
+#install.packages("gapminder")
+```
+
+## Load the libraries
+```{r}
+library(tidyverse)
+library(gapminder)
+options(scipen=999) #disables scientific notation when printing
+```
+
+## Data structure
+**1. Use the function(s) of your choice to get an idea of the overall structure of the data frame, including its dimensions, column names, variable classes, etc.**
+```{r}
+dim(gapminder)
+names(gapminder)
+lapply(gapminder, class)
+```
+
+**2. Are there any NA's in the data?**
+```{r}
+anyNA(gapminder)
+```
+No, there are no NA's. 
+
+## Three versions of the `gampminder` data  
+We will use three versions of the `gapminder` data to perform analyses and (eventually) make plots. For now, make the following long and wide versions of `gapminder`.
+
+## `gapminder`
+Notice that `gapminder` has one row for each country and year, and one column for each measurement (lifeExp, pop, gdpPercap).
+```{r}
+gapminder <- gapminder
+gapminder
+```
+
+## Long `gapminder`
+**3. Make a new data frame `gapminder_long` that combines the three measured values (lifeExp, pop, gdpPercap) into a single column associated with a country and year.**
+```{r}
+gapminder_long <- gapminder %>% 
+  pivot_longer(-c(country, year, continent),
+               names_to = "measured_value", 
+               values_to = "observation_value") %>% 
+  unite("observation_year", measured_value, year, sep = "_") 
+gapminder_long
+```
+
+**4. For practice, use `pivot_wider()` to put the data back into the original `gapminder` format.**
+```{r}
+gapminder_long %>% 
+  separate(observation_year, into=c("observation", "year"), sep = "_") %>% 
+  pivot_wider(names_from = observation,
+              values_from = observation_value) 
+```
+
+## Wide `gapminder`
+**5. Make a new data frame `gapminder_wide` that has all observations for each country in a single row. The column names should be named as "observation_year". Arrange them sequentially by year.**
+```{r}
+gapminder_wide <- gapminder_long %>% 
+   pivot_wider(names_from = observation_year, values_from = observation_value)
+gapminder_wide
+```
+
+**6. For practice, use `pivot_longer()` to put the data back into the original `gapminder` format. Hint: you can't do this in one step!**
+```{r}
+gapminder_wide %>% 
+  pivot_longer(-c(country, continent),
+               names_to = "observation_year",
+               values_to = "observation_value") %>% 
+  separate(observation_year, into=c("observation", "year"), sep = "_") %>% 
+  pivot_wider(names_from = observation,
+              values_from = observation_value)
+               
+```
+
+## Data summaries
+**7. How many different continents and countries are represented in the data? Provide the total number and their names.**
+```{r}
+gapminder_wide %>% 
+  summarize(count_country = n_distinct(country), count_continent = n_distinct(continent))
+  
+```
+There are 142 countries and 5 continents. 
+
+Names of countries:
+```{r}
+levels(gapminder_wide$country)
+```
+
+Names of continents:
+```{r}
+levels(gapminder_wide$continent)
+```
+
+**8. How many countries are represented on each continent?**
+```{r}
+gapminder_wide %>% 
+  group_by(continent) %>% 
+  summarize(number_of_countries = n_distinct(country))
+  
+```
+
+**9. For the years included in the data, what is the mean life expectancy by continent? Arrange the results in descending order.**
+```{r}
+gapminder %>% 
+  select(continent, lifeExp) %>% 
+  group_by(continent) %>% 
+  summarize(mean_lifeExp = mean(lifeExp)) %>% 
+  arrange(desc(mean_lifeExp))
+```
+
+**10. For the years included in the data, how has life expectancy changed in each country between 1952-2007? How does this look in the USA only?**
+```{r}
+gapminder %>% 
+  select(country, year, lifeExp)
+```
+In general, life expectancy increases as time goes on. 
+
+```{r}
+gapminder %>% 
+  select(country, year, lifeExp) %>% 
+  filter(str_detect(country, "United States"))
+```
+Life expectancy in the United States still increases, but it starts much higher. 
+
+**11. In the year 2007, which countries had a life expectancy between 70 and 75 years?**
+```{r}
+gapminder11 <- gapminder %>% 
+  filter(year == 2007) %>% 
+  filter(lifeExp >= 70 & lifeExp <= 75) %>% 
+  droplevels
+
+levels(gapminder11$country)
+  
+```
+
+**12. In 1997, what are the minimum, maximum, and mean life expectancies of the Americas and Europe?**
+```{r}
+gapminder %>% 
+  filter(continent == "Europe" | continent == "Americas") %>% 
+  filter(year == 1997) %>% 
+  summarize(mean_lifeExp = mean(lifeExp), maximum_lifeExp = max(lifeExp), minimum_lifeExp = min(lifeExp))
+```
+The mean life expectancy was 73.5 years, the maximum life expectancy was 79.39 years, and the minimum life expectancy was 56.7 years. 
+
+**13. Which countries had the smallest populations in 1952? How about in 2007?**  
+```{r}
+gapminder %>% 
+  select(country, year, pop) %>% 
+  filter(year == 1952) %>% 
+  arrange(pop)
+```
+In 1952, Sao Tome and Principe, Dijbouti, and Bahrain had the smallest populations. 
+
+```{r}
+gapminder %>% 
+  select(country, year, pop) %>% 
+  filter(year == 2007) %>% 
+  arrange(pop)
+```
+In 1952, Sao Tome and Principe, Dijbouti, and Iceland had the smallest populations. 
+
+**14. We are interested in the GDP for countries in the Middle East including all years in the data. First, separate all of the countries on the "Asia" continent. How many countries are listed and what are their names?**
+```{r}
+gapminder_wide %>% 
+  filter(continent == "Asia") %>% 
+  summarize(number_countries = n_distinct(country))
+
+gapminder14 <- gapminder_wide %>% 
+  filter(continent == "Asia") %>% 
+  droplevels
+levels(gapminder14$country)
+```
+
+**15. Next, remove all of the countries from this list that are part of the Middle East and put them into a new object `gapminder_middleEast`. Add a new column to the data called "region" and make sure "Middle East" is specified for these countries.**
+```{r}
+gapminder_middleEast <- gapminder %>% 
+  filter(country %in% c("Algeria", "Bahrain", "Egypt", "Iran", "Iraq", "Israel", "Jordan", "Kuwait", "Lebanon", "Libya", "Morocco", "Oman", "Qatar", "Saudi Arabia", "Syria", "Tunisia", "Turkey", "United Arab Emirates", "Yemen")) %>% 
+  mutate(region = "Middle East")
+gapminder_middleEast
+```
+
+**16. Now show the gdpPercap for each country with the years as column names; i.e. one row per country.**
+```{r}
+gapminder_middleEast %>% 
+  select(country, continent, year, gdpPercap, region) %>% 
+  mutate_at(vars(year), ~paste(.,"_gdpPercap")) %>% 
+  pivot_wider(names_from = year,
+              values_from = gdpPercap)
+```
+
