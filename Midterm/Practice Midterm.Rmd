@@ -1,9 +1,9 @@
 ---
 title: "BIS 15L Practice Midterm"
 output:
-  html_document:
+  html_document: 
+    keep_md: yes
     theme: spacelab
-    toc: no
 ---
 
 ```{r}
