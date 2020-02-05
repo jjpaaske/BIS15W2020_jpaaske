@@ -96,14 +96,15 @@ fisheries_tidy <- fisheries %>%
 9. Refocus the data only to include country, ISSCAAP_spgroupname, ASFIS_spcode, ASFIS_sciname, year, and catch.
 ```{r}
 fisheries_tidy2 <- fisheries_tidy %>% 
-  select(country, ISSCAAP_spgroupname, ISSCAAP_spgroup, ASFIS_spcode, ASFIS_sciname, year, catch)
+  select(country, ISSCAAP_spgroupname, ISSCAAP_spgroup, ASFIS_spcode, ASFIS_sciname, year, catch) %>% 
+  mutate_at(vars(year), as.numeric)
 ```
 
 10. Re-check the classes of `fisheries_tidy2`. Notice that "catch" is shown as a character! This is a problem because we will want to treat it as a numeric. How will you deal with this?
 ```{r}
 lapply(fisheries_tidy2, class)
 ```
-I already changed those values to numerics earlier on in the homework. 
+I already changed the values of catch to numerics earlier on in the homework. 
 
 11. Based on the ASFIS_spcode, how many distinct taxa were caught as part of these data?
 
@@ -128,7 +129,7 @@ China had the largest overal catch of 12695472 tonnes in the year 2000.
 fisheries_tidy2 %>% 
   select(country, catch, year, ASFIS_sciname) %>%
   filter(str_detect(ASFIS_sciname, "Sardina")) %>% 
-  filter(year %in% c(1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000)) %>% 
+  filter(year <= 2000 & year >= 1990) %>% 
   group_by(country) %>% 
   summarize(catch = sum(catch, na.rm = T)) %>% 
   arrange(desc(catch, by.group = TRUE))
@@ -139,34 +140,34 @@ Morocco had the largest catch of 4785190 tonnes.
 14. Which five countries caught the most cephalopods between 2008-2012?
 ```{r}
 fisheries_tidy2 %>% 
-  select(country, catch, year, ASFIS_sciname) %>% 
-  filter(str_detect(ASFIS_sciname, "Cephalopoda")) %>% 
-  filter(year %in% c(2008, 2009, 2010, 2011, 2012)) %>% 
+  filter(str_detect(ISSCAAP_spgroupname, "Squids")) %>% 
+  filter(year <= 2012 & year >= 2008) %>% 
   group_by(country) %>% 
   summarize(catch = sum(catch, na.rm = T)) %>% 
   arrange(desc(catch, by.group = TRUE))
 ```
-Vietnam caught the most cephalopods betwen 2008-2012. 
+China caught the most cephalopods betwen 2008-2012. 
 
-15. Given the top five countries from question 12 above, which species was the highest catch total? The lowest?
+15. Given the top five countries from question 14 above, which species was the highest catch total? The lowest?
 ```{r}
 fisheries_tidy2 %>% 
-  filter(year == "2000", country %in% c('China', 'Peru', 'Japan', 'United States of America', 'Chile')) %>% 
+  filter(str_detect(ISSCAAP_spgroupname, "Squids")) %>% 
+  filter(year <= 2012 & year >= 2008) %>% 
   group_by(ASFIS_sciname) %>% 
-  summarize(catch = sum(catch, na.rm = T)) %>% 
-  arrange(desc(catch, by.group = TRUE))
+  summarize(catch_total=sum(catch, na.rm=T)) %>% 
+  arrange(desc(catch_total))
 ```
-The species with the highest catch total is Engraulis ringens with 11276357 tonnes. 
+Dosidicus gigas had the highest catch total of 4211138 tons. 
 
 ```{r}
 fisheries_tidy2 %>% 
-  filter(year == "2000", country %in% c('China', 'Peru', 'Japan', 'United States of America', 'Chile')) %>% 
+  filter(str_detect(ISSCAAP_spgroupname, "Squids")) %>% 
+  filter(year <= 2012 & year >= 2008) %>% 
   group_by(ASFIS_sciname) %>% 
-  summarize(catch = sum(catch, na.rm = T)) %>% 
-  filter(catch != 0) %>% 
-  arrange(catch)
+  summarize(catch_total=sum(catch, na.rm=T)) %>% 
+  arrange(catch_total)
 ```
-Brotula barbata, Carcharias taurus, Caulolatilus microps, Lobotes surinamensis, Pleuronichthys decurrens, Tawera gayi, Tresus spp	all only had 1 ton caught in 2000 among the highest 5 countries. 
+The species with the lowest catch total is Todarodes filippovae with 1 ton (excluding fish with 0 tonnes) 
 
 16. In some cases, the taxonomy of the fish being caught is unclear. Make a new data frame called `coastal_fish` that shows the taxonomic composition of "Miscellaneous coastal fishes" within the ISSCAAP_spgroupname column.
 ```{r}
@@ -183,7 +184,7 @@ coastal_fish %>%
   summarize(types_of_fish = n_distinct(ASFIS_sciname)) %>% 
   arrange(desc(types_of_fish))
 ```
-The United States of America caught the most variety of coastal fish
+The United States of America caught the most variety of coastal fish with Saudi Arabia coming in second. 
 
 ## Push your final code to GitHub!
 Please be sure that you check the `keep md` file in the knit preferences.   

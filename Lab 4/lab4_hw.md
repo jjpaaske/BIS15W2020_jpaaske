@@ -387,7 +387,8 @@ fisheries_tidy <- fisheries %>%
 
 ```r
 fisheries_tidy2 <- fisheries_tidy %>% 
-  select(country, ISSCAAP_spgroupname, ISSCAAP_spgroup, ASFIS_spcode, ASFIS_sciname, year, catch)
+  select(country, ISSCAAP_spgroupname, ISSCAAP_spgroup, ASFIS_spcode, ASFIS_sciname, year, catch) %>% 
+  mutate_at(vars(year), as.numeric)
 ```
 
 10. Re-check the classes of `fisheries_tidy2`. Notice that "catch" is shown as a character! This is a problem because we will want to treat it as a numeric. How will you deal with this?
@@ -413,12 +414,12 @@ lapply(fisheries_tidy2, class)
 ## [1] "factor"
 ## 
 ## $year
-## [1] "character"
+## [1] "numeric"
 ## 
 ## $catch
 ## [1] "numeric"
 ```
-I already changed those values to numerics earlier on in the homework. 
+I already changed the values of catch to numerics earlier on in the homework. 
 
 11. Based on the ASFIS_spcode, how many distinct taxa were caught as part of these data?
 
@@ -466,7 +467,7 @@ China had the largest overal catch of 12695472 tonnes in the year 2000.
 fisheries_tidy2 %>% 
   select(country, catch, year, ASFIS_sciname) %>%
   filter(str_detect(ASFIS_sciname, "Sardina")) %>% 
-  filter(year %in% c(1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000)) %>% 
+  filter(year <= 2000 & year >= 1990) %>% 
   group_by(country) %>% 
   summarize(catch = sum(catch, na.rm = T)) %>% 
   arrange(desc(catch, by.group = TRUE))
@@ -494,96 +495,87 @@ Morocco had the largest catch of 4785190 tonnes.
 
 ```r
 fisheries_tidy2 %>% 
-  select(country, catch, year, ASFIS_sciname) %>% 
-  filter(str_detect(ASFIS_sciname, "Cephalopoda")) %>% 
-  filter(year %in% c(2008, 2009, 2010, 2011, 2012)) %>% 
+  filter(str_detect(ISSCAAP_spgroupname, "Squids")) %>% 
+  filter(year <= 2012 & year >= 2008) %>% 
   group_by(country) %>% 
   summarize(catch = sum(catch, na.rm = T)) %>% 
   arrange(desc(catch, by.group = TRUE))
 ```
 
 ```
-## # A tibble: 20 x 2
+## # A tibble: 139 x 2
 ##    country                    catch
 ##    <fct>                      <dbl>
-##  1 Viet Nam                 1292000
-##  2 India                     429670
-##  3 China                     268557
-##  4 Cambodia                   21075
-##  5 Madagascar                 12321
-##  6 Mozambique                  6511
-##  7 Taiwan Province of China    6123
-##  8 Somalia                     3000
-##  9 Croatia                      647
-## 10 Spain                        329
-## 11 Mauritania                   197
-## 12 Algeria                      162
-## 13 Israel                       120
-## 14 France                       101
-## 15 TimorLeste                    76
-## 16 Italy                         66
-## 17 Australia                      0
-## 18 Japan                          0
-## 19 Portugal                       0
-## 20 Tunisia                        0
+##  1 China                    4785139
+##  2 Peru                     2274232
+##  3 Japan                    1644085
+##  4 Korea, Republic of       1535454
+##  5 Viet Nam                 1292000
+##  6 Chile                     723186
+##  7 Indonesia                 684567
+##  8 United States of America  613400
+##  9 Thailand                  603529
+## 10 Taiwan Province of China  593638
+## # … with 129 more rows
 ```
-Vietnam caught the most cephalopods betwen 2008-2012. 
+China caught the most cephalopods betwen 2008-2012. 
 
-15. Given the top five countries from question 12 above, which species was the highest catch total? The lowest?
+15. Given the top five countries from question 14 above, which species was the highest catch total? The lowest?
 
 ```r
 fisheries_tidy2 %>% 
-  filter(year == "2000", country %in% c('China', 'Peru', 'Japan', 'United States of America', 'Chile')) %>% 
+  filter(str_detect(ISSCAAP_spgroupname, "Squids")) %>% 
+  filter(year <= 2012 & year >= 2008) %>% 
   group_by(ASFIS_sciname) %>% 
-  summarize(catch = sum(catch, na.rm = T)) %>% 
-  arrange(desc(catch, by.group = TRUE))
+  summarize(catch_total=sum(catch, na.rm=T)) %>% 
+  arrange(desc(catch_total))
 ```
 
 ```
-## # A tibble: 581 x 2
-##    ASFIS_sciname            catch
-##    <fct>                    <dbl>
-##  1 Engraulis ringens     11276357
-##  2 Osteichthyes           3806946
-##  3 Theragra chalcogramma  1534202
-##  4 Trachurus murphyi      1533196
-##  5 Engraulis japonicus    1361481
-##  6 Mollusca               1206606
-##  7 Trichiurus lepturus    1125770
-##  8 Crustacea              1116172
-##  9 Scomber japonicus       837583
-## 10 Strangomera bentincki   722522
-## # … with 571 more rows
+## # A tibble: 35 x 2
+##    ASFIS_sciname               catch_total
+##    <fct>                             <dbl>
+##  1 Dosidicus gigas                 4211138
+##  2 Loliginidae, Ommastrephidae     2951507
+##  3 Cephalopoda                     2040955
+##  4 Todarodes pacificus             1936561
+##  5 Illex argentinus                1834620
+##  6 Octopodidae                     1497654
+##  7 Sepiidae, Sepiolidae            1338968
+##  8 Loligo spp                      1293727
+##  9 Loligo opalescens                477536
+## 10 Loligo gahi                      317535
+## # … with 25 more rows
 ```
-The species with the highest catch total is Engraulis ringens with 11276357 tonnes. 
+Dosidicus gigas had the highest catch total of 4211138 tons. 
 
 
 ```r
 fisheries_tidy2 %>% 
-  filter(year == "2000", country %in% c('China', 'Peru', 'Japan', 'United States of America', 'Chile')) %>% 
+  filter(str_detect(ISSCAAP_spgroupname, "Squids")) %>% 
+  filter(year <= 2012 & year >= 2008) %>% 
   group_by(ASFIS_sciname) %>% 
-  summarize(catch = sum(catch, na.rm = T)) %>% 
-  filter(catch != 0) %>% 
-  arrange(catch)
+  summarize(catch_total=sum(catch, na.rm=T)) %>% 
+  arrange(catch_total)
 ```
 
 ```
-## # A tibble: 408 x 2
-##    ASFIS_sciname            catch
-##    <fct>                    <dbl>
-##  1 Brotula barbata              1
-##  2 Carcharias taurus            1
-##  3 Caulolatilus microps         1
-##  4 Lobotes surinamensis         1
-##  5 Pleuronichthys decurrens     1
-##  6 Tawera gayi                  1
-##  7 Tresus spp                   1
-##  8 Carcharodon carcharias       2
-##  9 Stereolepis gigas            2
-## 10 Zeus faber                   2
-## # … with 398 more rows
+## # A tibble: 35 x 2
+##    ASFIS_sciname        catch_total
+##    <fct>                      <dbl>
+##  1 Eledone moschata               0
+##  2 Gonatidae                      0
+##  3 Moroteuthis robustus           0
+##  4 Pareledone spp                 0
+##  5 Todarodes filippovae           1
+##  6 Martialia hyadesi              4
+##  7 Moroteuthis ingens           194
+##  8 Loligo vulgaris              398
+##  9 Eledone cirrhosa             920
+## 10 Loligo duvauceli            1843
+## # … with 25 more rows
 ```
-Brotula barbata, Carcharias taurus, Caulolatilus microps, Lobotes surinamensis, Pleuronichthys decurrens, Tawera gayi, Tresus spp	all only had 1 ton caught in 2000 among the highest 5 countries. 
+The species with the lowest catch total is Todarodes filippovae with 1 ton (excluding fish with 0 tonnes) 
 
 16. In some cases, the taxonomy of the fish being caught is unclear. Make a new data frame called `coastal_fish` that shows the taxonomic composition of "Miscellaneous coastal fishes" within the ISSCAAP_spgroupname column.
 
@@ -619,7 +611,7 @@ coastal_fish %>%
 ## 10 Mexico                              39
 ## # … with 140 more rows
 ```
-The United States of America caught the most variety of coastal fish
+The United States of America caught the most variety of coastal fish with Saudi Arabia coming in second. 
 
 ## Push your final code to GitHub!
 Please be sure that you check the `keep md` file in the knit preferences.   
