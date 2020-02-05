@@ -1,5 +1,7 @@
 ---
 title: "BIS 15L Practice Midterm"
+author: "Joshua Paaske"
+date: "1/31/20"
 output:
   html_document: 
     keep_md: yes
