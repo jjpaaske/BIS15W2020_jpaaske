@@ -13,8 +13,13 @@ write.csv(hiroshima, "hiroshima.csv", row.names = F)
 ```
 
 ```{r}
-read.fortran("R10CANCR.DAT", c("2F3.0","F4.0","F7.0","F5.0","F4.0","F10.0","26F4.0"))
+fstr <- c("2I3","I4","F7.1","I5","I4","F10.2","26I4")
+hiroshima <- read.fortran("r10cancrfix.dat",fstr)
+
+hiroshima
+
 ```
+
 
 
 
