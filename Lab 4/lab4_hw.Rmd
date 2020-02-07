@@ -116,10 +116,10 @@ nlevels(fisheries_tidy2$ASFIS_spcode)
 12. Which country had the largest overall catch in the year 2000?
 ```{r}
 fisheries_tidy2 %>% 
-  filter(year == "2000") %>% 
+  filter(year == 2000) %>% 
   group_by(country) %>% 
   summarize(catch = sum(catch, na.rm = T)) %>% 
-  arrange(desc(catch, by.group = TRUE))
+  arrange(desc(catch))
   
 ```
 China had the largest overal catch of 12695472 tonnes in the year 2000.
