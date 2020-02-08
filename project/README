@@ -1,0 +1,204 @@
+
+
+
+                               April 22, 1986
+
+        Description of RERF LSS-E85 Report 10 data file R10CANCR.DAT
+
+
+    The file R10CANCR.DAT on this disk contains data used in the
+analyses of cancer mortality among survivors of the atomic bombings of
+Hiroshima and Nagasaki.  If these data are used as the basis for
+analyses in any publication, including working papers and technical
+reports, a statement of acknowledgement must be included in the
+manuscript.  This statement should read
+
+
+              These data have been obtained from the Radiation
+              Effects Research Foundation (RERF) in Hiroshima,
+              Japan.  RERF is a private foundation that is funded
+              equally by the Japanese Ministry of Health and
+              Welfare and the U.S.  Department of Energy through
+              the U.S.  National Academy of Sciences.  The
+              conclusions reached in this report are those of the
+              authors and do not necessarily reflect the
+              scientific judgement of RERF or its funding
+              agencies.
+
+
+Please send a copy of any such reprint to
+
+                      Administration and Support Section
+                      Publication and Documentation Center
+                      Radiation Effects Research Foundation
+                      5-2 Hijiyama Koen
+                      Minami ku
+                      Hiroshima Shi  732
+                      JAPAN
+
+    The data in the file summarize the cancer mortality experience
+during the period from October 1, 1950 through December 31, 1982 for
+91,231 exposed survivors in the Radiation Effects Research Foundation
+(RERF) Life Span Study cohort as extended in 1985 (LSS-E85).  Data on
+26,517 LSS members who were not in the city at the time of the bomb
+(ATB) and 2,384 survivors for whom T65DR dose estimates could not be
+caluclated have been excluded from the tabulation.
+
+    This dataset was used for most of the analyses described in LSS
+Report 10 Part I.  Cancer Mortality Among A-Bomb Survivors in Hiroshima
+and Nagasaki, 1950-1982.  This report, which has been published by RERF
+as TR 1-86, contains a detailed description of the categories used to
+classify deaths (Table A1- 1), the method of person year calculation,
+and the definition of the cross- classification used in the production
+of this dataset.  Data on specific categories of noncancer mortality are
+not included in the file.  Dose categories and estimates are based on
+individual survivor T65DR dose estimates and do not reflect changes in
+indivdual dose estimates due to recent substantial revisions in the
+dosimetry system.
+
+
+
+
+
+    With the exception of some of the age-at-exposure by attained age
+analyses, which made use of a slightly different tabualation, the
+analyses described in the body and in Appendix 3 of LSS Report 10 were
+based upon the data as summarized in R10CANCR.DAT.
+
+    R10CANCR.DAT is an ASCII text file.  Each record in the line in the
+file contains the data for a single cell in a crosstabulation over city
+(2 groups), sex (2 groups), age ATB (5 groups), T65DR dose (8 groups),
+and time period (8 groups).  For each of these cells, the data are:
+
+     a)   classmarks for city, sex, age ATB, dose, and time
+
+     b)   an index variable which contains a unique value for each of the
+          160 strata defined by the city, sex, age ATB, and time period
+          categories.
+
+     c)   the total number of person years at risk for persons in the cell
+
+     b)   counts of the numbers of deaths in each of 26 nonexclusive
+          categories.
+
+    All fields are separated by at least one blank so the file can
+easily be read using a FORTRAN free-format read.  Alternatively, either
+of the following FORTRAN formats can be used:
+
+                   (2I3,I4,F7.1,I5,I4,F10.2,26I4)
+
+or
+
+                   (2F3.0,F4.0,F7.0,F5.0,F4.0,F10.0,26F4.0).
+
+
+
+
+
+
+
+
+      The following table describes the data for each record:
+
+
+    NAME     Columns                   Description
+__________  _________ ____________________________________________________
+
+  CITY          3     city indicator Hiroshima=0,  Nagasaki=1
+
+  SEX           5     sex indicator  Male=0, Female=1
+
+  AGEATB       9:10   age at exposure, value given is age at the midpoint of
+                      the interval.  There are 5 age at exposure intervals:
+                      0-9,10-19,20-34,35-49,50+.
+
+  DOSE        11:17   T65DR total exposure kerma.  The classmarks used are
+                      city-specific dose group averages.  The eight dose
+                      groups are 0, 1-9, 10-49, 50-99, 100-199, 200-299,
+                      300-399, and 400+ centigray(rad).  T65DR exposure
+                      kerma estimates were rounded to the nearset centigray
+                      prior to grouping.  In computing the city-specifc
+                      averages, dose estimates in excess of 6 Gray were set
+                      equal to 6 Gray.  Average doses are given in
+                      centiGray.
+
+
+
+
+  TIME        21:22   last two digits of the year at the midpoint of the
+                      time interval.  There are eight time intervals. The
+                      first begins on October 1, 1950 and ends December 31,
+                      1954.  The remaining seven intervals are each four
+                      years long.  They begin on January 1 of 1955, 1959,
+                      1963, 1967, 1971, 1975, and 1979.  The final time
+                      period ends on December 31, 1982.
+
+  INDEX       24:26   a variable which indexes strata defined by city, sex,
+                      age ATB, and time period groups.  There are 160 such
+                      strata.  The index values are integers between 1 and
+                      160.
+
+  PYR         27:36   the total number of person years
+
+  ALLDEATH    37:40   all causes
+
+  ALLDIS      41:44   all diseases, including cancer
+
+  ALLNEO      45:48   all neoplasms
+
+  ALLMAL      49:52   all malignant neoplasms
+
+  LEUK        53:56   leukemia (acute and chronic)
+
+
+
+
+
+
+  NONLEUK     58:60   all cancers except leuklemia
+
+  DIGEST      61:64   cancers of the digestive organs and peritoneum
+
+  ESOPH       65:68   cancer of the esophagus
+
+  STOMACH     69:72   cancer of the stomach
+
+  COLON       73:76   cancer of the colon
+
+  RECTUM      77:80   cancers of the rectum, rectosigmoid, and anus
+
+  LIVER       81:84   cancers of the liver and intrahepatic bile ducts
+
+  GALLBLDR    85:88   cancers of the gallbladder and extrahepatic bile ducts
+
+  PANCREAS    89:92   cancer of the pancreas
+
+  OTHRDIG     93:96   other cancers of the digestive organs and peritoneum
+
+  RESP        97:100  cancers of the respiratory system and interthoracic
+                      organs
+
+  LUNG       101:104  cancers of the trachea, bronchus, and lung
+
+  FBREAST    105:108  cancer of the female breast
+
+  FGENITAL   109:112  cancers of the cervix uteri, uterus, and placenta
+
+  CERVIX     113:116  cancer of the cervix uteri
+
+  OVARY      117:120  cancer of the ovary and other uterine adnexa
+
+  PROSTATE   121:124  cancer of the prostate
+
+
+  URINARY    125:128  cancers of the bladder, kidney, or other or
+                      unspecified urinary organs
+
+  LYMPHOMA   129:132  malignant lymphoma
+
+  MYELOMA    133:136  multiple myeloma
+
+  OTHRCA     137:140  other cancer deaths
+
+
+

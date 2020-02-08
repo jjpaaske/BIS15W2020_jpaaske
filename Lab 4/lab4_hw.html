@@ -401,12 +401,12 @@ summary {
 <div id="load-the-tidyverse" class="section level2">
 <h2>Load the tidyverse</h2>
 <pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ──────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
-<pre><code>## ✓ ggplot2 3.2.1     ✓ purrr   0.3.3
-## ✓ tibble  2.1.3     ✓ dplyr   0.8.4
-## ✓ tidyr   1.0.2     ✓ stringr 1.4.0
-## ✓ readr   1.3.1     ✓ forcats 0.4.0</code></pre>
-<pre><code>## ── Conflicts ─────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>## &lt;U+2500&gt;&lt;U+2500&gt; Attaching packages &lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt; tidyverse 1.3.0 &lt;U+2500&gt;&lt;U+2500&gt;</code></pre>
+<pre><code>## &lt;U+2713&gt; ggplot2 3.2.1     &lt;U+2713&gt; purrr   0.3.3
+## &lt;U+2713&gt; tibble  2.1.3     &lt;U+2713&gt; dplyr   0.8.3
+## &lt;U+2713&gt; tidyr   1.0.0     &lt;U+2713&gt; stringr 1.4.0
+## &lt;U+2713&gt; readr   1.3.1     &lt;U+2713&gt; forcats 0.4.0</code></pre>
+<pre><code>## &lt;U+2500&gt;&lt;U+2500&gt; Conflicts &lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt;&lt;U+2500&gt; tidyverse_conflicts() &lt;U+2500&gt;&lt;U+2500&gt;
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <p>For this assignment we are going to work with a large dataset from the <a href="http://www.fao.org/about/en/">United Nations Food and Agriculture Organization</a> on world fisheries. First, load the data.</p>
@@ -598,17 +598,17 @@ sapply(fisheries, class)</code></pre>
 ##  [19] &quot;Bosnia and Herzegovina&quot;   &quot;Brazil&quot;                  
 ##  [21] &quot;British Indian Ocean Ter&quot; &quot;British Virgin Islands&quot;  
 ##  [23] &quot;Brunei Darussalam&quot;        &quot;Bulgaria&quot;                
-##  [25] &quot;Cabo Verde&quot;               &quot;Cambodia&quot;                
-##  [27] &quot;Cameroon&quot;                 &quot;Canada&quot;                  
-##  [29] &quot;Cayman Islands&quot;           &quot;Channel Islands&quot;         
-##  [31] &quot;Chile&quot;                    &quot;China&quot;                   
-##  [33] &quot;China, Hong Kong SAR&quot;     &quot;China, Macao SAR&quot;        
-##  [35] &quot;Colombia&quot;                 &quot;Comoros&quot;                 
-##  [37] &quot;Congo, Dem. Rep. of the&quot;  &quot;Congo, Republic of&quot;      
-##  [39] &quot;Cook Islands&quot;             &quot;Costa Rica&quot;              
-##  [41] &quot;Croatia&quot;                  &quot;Cuba&quot;                    
-##  [43] &quot;Cura�ao&quot;                  &quot;Cyprus&quot;                  
-##  [45] &quot;C�te d'Ivoire&quot;            &quot;Denmark&quot;                 
+##  [25] &quot;C&lt;U+FFFD&gt;te d'Ivoire&quot;     &quot;Cabo Verde&quot;              
+##  [27] &quot;Cambodia&quot;                 &quot;Cameroon&quot;                
+##  [29] &quot;Canada&quot;                   &quot;Cayman Islands&quot;          
+##  [31] &quot;Channel Islands&quot;          &quot;Chile&quot;                   
+##  [33] &quot;China&quot;                    &quot;China, Hong Kong SAR&quot;    
+##  [35] &quot;China, Macao SAR&quot;         &quot;Colombia&quot;                
+##  [37] &quot;Comoros&quot;                  &quot;Congo, Dem. Rep. of the&quot; 
+##  [39] &quot;Congo, Republic of&quot;       &quot;Cook Islands&quot;            
+##  [41] &quot;Costa Rica&quot;               &quot;Croatia&quot;                 
+##  [43] &quot;Cuba&quot;                     &quot;Cura&lt;U+FFFD&gt;ao&quot;          
+##  [45] &quot;Cyprus&quot;                   &quot;Denmark&quot;                 
 ##  [47] &quot;Djibouti&quot;                 &quot;Dominica&quot;                
 ##  [49] &quot;Dominican Republic&quot;       &quot;Ecuador&quot;                 
 ##  [51] &quot;Egypt&quot;                    &quot;El Salvador&quot;             
@@ -659,8 +659,8 @@ sapply(fisheries, class)</code></pre>
 ## [141] &quot;Philippines&quot;              &quot;Pitcairn Islands&quot;        
 ## [143] &quot;Poland&quot;                   &quot;Portugal&quot;                
 ## [145] &quot;Puerto Rico&quot;              &quot;Qatar&quot;                   
-## [147] &quot;Romania&quot;                  &quot;Russianederation&quot;        
-## [149] &quot;R�union&quot;                  &quot;Saint Barth�lemy&quot;        
+## [147] &quot;R&lt;U+FFFD&gt;union&quot;           &quot;Romania&quot;                 
+## [149] &quot;Russianederation&quot;         &quot;Saint Barth&lt;U+FFFD&gt;lemy&quot; 
 ## [151] &quot;Saint Helena&quot;             &quot;Saint Kitts and Nevis&quot;   
 ## [153] &quot;Saint Lucia&quot;              &quot;Saint Vincent/Grenadines&quot;
 ## [155] &quot;SaintMartin&quot;              &quot;Samoa&quot;                   
@@ -680,10 +680,10 @@ sapply(fisheries, class)</code></pre>
 ## [183] &quot;Tokelau&quot;                  &quot;Tonga&quot;                   
 ## [185] &quot;Trinidad and Tobago&quot;      &quot;Tunisia&quot;                 
 ## [187] &quot;Turkey&quot;                   &quot;Turks and Caicos Is.&quot;    
-## [189] &quot;Tuvalu&quot;                   &quot;Ukraine&quot;                 
-## [191] &quot;Un. Sov. Soc. Rep.&quot;       &quot;United Arab Emirates&quot;    
-## [193] &quot;United Kingdom&quot;           &quot;United States of America&quot;
-## [195] &quot;Uruguay&quot;                  &quot;US Virgin Islands&quot;       
+## [189] &quot;Tuvalu&quot;                   &quot;US Virgin Islands&quot;       
+## [191] &quot;Ukraine&quot;                  &quot;Un. Sov. Soc. Rep.&quot;      
+## [193] &quot;United Arab Emirates&quot;     &quot;United Kingdom&quot;          
+## [195] &quot;United States of America&quot; &quot;Uruguay&quot;                 
 ## [197] &quot;Vanuatu&quot;                  &quot;Venezuela, Boliv Rep of&quot; 
 ## [199] &quot;Viet Nam&quot;                 &quot;Wallis andutuna Is.&quot;     
 ## [201] &quot;Western Sahara&quot;           &quot;Yemen&quot;                   
@@ -770,7 +770,7 @@ sapply(fisheries, class)</code></pre>
 ##  8 Thailand                  2795719
 ##  9 India                     2760632
 ## 10 Norway                    2698506
-## # … with 194 more rows</code></pre>
+## # &lt;U+2026&gt; with 194 more rows</code></pre>
 <p>China had the largest overal catch of 12695472 tonnes in the year 2000.</p>
 <ol start="13" style="list-style-type: decimal">
 <li>Which country caught the most sardines (<em>Sardina</em>) between the years 1990-2000?</li>
@@ -795,7 +795,7 @@ sapply(fisheries, class)</code></pre>
 ##  8 Turkey            273565
 ##  9 France            263871
 ## 10 Denmark           242017
-## # … with 36 more rows</code></pre>
+## # &lt;U+2026&gt; with 36 more rows</code></pre>
 <p>Morocco had the largest catch of 4785190 tonnes.</p>
 <ol start="14" style="list-style-type: decimal">
 <li>Which five countries caught the most cephalopods between 2008-2012?</li>
@@ -819,7 +819,7 @@ sapply(fisheries, class)</code></pre>
 ##  8 United States of America  613400
 ##  9 Thailand                  603529
 ## 10 Taiwan Province of China  593638
-## # … with 129 more rows</code></pre>
+## # &lt;U+2026&gt; with 129 more rows</code></pre>
 <p>China caught the most cephalopods betwen 2008-2012.</p>
 <ol start="15" style="list-style-type: decimal">
 <li>Given the top five countries from question 14 above, which species was the highest catch total? The lowest?</li>
@@ -843,7 +843,7 @@ sapply(fisheries, class)</code></pre>
 ##  8 Loligo spp                      1293727
 ##  9 Loligo opalescens                477536
 ## 10 Loligo gahi                      317535
-## # … with 25 more rows</code></pre>
+## # &lt;U+2026&gt; with 25 more rows</code></pre>
 <p>Dosidicus gigas had the highest catch total of 4211138 tons.</p>
 <pre class="r"><code>fisheries_tidy2 %&gt;% 
   filter(str_detect(ISSCAAP_spgroupname, &quot;Squids&quot;)) %&gt;% 
@@ -864,7 +864,7 @@ sapply(fisheries, class)</code></pre>
 ##  8 Loligo vulgaris              398
 ##  9 Eledone cirrhosa             920
 ## 10 Loligo duvauceli            1843
-## # … with 25 more rows</code></pre>
+## # &lt;U+2026&gt; with 25 more rows</code></pre>
 <p>The species with the lowest catch total is Todarodes filippovae with 1 ton (excluding fish with 0 tonnes)</p>
 <ol start="16" style="list-style-type: decimal">
 <li>In some cases, the taxonomy of the fish being caught is unclear. Make a new data frame called <code>coastal_fish</code> that shows the taxonomic composition of “Miscellaneous coastal fishes” within the ISSCAAP_spgroupname column.</li>
@@ -892,7 +892,7 @@ sapply(fisheries, class)</code></pre>
 ##  8 Un. Sov. Soc. Rep.                  41
 ##  9 Korea, Republic of                  40
 ## 10 Mexico                              39
-## # … with 140 more rows</code></pre>
+## # &lt;U+2026&gt; with 140 more rows</code></pre>
 <p>The United States of America caught the most variety of coastal fish with Saudi Arabia coming in second.</p>
 </div>
 <div id="push-your-final-code-to-github" class="section level2">

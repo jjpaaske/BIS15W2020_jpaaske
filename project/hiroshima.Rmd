@@ -1,0 +1,34 @@
+---
+title: "hiroshima_nagasaki"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+hiroshima <- read.table("R10CANCR.DAT",skip = 1, header = T)
+write.csv(hiroshima, "hiroshima.csv", row.names = F)
+```
+
+```{r}
+fstr <- c("2I3","I4","F7.1","I5","I4","F10.2","26I4")
+hiroshima <- read.fortran("r10cancrfix.dat",fstr)
+
+hiroshima
+
+```
+
+
+
+
+
+```{r}
+# NOT RUN {
+ff <- tempfile()
+cat(file = ff, "123456", "987654", sep = "\n")
+read.fortran(ff, c("F2.1","F2.0","I2"))
+read.fortran(ff, c("2F1.0","2X","2A1"))
+
+```
