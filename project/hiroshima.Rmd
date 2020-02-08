@@ -8,27 +8,19 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-hiroshima <- read.table("R10CANCR.DAT",skip = 1, header = T)
-write.csv(hiroshima, "hiroshima.csv", row.names = F)
+library(tidyverse)
 ```
 
 ```{r}
 fstr <- c("2I3","I4","F7.1","I5","I4","F10.2","26I4")
-hiroshima <- read.fortran("r10cancrfix.dat",fstr)
+hiroshima_nagasaki <- read.fortran("r10cancrfix.dat",fstr)
 
-hiroshima
+names(hiroshima_nagasaki) <-  c("city", "sex", "ageatb", "dose_centigray", "time", "index", "total_year", "alldeaths", "alldis", "allneo", "allmal", "leuk", "nonleuk", "digest", "esoph", "stomach", "colon", "rectum", "liver", "gallbldr", "pancreas", "othrdig", "resp", "lung", "fbreast", "fgenital", "cervix", "ovary", "prostate", "urinary", "lymphoma", "myeloma", "othrca")
 
+hiroshima_nagasaki %>% 
+  mutate_at(vars(city), ~str_replace_all(., "0", "H")) %>% 
+  mutate_at(vars(city), ~str_replace_all(., "1", "N")) %>% 
+  mutate_at(vars(sex), ~str_replace_all(., "0", "M")) %>% 
+  mutate_at(vars(sex), ~str_replace_all(., "1", "F"))
 ```
 
-
-
-
-
-```{r}
-# NOT RUN {
-ff <- tempfile()
-cat(file = ff, "123456", "987654", sep = "\n")
-read.fortran(ff, c("F2.1","F2.0","I2"))
-read.fortran(ff, c("2F1.0","2X","2A1"))
-
-```
