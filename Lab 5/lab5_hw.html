@@ -12,7 +12,7 @@
 <meta name="author" content="Joshua Paaske" />
 
 
-<title>Lab 4 Homework</title>
+<title>Lab 5 Homework</title>
 
 <script>/*! jQuery v1.11.3 | (c) 2005, 2015 jQuery Foundation, Inc. | jquery.org/license */
 !function(a,b){"object"==typeof module&&"object"==typeof module.exports?module.exports=a.document?b(a,!0):function(a){if(!a.document)throw new Error("jQuery requires a window with a document");return b(a)}:b(a)}("undefined"!=typeof window?window:this,function(a,b){var c=[],d=c.slice,e=c.concat,f=c.push,g=c.indexOf,h={},i=h.toString,j=h.hasOwnProperty,k={},l="1.11.3",m=function(a,b){return new m.fn.init(a,b)},n=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,o=/^-ms-/,p=/-([\da-z])/gi,q=function(a,b){return b.toUpperCase()};m.fn=m.prototype={jquery:l,constructor:m,selector:"",length:0,toArray:function(){return d.call(this)},get:function(a){return null!=a?0>a?this[a+this.length]:this[a]:d.call(this)},pushStack:function(a){var b=m.merge(this.constructor(),a);return b.prevObject=this,b.context=this.context,b},each:function(a,b){return m.each(this,a,b)},map:function(a){return this.pushStack(m.map(this,function(b,c){return a.call(b,c,b)}))},slice:function(){return this.pushStack(d.apply(this,arguments))},first:function(){return this.eq(0)},last:function(){return this.eq(-1)},eq:function(a){var b=this.length,c=+a+(0>a?b:0);return this.pushStack(c>=0&&b>c?[this[c]]:[])},end:function(){return this.prevObject||this.constructor(null)},push:f,sort:c.sort,splice:c.splice},m.extend=m.fn.extend=function(){var a,b,c,d,e,f,g=arguments[0]||{},h=1,i=arguments.length,j=!1;for("boolean"==typeof g&&(j=g,g=arguments[h]||{},h++),"object"==typeof g||m.isFunction(g)||(g={}),h===i&&(g=this,h--);i>h;h++)if(null!=(e=arguments[h]))for(d in e)a=g[d],c=e[d],g!==c&&(j&&c&&(m.isPlainObject(c)||(b=m.isArray(c)))?(b?(b=!1,f=a&&m.isArray(a)?a:[]):f=a&&m.isPlainObject(a)?a:{},g[d]=m.extend(j,f,c)):void 0!==c&&(g[d]=c));return g},m.extend({expando:"jQuery"+(l+Math.random()).replace(/\D/g,""),isReady:!0,error:function(a){throw new Error(a)},noop:function(){},isFunction:function(a){return"function"===m.type(a)},isArray:Array.isArray||function(a){return"array"===m.type(a)},isWindow:function(a){return null!=a&&a==a.window},isNumeric:function(a){return!m.isArray(a)&&a-parseFloat(a)+1>=0},isEmptyObject:function(a){var b;for(b in a)return!1;return!0},isPlainObject:function(a){var b;if(!a||"object"!==m.type(a)||a.nodeType||m.isWindow(a))return!1;try{if(a.constructor&&!j.call(a,"constructor")&&!j.call(a.constructor.prototype,"isPrototypeOf"))return!1}catch(c){return!1}if(k.ownLast)for(b in a)return j.call(a,b);for(b in a);return void 0===b||j.call(a,b)},type:function(a){return null==a?a+"":"object"==typeof a||"function"==typeof a?h[i.call(a)]||"object":typeof a},globalEval:function(b){b&&m.trim(b)&&(a.execScript||function(b){a.eval.call(a,b)})(b)},camelCase:function(a){return a.replace(o,"ms-").replace(p,q)},nodeName:function(a,b){return a.nodeName&&a.nodeName.toLowerCase()===b.toLowerCase()},each:function(a,b,c){var d,e=0,f=a.length,g=r(a);if(c){if(g){for(;f>e;e++)if(d=b.apply(a[e],c),d===!1)break}else for(e in a)if(d=b.apply(a[e],c),d===!1)break}else if(g){for(;f>e;e++)if(d=b.call(a[e],e,a[e]),d===!1)break}else for(e in a)if(d=b.call(a[e],e,a[e]),d===!1)break;return a},trim:function(a){return null==a?"":(a+"").replace(n,"")},makeArray:function(a,b){var c=b||[];return null!=a&&(r(Object(a))?m.merge(c,"string"==typeof a?[a]:a):f.call(c,a)),c},inArray:function(a,b,c){var d;if(b){if(g)return g.call(b,a,c);for(d=b.length,c=c?0>c?Math.max(0,d+c):c:0;d>c;c++)if(c in b&&b[c]===a)return c}return-1},merge:function(a,b){var c=+b.length,d=0,e=a.length;while(c>d)a[e++]=b[d++];if(c!==c)while(void 0!==b[d])a[e++]=b[d++];return a.length=e,a},grep:function(a,b,c){for(var d,e=[],f=0,g=a.length,h=!c;g>f;f++)d=!b(a[f],f),d!==h&&e.push(a[f]);return e},map:function(a,b,c){var d,f=0,g=a.length,h=r(a),i=[];if(h)for(;g>f;f++)d=b(a[f],f,c),null!=d&&i.push(d);else for(f in a)d=b(a[f],f,c),null!=d&&i.push(d);return e.apply([],i)},guid:1,proxy:function(a,b){var c,e,f;return"string"==typeof b&&(f=a[b],b=a,a=f),m.isFunction(a)?(c=d.call(arguments,2),e=function(){return a.apply(b||this,c.concat(d.call(arguments)))},e.guid=a.guid=a.guid||m.guid++,e):void 0},now:function(){return+new Date},support:k}),m.each("Boolean Number String Function Array Date RegExp Object Error".split(" "),function(a,b){h["[object "+b+"]"]=b.toLowerCase()});function r(a){var b="length"in a&&a.length,c=m.type(a);return"function"===c||m.isWindow(a)?!1:1===a.nodeType&&b?!0:"array"===c||0===b||"number"==typeof b&&b>0&&b-1 in a}var s=function(a){var b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u="sizzle"+1*new Date,v=a.document,w=0,x=0,y=ha(),z=ha(),A=ha(),B=function(a,b){return a===b&&(l=!0),0},C=1<<31,D={}.hasOwnProperty,E=[],F=E.pop,G=E.push,H=E.push,I=E.slice,J=function(a,b){for(var c=0,d=a.length;d>c;c++)if(a[c]===b)return c;return-1},K="checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped",L="[\\x20\\t\\r\\n\\f]",M="(?:\\\\.|[\\w-]|[^\\x00-\\xa0])+",N=M.replace("w","w#"),O="\\["+L+"*("+M+")(?:"+L+"*([*^$|!~]?=)"+L+"*(?:'((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\"|("+N+"))|)"+L+"*\\]",P=":("+M+")(?:\\((('((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\")|((?:\\\\.|[^\\\\()[\\]]|"+O+")*)|.*)\\)|)",Q=new RegExp(L+"+","g"),R=new RegExp("^"+L+"+|((?:^|[^\\\\])(?:\\\\.)*)"+L+"+$","g"),S=new RegExp("^"+L+"*,"+L+"*"),T=new RegExp("^"+L+"*([>+~]|"+L+")"+L+"*"),U=new RegExp("="+L+"*([^\\]'\"]*?)"+L+"*\\]","g"),V=new RegExp(P),W=new RegExp("^"+N+"$"),X={ID:new RegExp("^#("+M+")"),CLASS:new RegExp("^\\.("+M+")"),TAG:new RegExp("^("+M.replace("w","w*")+")"),ATTR:new RegExp("^"+O),PSEUDO:new RegExp("^"+P),CHILD:new RegExp("^:(only|first|last|nth|nth-last)-(child|of-type)(?:\\("+L+"*(even|odd|(([+-]|)(\\d*)n|)"+L+"*(?:([+-]|)"+L+"*(\\d+)|))"+L+"*\\)|)","i"),bool:new RegExp("^(?:"+K+")$","i"),needsContext:new RegExp("^"+L+"*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\\("+L+"*((?:-\\d)?\\d*)"+L+"*\\)|)(?=[^-]|$)","i")},Y=/^(?:input|select|textarea|button)$/i,Z=/^h\d$/i,$=/^[^{]+\{\s*\[native \w/,_=/^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,aa=/[+~]/,ba=/'|\\/g,ca=new RegExp("\\\\([\\da-f]{1,6}"+L+"?|("+L+")|.)","ig"),da=function(a,b,c){var d="0x"+b-65536;return d!==d||c?b:0>d?String.fromCharCode(d+65536):String.fromCharCode(d>>10|55296,1023&d|56320)},ea=function(){m()};try{H.apply(E=I.call(v.childNodes),v.childNodes),E[v.childNodes.length].nodeType}catch(fa){H={apply:E.length?function(a,b){G.apply(a,I.call(b))}:function(a,b){var c=a.length,d=0;while(a[c++]=b[d++]);a.length=c-1}}}function ga(a,b,d,e){var f,h,j,k,l,o,r,s,w,x;if((b?b.ownerDocument||b:v)!==n&&m(b),b=b||n,d=d||[],k=b.nodeType,"string"!=typeof a||!a||1!==k&&9!==k&&11!==k)return d;if(!e&&p){if(11!==k&&(f=_.exec(a)))if(j=f[1]){if(9===k){if(h=b.getElementById(j),!h||!h.parentNode)return d;if(h.id===j)return d.push(h),d}else if(b.ownerDocument&&(h=b.ownerDocument.getElementById(j))&&t(b,h)&&h.id===j)return d.push(h),d}else{if(f[2])return H.apply(d,b.getElementsByTagName(a)),d;if((j=f[3])&&c.getElementsByClassName)return H.apply(d,b.getElementsByClassName(j)),d}if(c.qsa&&(!q||!q.test(a))){if(s=r=u,w=b,x=1!==k&&a,1===k&&"object"!==b.nodeName.toLowerCase()){o=g(a),(r=b.getAttribute("id"))?s=r.replace(ba,"\\$&"):b.setAttribute("id",s),s="[id='"+s+"'] ",l=o.length;while(l--)o[l]=s+ra(o[l]);w=aa.test(a)&&pa(b.parentNode)||b,x=o.join(",")}if(x)try{return H.apply(d,w.querySelectorAll(x)),d}catch(y){}finally{r||b.removeAttribute("id")}}}return i(a.replace(R,"$1"),b,d,e)}function ha(){var a=[];function b(c,e){return a.push(c+" ")>d.cacheLength&&delete b[a.shift()],b[c+" "]=e}return b}function ia(a){return a[u]=!0,a}function ja(a){var b=n.createElement("div");try{return!!a(b)}catch(c){return!1}finally{b.parentNode&&b.parentNode.removeChild(b),b=null}}function ka(a,b){var c=a.split("|"),e=a.length;while(e--)d.attrHandle[c[e]]=b}function la(a,b){var c=b&&a,d=c&&1===a.nodeType&&1===b.nodeType&&(~b.sourceIndex||C)-(~a.sourceIndex||C);if(d)return d;if(c)while(c=c.nextSibling)if(c===b)return-1;return a?1:-1}function ma(a){return function(b){var c=b.nodeName.toLowerCase();return"input"===c&&b.type===a}}function na(a){return function(b){var c=b.nodeName.toLowerCase();return("input"===c||"button"===c)&&b.type===a}}function oa(a){return ia(function(b){return b=+b,ia(function(c,d){var e,f=a([],c.length,b),g=f.length;while(g--)c[e=f[g]]&&(c[e]=!(d[e]=c[e]))})})}function pa(a){return a&&"undefined"!=typeof a.getElementsByTagName&&a}c=ga.support={},f=ga.isXML=function(a){var b=a&&(a.ownerDocument||a).documentElement;return b?"HTML"!==b.nodeName:!1},m=ga.setDocument=function(a){var b,e,g=a?a.ownerDocument||a:v;return g!==n&&9===g.nodeType&&g.documentElement?(n=g,o=g.documentElement,e=g.defaultView,e&&e!==e.top&&(e.addEventListener?e.addEventListener("unload",ea,!1):e.attachEvent&&e.attachEvent("onunload",ea)),p=!f(g),c.attributes=ja(function(a){return a.className="i",!a.getAttribute("className")}),c.getElementsByTagName=ja(function(a){return a.appendChild(g.createComment("")),!a.getElementsByTagName("*").length}),c.getElementsByClassName=$.test(g.getElementsByClassName),c.getById=ja(function(a){return o.appendChild(a).id=u,!g.getElementsByName||!g.getElementsByName(u).length}),c.getById?(d.find.ID=function(a,b){if("undefined"!=typeof b.getElementById&&p){var c=b.getElementById(a);return c&&c.parentNode?[c]:[]}},d.filter.ID=function(a){var b=a.replace(ca,da);return function(a){return a.getAttribute("id")===b}}):(delete d.find.ID,d.filter.ID=function(a){var b=a.replace(ca,da);return function(a){var c="undefined"!=typeof a.getAttributeNode&&a.getAttributeNode("id");return c&&c.value===b}}),d.find.TAG=c.getElementsByTagName?function(a,b){return"undefined"!=typeof b.getElementsByTagName?b.getElementsByTagName(a):c.qsa?b.querySelectorAll(a):void 0}:function(a,b){var c,d=[],e=0,f=b.getElementsByTagName(a);if("*"===a){while(c=f[e++])1===c.nodeType&&d.push(c);return d}return f},d.find.CLASS=c.getElementsByClassName&&function(a,b){return p?b.getElementsByClassName(a):void 0},r=[],q=[],(c.qsa=$.test(g.querySelectorAll))&&(ja(function(a){o.appendChild(a).innerHTML="<a id='"+u+"'></a><select id='"+u+"-\f]' msallowcapture=''><option selected=''></option></select>",a.querySelectorAll("[msallowcapture^='']").length&&q.push("[*^$]="+L+"*(?:''|\"\")"),a.querySelectorAll("[selected]").length||q.push("\\["+L+"*(?:value|"+K+")"),a.querySelectorAll("[id~="+u+"-]").length||q.push("~="),a.querySelectorAll(":checked").length||q.push(":checked"),a.querySelectorAll("a#"+u+"+*").length||q.push(".#.+[+~]")}),ja(function(a){var b=g.createElement("input");b.setAttribute("type","hidden"),a.appendChild(b).setAttribute("name","D"),a.querySelectorAll("[name=d]").length&&q.push("name"+L+"*[*^$|!~]?="),a.querySelectorAll(":enabled").length||q.push(":enabled",":disabled"),a.querySelectorAll("*,:x"),q.push(",.*:")})),(c.matchesSelector=$.test(s=o.matches||o.webkitMatchesSelector||o.mozMatchesSelector||o.oMatchesSelector||o.msMatchesSelector))&&ja(function(a){c.disconnectedMatch=s.call(a,"div"),s.call(a,"[s!='']:x"),r.push("!=",P)}),q=q.length&&new RegExp(q.join("|")),r=r.length&&new RegExp(r.join("|")),b=$.test(o.compareDocumentPosition),t=b||$.test(o.contains)?function(a,b){var c=9===a.nodeType?a.documentElement:a,d=b&&b.parentNode;return a===d||!(!d||1!==d.nodeType||!(c.contains?c.contains(d):a.compareDocumentPosition&&16&a.compareDocumentPosition(d)))}:function(a,b){if(b)while(b=b.parentNode)if(b===a)return!0;return!1},B=b?function(a,b){if(a===b)return l=!0,0;var d=!a.compareDocumentPosition-!b.compareDocumentPosition;return d?d:(d=(a.ownerDocument||a)===(b.ownerDocument||b)?a.compareDocumentPosition(b):1,1&d||!c.sortDetached&&b.compareDocumentPosition(a)===d?a===g||a.ownerDocument===v&&t(v,a)?-1:b===g||b.ownerDocument===v&&t(v,b)?1:k?J(k,a)-J(k,b):0:4&d?-1:1)}:function(a,b){if(a===b)return l=!0,0;var c,d=0,e=a.parentNode,f=b.parentNode,h=[a],i=[b];if(!e||!f)return a===g?-1:b===g?1:e?-1:f?1:k?J(k,a)-J(k,b):0;if(e===f)return la(a,b);c=a;while(c=c.parentNode)h.unshift(c);c=b;while(c=c.parentNode)i.unshift(c);while(h[d]===i[d])d++;return d?la(h[d],i[d]):h[d]===v?-1:i[d]===v?1:0},g):n},ga.matches=function(a,b){return ga(a,null,null,b)},ga.matchesSelector=function(a,b){if((a.ownerDocument||a)!==n&&m(a),b=b.replace(U,"='$1']"),!(!c.matchesSelector||!p||r&&r.test(b)||q&&q.test(b)))try{var d=s.call(a,b);if(d||c.disconnectedMatch||a.document&&11!==a.document.nodeType)return d}catch(e){}return ga(b,n,null,[a]).length>0},ga.contains=function(a,b){return(a.ownerDocument||a)!==n&&m(a),t(a,b)},ga.attr=function(a,b){(a.ownerDocument||a)!==n&&m(a);var e=d.attrHandle[b.toLowerCase()],f=e&&D.call(d.attrHandle,b.toLowerCase())?e(a,b,!p):void 0;return void 0!==f?f:c.attributes||!p?a.getAttribute(b):(f=a.getAttributeNode(b))&&f.specified?f.value:null},ga.error=function(a){throw new Error("Syntax error, unrecognized expression: "+a)},ga.uniqueSort=function(a){var b,d=[],e=0,f=0;if(l=!c.detectDuplicates,k=!c.sortStable&&a.slice(0),a.sort(B),l){while(b=a[f++])b===a[f]&&(e=d.push(f));while(e--)a.splice(d[e],1)}return k=null,a},e=ga.getText=function(a){var b,c="",d=0,f=a.nodeType;if(f){if(1===f||9===f||11===f){if("string"==typeof a.textContent)return a.textContent;for(a=a.firstChild;a;a=a.nextSibling)c+=e(a)}else if(3===f||4===f)return a.nodeValue}else while(b=a[d++])c+=e(b);return c},d=ga.selectors={cacheLength:50,createPseudo:ia,match:X,attrHandle:{},find:{},relative:{">":{dir:"parentNode",first:!0}," ":{dir:"parentNode"},"+":{dir:"previousSibling",first:!0},"~":{dir:"previousSibling"}},preFilter:{ATTR:function(a){return a[1]=a[1].replace(ca,da),a[3]=(a[3]||a[4]||a[5]||"").replace(ca,da),"~="===a[2]&&(a[3]=" "+a[3]+" "),a.slice(0,4)},CHILD:function(a){return a[1]=a[1].toLowerCase(),"nth"===a[1].slice(0,3)?(a[3]||ga.error(a[0]),a[4]=+(a[4]?a[5]+(a[6]||1):2*("even"===a[3]||"odd"===a[3])),a[5]=+(a[7]+a[8]||"odd"===a[3])):a[3]&&ga.error(a[0]),a},PSEUDO:function(a){var b,c=!a[6]&&a[2];return X.CHILD.test(a[0])?null:(a[3]?a[2]=a[4]||a[5]||"":c&&V.test(c)&&(b=g(c,!0))&&(b=c.indexOf(")",c.length-b)-c.length)&&(a[0]=a[0].slice(0,b),a[2]=c.slice(0,b)),a.slice(0,3))}},filter:{TAG:function(a){var b=a.replace(ca,da).toLowerCase();return"*"===a?function(){return!0}:function(a){return a.nodeName&&a.nodeName.toLowerCase()===b}},CLASS:function(a){var b=y[a+" "];return b||(b=new RegExp("(^|"+L+")"+a+"("+L+"|$)"))&&y(a,function(a){return b.test("string"==typeof a.className&&a.className||"undefined"!=typeof a.getAttribute&&a.getAttribute("class")||"")})},ATTR:function(a,b,c){return function(d){var e=ga.attr(d,a);return null==e?"!="===b:b?(e+="","="===b?e===c:"!="===b?e!==c:"^="===b?c&&0===e.indexOf(c):"*="===b?c&&e.indexOf(c)>-1:"$="===b?c&&e.slice(-c.length)===c:"~="===b?(" "+e.replace(Q," ")+" ").indexOf(c)>-1:"|="===b?e===c||e.slice(0,c.length+1)===c+"-":!1):!0}},CHILD:function(a,b,c,d,e){var f="nth"!==a.slice(0,3),g="last"!==a.slice(-4),h="of-type"===b;return 1===d&&0===e?function(a){return!!a.parentNode}:function(b,c,i){var j,k,l,m,n,o,p=f!==g?"nextSibling":"previousSibling",q=b.parentNode,r=h&&b.nodeName.toLowerCase(),s=!i&&!h;if(q){if(f){while(p){l=b;while(l=l[p])if(h?l.nodeName.toLowerCase()===r:1===l.nodeType)return!1;o=p="only"===a&&!o&&"nextSibling"}return!0}if(o=[g?q.firstChild:q.lastChild],g&&s){k=q[u]||(q[u]={}),j=k[a]||[],n=j[0]===w&&j[1],m=j[0]===w&&j[2],l=n&&q.childNodes[n];while(l=++n&&l&&l[p]||(m=n=0)||o.pop())if(1===l.nodeType&&++m&&l===b){k[a]=[w,n,m];break}}else if(s&&(j=(b[u]||(b[u]={}))[a])&&j[0]===w)m=j[1];else while(l=++n&&l&&l[p]||(m=n=0)||o.pop())if((h?l.nodeName.toLowerCase()===r:1===l.nodeType)&&++m&&(s&&((l[u]||(l[u]={}))[a]=[w,m]),l===b))break;return m-=e,m===d||m%d===0&&m/d>=0}}},PSEUDO:function(a,b){var c,e=d.pseudos[a]||d.setFilters[a.toLowerCase()]||ga.error("unsupported pseudo: "+a);return e[u]?e(b):e.length>1?(c=[a,a,"",b],d.setFilters.hasOwnProperty(a.toLowerCase())?ia(function(a,c){var d,f=e(a,b),g=f.length;while(g--)d=J(a,f[g]),a[d]=!(c[d]=f[g])}):function(a){return e(a,0,c)}):e}},pseudos:{not:ia(function(a){var b=[],c=[],d=h(a.replace(R,"$1"));return d[u]?ia(function(a,b,c,e){var f,g=d(a,null,e,[]),h=a.length;while(h--)(f=g[h])&&(a[h]=!(b[h]=f))}):function(a,e,f){return b[0]=a,d(b,null,f,c),b[0]=null,!c.pop()}}),has:ia(function(a){return function(b){return ga(a,b).length>0}}),contains:ia(function(a){return a=a.replace(ca,da),function(b){return(b.textContent||b.innerText||e(b)).indexOf(a)>-1}}),lang:ia(function(a){return W.test(a||"")||ga.error("unsupported lang: "+a),a=a.replace(ca,da).toLowerCase(),function(b){var c;do if(c=p?b.lang:b.getAttribute("xml:lang")||b.getAttribute("lang"))return c=c.toLowerCase(),c===a||0===c.indexOf(a+"-");while((b=b.parentNode)&&1===b.nodeType);return!1}}),target:function(b){var c=a.location&&a.location.hash;return c&&c.slice(1)===b.id},root:function(a){return a===o},focus:function(a){return a===n.activeElement&&(!n.hasFocus||n.hasFocus())&&!!(a.type||a.href||~a.tabIndex)},enabled:function(a){return a.disabled===!1},disabled:function(a){return a.disabled===!0},checked:function(a){var b=a.nodeName.toLowerCase();return"input"===b&&!!a.checked||"option"===b&&!!a.selected},selected:function(a){return a.parentNode&&a.parentNode.selectedIndex,a.selected===!0},empty:function(a){for(a=a.firstChild;a;a=a.nextSibling)if(a.nodeType<6)return!1;return!0},parent:function(a){return!d.pseudos.empty(a)},header:function(a){return Z.test(a.nodeName)},input:function(a){return Y.test(a.nodeName)},button:function(a){var b=a.nodeName.toLowerCase();return"input"===b&&"button"===a.type||"button"===b},text:function(a){var b;return"input"===a.nodeName.toLowerCase()&&"text"===a.type&&(null==(b=a.getAttribute("type"))||"text"===b.toLowerCase())},first:oa(function(){return[0]}),last:oa(function(a,b){return[b-1]}),eq:oa(function(a,b,c){return[0>c?c+b:c]}),even:oa(function(a,b){for(var c=0;b>c;c+=2)a.push(c);return a}),odd:oa(function(a,b){for(var c=1;b>c;c+=2)a.push(c);return a}),lt:oa(function(a,b,c){for(var d=0>c?c+b:c;--d>=0;)a.push(d);return a}),gt:oa(function(a,b,c){for(var d=0>c?c+b:c;++d<b;)a.push(d);return a})}},d.pseudos.nth=d.pseudos.eq;for(b in{radio:!0,checkbox:!0,file:!0,password:!0,image:!0})d.pseudos[b]=ma(b);for(b in{submit:!0,reset:!0})d.pseudos[b]=na(b);function qa(){}qa.prototype=d.filters=d.pseudos,d.setFilters=new qa,g=ga.tokenize=function(a,b){var c,e,f,g,h,i,j,k=z[a+" "];if(k)return b?0:k.slice(0);h=a,i=[],j=d.preFilter;while(h){(!c||(e=S.exec(h)))&&(e&&(h=h.slice(e[0].length)||h),i.push(f=[])),c=!1,(e=T.exec(h))&&(c=e.shift(),f.push({value:c,type:e[0].replace(R," ")}),h=h.slice(c.length));for(g in d.filter)!(e=X[g].exec(h))||j[g]&&!(e=j[g](e))||(c=e.shift(),f.push({value:c,type:g,matches:e}),h=h.slice(c.length));if(!c)break}return b?h.length:h?ga.error(a):z(a,i).slice(0)};function ra(a){for(var b=0,c=a.length,d="";c>b;b++)d+=a[b].value;return d}function sa(a,b,c){var d=b.dir,e=c&&"parentNode"===d,f=x++;return b.first?function(b,c,f){while(b=b[d])if(1===b.nodeType||e)return a(b,c,f)}:function(b,c,g){var h,i,j=[w,f];if(g){while(b=b[d])if((1===b.nodeType||e)&&a(b,c,g))return!0}else while(b=b[d])if(1===b.nodeType||e){if(i=b[u]||(b[u]={}),(h=i[d])&&h[0]===w&&h[1]===f)return j[2]=h[2];if(i[d]=j,j[2]=a(b,c,g))return!0}}}function ta(a){return a.length>1?function(b,c,d){var e=a.length;while(e--)if(!a[e](b,c,d))return!1;return!0}:a[0]}function ua(a,b,c){for(var d=0,e=b.length;e>d;d++)ga(a,b[d],c);return c}function va(a,b,c,d,e){for(var f,g=[],h=0,i=a.length,j=null!=b;i>h;h++)(f=a[h])&&(!c||c(f,d,e))&&(g.push(f),j&&b.push(h));return g}function wa(a,b,c,d,e,f){return d&&!d[u]&&(d=wa(d)),e&&!e[u]&&(e=wa(e,f)),ia(function(f,g,h,i){var j,k,l,m=[],n=[],o=g.length,p=f||ua(b||"*",h.nodeType?[h]:h,[]),q=!a||!f&&b?p:va(p,m,a,h,i),r=c?e||(f?a:o||d)?[]:g:q;if(c&&c(q,r,h,i),d){j=va(r,n),d(j,[],h,i),k=j.length;while(k--)(l=j[k])&&(r[n[k]]=!(q[n[k]]=l))}if(f){if(e||a){if(e){j=[],k=r.length;while(k--)(l=r[k])&&j.push(q[k]=l);e(null,r=[],j,i)}k=r.length;while(k--)(l=r[k])&&(j=e?J(f,l):m[k])>-1&&(f[j]=!(g[j]=l))}}else r=va(r===g?r.splice(o,r.length):r),e?e(null,g,r,i):H.apply(g,r)})}function xa(a){for(var b,c,e,f=a.length,g=d.relative[a[0].type],h=g||d.relative[" "],i=g?1:0,k=sa(function(a){return a===b},h,!0),l=sa(function(a){return J(b,a)>-1},h,!0),m=[function(a,c,d){var e=!g&&(d||c!==j)||((b=c).nodeType?k(a,c,d):l(a,c,d));return b=null,e}];f>i;i++)if(c=d.relative[a[i].type])m=[sa(ta(m),c)];else{if(c=d.filter[a[i].type].apply(null,a[i].matches),c[u]){for(e=++i;f>e;e++)if(d.relative[a[e].type])break;return wa(i>1&&ta(m),i>1&&ra(a.slice(0,i-1).concat({value:" "===a[i-2].type?"*":""})).replace(R,"$1"),c,e>i&&xa(a.slice(i,e)),f>e&&xa(a=a.slice(e)),f>e&&ra(a))}m.push(c)}return ta(m)}function ya(a,b){var c=b.length>0,e=a.length>0,f=function(f,g,h,i,k){var l,m,o,p=0,q="0",r=f&&[],s=[],t=j,u=f||e&&d.find.TAG("*",k),v=w+=null==t?1:Math.random()||.1,x=u.length;for(k&&(j=g!==n&&g);q!==x&&null!=(l=u[q]);q++){if(e&&l){m=0;while(o=a[m++])if(o(l,g,h)){i.push(l);break}k&&(w=v)}c&&((l=!o&&l)&&p--,f&&r.push(l))}if(p+=q,c&&q!==p){m=0;while(o=b[m++])o(r,s,g,h);if(f){if(p>0)while(q--)r[q]||s[q]||(s[q]=F.call(i));s=va(s)}H.apply(i,s),k&&!f&&s.length>0&&p+b.length>1&&ga.uniqueSort(i)}return k&&(w=v,j=t),r};return c?ia(f):f}return h=ga.compile=function(a,b){var c,d=[],e=[],f=A[a+" "];if(!f){b||(b=g(a)),c=b.length;while(c--)f=xa(b[c]),f[u]?d.push(f):e.push(f);f=A(a,ya(e,d)),f.selector=a}return f},i=ga.select=function(a,b,e,f){var i,j,k,l,m,n="function"==typeof a&&a,o=!f&&g(a=n.selector||a);if(e=e||[],1===o.length){if(j=o[0]=o[0].slice(0),j.length>2&&"ID"===(k=j[0]).type&&c.getById&&9===b.nodeType&&p&&d.relative[j[1].type]){if(b=(d.find.ID(k.matches[0].replace(ca,da),b)||[])[0],!b)return e;n&&(b=b.parentNode),a=a.slice(j.shift().value.length)}i=X.needsContext.test(a)?0:j.length;while(i--){if(k=j[i],d.relative[l=k.type])break;if((m=d.find[l])&&(f=m(k.matches[0].replace(ca,da),aa.test(j[0].type)&&pa(b.parentNode)||b))){if(j.splice(i,1),a=f.length&&ra(j),!a)return H.apply(e,f),e;break}}}return(n||h(a,o))(f,b,!p,e,aa.test(a)&&pa(b.parentNode)||b),e},c.sortStable=u.split("").sort(B).join("")===u,c.detectDuplicates=!!l,m(),c.sortDetached=ja(function(a){return 1&a.compareDocumentPosition(n.createElement("div"))}),ja(function(a){return a.innerHTML="<a href='#'></a>","#"===a.firstChild.getAttribute("href")})||ka("type|href|height|width",function(a,b,c){return c?void 0:a.getAttribute(b,"type"===b.toLowerCase()?1:2)}),c.attributes&&ja(function(a){return a.innerHTML="<input/>",a.firstChild.setAttribute("value",""),""===a.firstChild.getAttribute("value")})||ka("value",function(a,b,c){return c||"input"!==a.nodeName.toLowerCase()?void 0:a.defaultValue}),ja(function(a){return null==a.getAttribute("disabled")})||ka(K,function(a,b,c){var d;return c?void 0:a[b]===!0?b.toLowerCase():(d=a.getAttributeNode(b))&&d.specified?d.value:null}),ga}(a);m.find=s,m.expr=s.selectors,m.expr[":"]=m.expr.pseudos,m.unique=s.uniqueSort,m.text=s.getText,m.isXMLDoc=s.isXML,m.contains=s.contains;var t=m.expr.match.needsContext,u=/^<(\w+)\s*\/?>(?:<\/\1>|)$/,v=/^.[^:#\[\.,]*$/;function w(a,b,c){if(m.isFunction(b))return m.grep(a,function(a,d){return!!b.call(a,d,a)!==c});if(b.nodeType)return m.grep(a,function(a){return a===b!==c});if("string"==typeof b){if(v.test(b))return m.filter(b,a,c);b=m.filter(b,a)}return m.grep(a,function(a){return m.inArray(a,b)>=0!==c})}m.filter=function(a,b,c){var d=b[0];return c&&(a=":not("+a+")"),1===b.length&&1===d.nodeType?m.find.matchesSelector(d,a)?[d]:[]:m.find.matches(a,m.grep(b,function(a){return 1===a.nodeType}))},m.fn.extend({find:function(a){var b,c=[],d=this,e=d.length;if("string"!=typeof a)return this.pushStack(m(a).filter(function(){for(b=0;e>b;b++)if(m.contains(d[b],this))return!0}));for(b=0;e>b;b++)m.find(a,d[b],c);return c=this.pushStack(e>1?m.unique(c):c),c.selector=this.selector?this.selector+" "+a:a,c},filter:function(a){return this.pushStack(w(this,a||[],!1))},not:function(a){return this.pushStack(w(this,a||[],!0))},is:function(a){return!!w(this,"string"==typeof a&&t.test(a)?m(a):a||[],!1).length}});var x,y=a.document,z=/^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/,A=m.fn.init=function(a,b){var c,d;if(!a)return this;if("string"==typeof a){if(c="<"===a.charAt(0)&&">"===a.charAt(a.length-1)&&a.length>=3?[null,a,null]:z.exec(a),!c||!c[1]&&b)return!b||b.jquery?(b||x).find(a):this.constructor(b).find(a);if(c[1]){if(b=b instanceof m?b[0]:b,m.merge(this,m.parseHTML(c[1],b&&b.nodeType?b.ownerDocument||b:y,!0)),u.test(c[1])&&m.isPlainObject(b))for(c in b)m.isFunction(this[c])?this[c](b[c]):this.attr(c,b[c]);return this}if(d=y.getElementById(c[2]),d&&d.parentNode){if(d.id!==c[2])return x.find(a);this.length=1,this[0]=d}return this.context=y,this.selector=a,this}return a.nodeType?(this.context=this[0]=a,this.length=1,this):m.isFunction(a)?"undefined"!=typeof x.ready?x.ready(a):a(m):(void 0!==a.selector&&(this.selector=a.selector,this.context=a.context),m.makeArray(a,this))};A.prototype=m.fn,x=m(y);var B=/^(?:parents|prev(?:Until|All))/,C={children:!0,contents:!0,next:!0,prev:!0};m.extend({dir:function(a,b,c){var d=[],e=a[b];while(e&&9!==e.nodeType&&(void 0===c||1!==e.nodeType||!m(e).is(c)))1===e.nodeType&&d.push(e),e=e[b];return d},sibling:function(a,b){for(var c=[];a;a=a.nextSibling)1===a.nodeType&&a!==b&&c.push(a);return c}}),m.fn.extend({has:function(a){var b,c=m(a,this),d=c.length;return this.filter(function(){for(b=0;d>b;b++)if(m.contains(this,c[b]))return!0})},closest:function(a,b){for(var c,d=0,e=this.length,f=[],g=t.test(a)||"string"!=typeof a?m(a,b||this.context):0;e>d;d++)for(c=this[d];c&&c!==b;c=c.parentNode)if(c.nodeType<11&&(g?g.index(c)>-1:1===c.nodeType&&m.find.matchesSelector(c,a))){f.push(c);break}return this.pushStack(f.length>1?m.unique(f):f)},index:function(a){return a?"string"==typeof a?m.inArray(this[0],m(a)):m.inArray(a.jquery?a[0]:a,this):this[0]&&this[0].parentNode?this.first().prevAll().length:-1},add:function(a,b){return this.pushStack(m.unique(m.merge(this.get(),m(a,b))))},addBack:function(a){return this.add(null==a?this.prevObject:this.prevObject.filter(a))}});function D(a,b){do a=a[b];while(a&&1!==a.nodeType);return a}m.each({parent:function(a){var b=a.parentNode;return b&&11!==b.nodeType?b:null},parents:function(a){return m.dir(a,"parentNode")},parentsUntil:function(a,b,c){return m.dir(a,"parentNode",c)},next:function(a){return D(a,"nextSibling")},prev:function(a){return D(a,"previousSibling")},nextAll:function(a){return m.dir(a,"nextSibling")},prevAll:function(a){return m.dir(a,"previousSibling")},nextUntil:function(a,b,c){return m.dir(a,"nextSibling",c)},prevUntil:function(a,b,c){return m.dir(a,"previousSibling",c)},siblings:function(a){return m.sibling((a.parentNode||{}).firstChild,a)},children:function(a){return m.sibling(a.firstChild)},contents:function(a){return m.nodeName(a,"iframe")?a.contentDocument||a.contentWindow.document:m.merge([],a.childNodes)}},function(a,b){m.fn[a]=function(c,d){var e=m.map(this,b,c);return"Until"!==a.slice(-5)&&(d=c),d&&"string"==typeof d&&(e=m.filter(d,e)),this.length>1&&(C[a]||(e=m.unique(e)),B.test(a)&&(e=e.reverse())),this.pushStack(e)}});var E=/\S+/g,F={};function G(a){var b=F[a]={};return m.each(a.match(E)||[],function(a,c){b[c]=!0}),b}m.Callbacks=function(a){a="string"==typeof a?F[a]||G(a):m.extend({},a);var b,c,d,e,f,g,h=[],i=!a.once&&[],j=function(l){for(c=a.memory&&l,d=!0,f=g||0,g=0,e=h.length,b=!0;h&&e>f;f++)if(h[f].apply(l[0],l[1])===!1&&a.stopOnFalse){c=!1;break}b=!1,h&&(i?i.length&&j(i.shift()):c?h=[]:k.disable())},k={add:function(){if(h){var d=h.length;!function f(b){m.each(b,function(b,c){var d=m.type(c);"function"===d?a.unique&&k.has(c)||h.push(c):c&&c.length&&"string"!==d&&f(c)})}(arguments),b?e=h.length:c&&(g=d,j(c))}return this},remove:function(){return h&&m.each(arguments,function(a,c){var d;while((d=m.inArray(c,h,d))>-1)h.splice(d,1),b&&(e>=d&&e--,f>=d&&f--)}),this},has:function(a){return a?m.inArray(a,h)>-1:!(!h||!h.length)},empty:function(){return h=[],e=0,this},disable:function(){return h=i=c=void 0,this},disabled:function(){return!h},lock:function(){return i=void 0,c||k.disable(),this},locked:function(){return!i},fireWith:function(a,c){return!h||d&&!i||(c=c||[],c=[a,c.slice?c.slice():c],b?i.push(c):j(c)),this},fire:function(){return k.fireWith(this,arguments),this},fired:function(){return!!d}};return k},m.extend({Deferred:function(a){var b=[["resolve","done",m.Callbacks("once memory"),"resolved"],["reject","fail",m.Callbacks("once memory"),"rejected"],["notify","progress",m.Callbacks("memory")]],c="pending",d={state:function(){return c},always:function(){return e.done(arguments).fail(arguments),this},then:function(){var a=arguments;return m.Deferred(function(c){m.each(b,function(b,f){var g=m.isFunction(a[b])&&a[b];e[f[1]](function(){var a=g&&g.apply(this,arguments);a&&m.isFunction(a.promise)?a.promise().done(c.resolve).fail(c.reject).progress(c.notify):c[f[0]+"With"](this===d?c.promise():this,g?[a]:arguments)})}),a=null}).promise()},promise:function(a){return null!=a?m.extend(a,d):d}},e={};return d.pipe=d.then,m.each(b,function(a,f){var g=f[2],h=f[3];d[f[1]]=g.add,h&&g.add(function(){c=h},b[1^a][2].disable,b[2][2].lock),e[f[0]]=function(){return e[f[0]+"With"](this===e?d:this,arguments),this},e[f[0]+"With"]=g.fireWith}),d.promise(e),a&&a.call(e,e),e},when:function(a){var b=0,c=d.call(arguments),e=c.length,f=1!==e||a&&m.isFunction(a.promise)?e:0,g=1===f?a:m.Deferred(),h=function(a,b,c){return function(e){b[a]=this,c[a]=arguments.length>1?d.call(arguments):e,c===i?g.notifyWith(b,c):--f||g.resolveWith(b,c)}},i,j,k;if(e>1)for(i=new Array(e),j=new Array(e),k=new Array(e);e>b;b++)c[b]&&m.isFunction(c[b].promise)?c[b].promise().done(h(b,k,c)).fail(g.reject).progress(h(b,j,i)):--f;return f||g.resolveWith(k,c),g.promise()}});var H;m.fn.ready=function(a){return m.ready.promise().done(a),this},m.extend({isReady:!1,readyWait:1,holdReady:function(a){a?m.readyWait++:m.ready(!0)},ready:function(a){if(a===!0?!--m.readyWait:!m.isReady){if(!y.body)return setTimeout(m.ready);m.isReady=!0,a!==!0&&--m.readyWait>0||(H.resolveWith(y,[m]),m.fn.triggerHandler&&(m(y).triggerHandler("ready"),m(y).off("ready")))}}});function I(){y.addEventListener?(y.removeEventListener("DOMContentLoaded",J,!1),a.removeEventListener("load",J,!1)):(y.detachEvent("onreadystatechange",J),a.detachEvent("onload",J))}function J(){(y.addEventListener||"load"===event.type||"complete"===y.readyState)&&(I(),m.ready())}m.ready.promise=function(b){if(!H)if(H=m.Deferred(),"complete"===y.readyState)setTimeout(m.ready);else if(y.addEventListener)y.addEventListener("DOMContentLoaded",J,!1),a.addEventListener("load",J,!1);else{y.attachEvent("onreadystatechange",J),a.attachEvent("onload",J);var c=!1;try{c=null==a.frameElement&&y.documentElement}catch(d){}c&&c.doScroll&&!function e(){if(!m.isReady){try{c.doScroll("left")}catch(a){return setTimeout(e,50)}I(),m.ready()}}()}return H.promise(b)};var K="undefined",L;for(L in m(k))break;k.ownLast="0"!==L,k.inlineBlockNeedsLayout=!1,m(function(){var a,b,c,d;c=y.getElementsByTagName("body")[0],c&&c.style&&(b=y.createElement("div"),d=y.createElement("div"),d.style.cssText="position:absolute;border:0;width:0;height:0;top:0;left:-9999px",c.appendChild(d).appendChild(b),typeof b.style.zoom!==K&&(b.style.cssText="display:inline;margin:0;border:0;padding:1px;width:1px;zoom:1",k.inlineBlockNeedsLayout=a=3===b.offsetWidth,a&&(c.style.zoom=1)),c.removeChild(d))}),function(){var a=y.createElement("div");if(null==k.deleteExpando){k.deleteExpando=!0;try{delete a.test}catch(b){k.deleteExpando=!1}}a=null}(),m.acceptData=function(a){var b=m.noData[(a.nodeName+" ").toLowerCase()],c=+a.nodeType||1;return 1!==c&&9!==c?!1:!b||b!==!0&&a.getAttribute("classid")===b};var M=/^(?:\{[\w\W]*\}|\[[\w\W]*\])$/,N=/([A-Z])/g;function O(a,b,c){if(void 0===c&&1===a.nodeType){var d="data-"+b.replace(N,"-$1").toLowerCase();if(c=a.getAttribute(d),"string"==typeof c){try{c="true"===c?!0:"false"===c?!1:"null"===c?null:+c+""===c?+c:M.test(c)?m.parseJSON(c):c}catch(e){}m.data(a,b,c)}else c=void 0}return c}function P(a){var b;for(b in a)if(("data"!==b||!m.isEmptyObject(a[b]))&&"toJSON"!==b)return!1;
@@ -386,20 +386,19 @@ summary {
 
 
 
-<h1 class="title toc-ignore">Lab 4 Homework</h1>
+<h1 class="title toc-ignore">Lab 5 Homework</h1>
 <h4 class="author">Joshua Paaske</h4>
-<h4 class="date">2/7/20</h4>
+<h4 class="date">2/14/20</h4>
 
 </div>
 
 
-<pre class="r"><code>knitr::opts_chunk$set(echo = TRUE)</code></pre>
 <div id="instructions" class="section level2">
 <h2>Instructions</h2>
-<p>Answer the following questions and complete the exercises in RMarkdown. Please embed all of your code and push your final work to your repository. Your final lab report should be organized, clean, and run free from errors. Remember, you must remove any <code>#</code> for included code chunks to run.</p>
+<p>Answer the following questions and complete the exercises in RMarkdown. Please embed all of your code and push your final work to your repository. Your final lab report should be organized, clean, and run free from errors. Remember, you must remove the <code>#</code> for the included code chunks to run.</p>
 </div>
-<div id="load-the-tidyverse" class="section level2">
-<h2>Load the tidyverse</h2>
+<div id="libraries" class="section level2">
+<h2>Libraries</h2>
 <pre class="r"><code>library(tidyverse)</code></pre>
 <pre><code>## ── Attaching packages ──────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
 <pre><code>## ✓ ggplot2 3.2.1     ✓ purrr   0.3.3
@@ -409,491 +408,304 @@ summary {
 <pre><code>## ── Conflicts ─────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
-<p>For this assignment we are going to work with a large dataset from the <a href="http://www.fao.org/about/en/">United Nations Food and Agriculture Organization</a> on world fisheries. First, load the data.</p>
-<ol style="list-style-type: decimal">
-<li>Load the data <code>FAO_1950to2012_111914.csv</code> as a new object titled <code>fisheries</code>.</li>
-</ol>
-<pre class="r"><code>fisheries &lt;- readr::read_csv(&quot;data/FAO_1950to2012_111914.csv&quot;) %&gt;% 
-  mutate_all(~str_replace_all(., &quot; F&quot;, &quot;&quot;)) %&gt;%
-  mutate_all(str_trim) %&gt;% 
-  mutate_at(vars(starts_with(&quot;19&quot;,)), ~str_replace_all(., &quot; &quot;, &quot;&quot;)) %&gt;% 
-  mutate_at(vars(starts_with(&quot;2&quot;)), ~str_replace_all(., &quot; &quot;, &quot;&quot;))</code></pre>
+<pre class="r"><code>library(naniar)
+library(skimr)</code></pre>
+<pre><code>## 
+## Attaching package: 'skimr'</code></pre>
+<pre><code>## The following object is masked from 'package:naniar':
+## 
+##     n_complete</code></pre>
+</div>
+<div id="data" class="section level2">
+<h2>Data</h2>
+<p>For this homework, we will use two different data sets. Please load <code>amniota</code> and <code>amphibio</code>.</p>
+<div id="amniota-data" class="section level3">
+<h3><code>amniota</code> data</h3>
+<p>Myhrvold N, Baldridge E, Chan B, Sivam D, Freeman DL, Ernest SKM (2015). “An amniote life-history database to perform comparative analyses with birds, mammals, and reptiles.” <em>Ecology</em>, <em>96</em>, 3109. doi: 10.1890/15-0846.1 (URL: <a href="https://doi.org/10.1890/15-0846.1" class="uri">https://doi.org/10.1890/15-0846.1</a>).</p>
+<pre class="r"><code>amniota &lt;- 
+  readr::read_csv(&quot;data/amniota.csv&quot;)</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
-##   .default = col_character(),
-##   `ISSCAAP group#` = col_double(),
-##   `FAO major fishing area` = col_double()
+##   .default = col_double(),
+##   class = col_character(),
+##   order = col_character(),
+##   family = col_character(),
+##   genus = col_character(),
+##   species = col_character(),
+##   common_name = col_character()
 ## )</code></pre>
 <pre><code>## See spec(...) for full column specifications.</code></pre>
-<ol start="2" style="list-style-type: decimal">
-<li>What are the names of the columns? Do you see any potential problems with the column names?</li>
-</ol>
-<pre class="r"><code>colnames(fisheries)</code></pre>
-<pre><code>##  [1] &quot;Country&quot;                 &quot;Common name&quot;            
-##  [3] &quot;ISSCAAP group#&quot;          &quot;ISSCAAP taxonomic group&quot;
-##  [5] &quot;ASFIS species#&quot;          &quot;ASFIS species name&quot;     
-##  [7] &quot;FAO major fishing area&quot;  &quot;Measure&quot;                
-##  [9] &quot;1950&quot;                    &quot;1951&quot;                   
-## [11] &quot;1952&quot;                    &quot;1953&quot;                   
-## [13] &quot;1954&quot;                    &quot;1955&quot;                   
-## [15] &quot;1956&quot;                    &quot;1957&quot;                   
-## [17] &quot;1958&quot;                    &quot;1959&quot;                   
-## [19] &quot;1960&quot;                    &quot;1961&quot;                   
-## [21] &quot;1962&quot;                    &quot;1963&quot;                   
-## [23] &quot;1964&quot;                    &quot;1965&quot;                   
-## [25] &quot;1966&quot;                    &quot;1967&quot;                   
-## [27] &quot;1968&quot;                    &quot;1969&quot;                   
-## [29] &quot;1970&quot;                    &quot;1971&quot;                   
-## [31] &quot;1972&quot;                    &quot;1973&quot;                   
-## [33] &quot;1974&quot;                    &quot;1975&quot;                   
-## [35] &quot;1976&quot;                    &quot;1977&quot;                   
-## [37] &quot;1978&quot;                    &quot;1979&quot;                   
-## [39] &quot;1980&quot;                    &quot;1981&quot;                   
-## [41] &quot;1982&quot;                    &quot;1983&quot;                   
-## [43] &quot;1984&quot;                    &quot;1985&quot;                   
-## [45] &quot;1986&quot;                    &quot;1987&quot;                   
-## [47] &quot;1988&quot;                    &quot;1989&quot;                   
-## [49] &quot;1990&quot;                    &quot;1991&quot;                   
-## [51] &quot;1992&quot;                    &quot;1993&quot;                   
-## [53] &quot;1994&quot;                    &quot;1995&quot;                   
-## [55] &quot;1996&quot;                    &quot;1997&quot;                   
-## [57] &quot;1998&quot;                    &quot;1999&quot;                   
-## [59] &quot;2000&quot;                    &quot;2001&quot;                   
-## [61] &quot;2002&quot;                    &quot;2003&quot;                   
-## [63] &quot;2004&quot;                    &quot;2005&quot;                   
-## [65] &quot;2006&quot;                    &quot;2007&quot;                   
-## [67] &quot;2008&quot;                    &quot;2009&quot;                   
-## [69] &quot;2010&quot;                    &quot;2011&quot;                   
-## [71] &quot;2012&quot;</code></pre>
-<p>Measure is slightly ambiguous, and the columns from 1950 to 2012 are variables.</p>
-<ol start="3" style="list-style-type: decimal">
-<li>What is the structure of the data? Show the classes of each variable.</li>
-</ol>
-<pre class="r"><code>sapply(fisheries, class)</code></pre>
-<pre><code>##                 Country             Common name          ISSCAAP group# 
-##             &quot;character&quot;             &quot;character&quot;             &quot;character&quot; 
-## ISSCAAP taxonomic group          ASFIS species#      ASFIS species name 
-##             &quot;character&quot;             &quot;character&quot;             &quot;character&quot; 
-##  FAO major fishing area                 Measure                    1950 
-##             &quot;character&quot;             &quot;character&quot;             &quot;character&quot; 
-##                    1951                    1952                    1953 
-##             &quot;character&quot;             &quot;character&quot;             &quot;character&quot; 
-##                    1954                    1955                    1956 
-##             &quot;character&quot;             &quot;character&quot;             &quot;character&quot; 
-##                    1957                    1958                    1959 
-##             &quot;character&quot;             &quot;character&quot;             &quot;character&quot; 
-##                    1960                    1961                    1962 
-##             &quot;character&quot;             &quot;character&quot;             &quot;character&quot; 
-##                    1963                    1964                    1965 
-##             &quot;character&quot;             &quot;character&quot;             &quot;character&quot; 
-##                    1966                    1967                    1968 
-##             &quot;character&quot;             &quot;character&quot;             &quot;character&quot; 
-##                    1969                    1970                    1971 
-##             &quot;character&quot;             &quot;character&quot;             &quot;character&quot; 
-##                    1972                    1973                    1974 
-##             &quot;character&quot;             &quot;character&quot;             &quot;character&quot; 
-##                    1975                    1976                    1977 
-##             &quot;character&quot;             &quot;character&quot;             &quot;character&quot; 
-##                    1978                    1979                    1980 
-##             &quot;character&quot;             &quot;character&quot;             &quot;character&quot; 
-##                    1981                    1982                    1983 
-##             &quot;character&quot;             &quot;character&quot;             &quot;character&quot; 
-##                    1984                    1985                    1986 
-##             &quot;character&quot;             &quot;character&quot;             &quot;character&quot; 
-##                    1987                    1988                    1989 
-##             &quot;character&quot;             &quot;character&quot;             &quot;character&quot; 
-##                    1990                    1991                    1992 
-##             &quot;character&quot;             &quot;character&quot;             &quot;character&quot; 
-##                    1993                    1994                    1995 
-##             &quot;character&quot;             &quot;character&quot;             &quot;character&quot; 
-##                    1996                    1997                    1998 
-##             &quot;character&quot;             &quot;character&quot;             &quot;character&quot; 
-##                    1999                    2000                    2001 
-##             &quot;character&quot;             &quot;character&quot;             &quot;character&quot; 
-##                    2002                    2003                    2004 
-##             &quot;character&quot;             &quot;character&quot;             &quot;character&quot; 
-##                    2005                    2006                    2007 
-##             &quot;character&quot;             &quot;character&quot;             &quot;character&quot; 
-##                    2008                    2009                    2010 
-##             &quot;character&quot;             &quot;character&quot;             &quot;character&quot; 
-##                    2011                    2012 
-##             &quot;character&quot;             &quot;character&quot;</code></pre>
-<ol start="4" style="list-style-type: decimal">
-<li>Think about the classes. Will any present problems? Make any changes you think are necessary below.</li>
-</ol>
-<p>The columns with years should not be characters, but numerics, and the rest should be a factors.</p>
-<pre class="r"><code>fisheries &lt;- fisheries %&gt;% 
-  mutate_at(vars(starts_with(&quot;19&quot;)), as.numeric) %&gt;% 
-  mutate_at(vars(starts_with(&quot;2&quot;)), as.numeric) %&gt;% 
-  mutate_if(is.character, as.factor)
-  
+</div>
+<div id="amphibio-data" class="section level3">
+<h3><code>amphibio</code> data</h3>
+<p>Oliveira BF, São-Pedro VA, Santos-Barrera G, Penone C, Costa GC (2017). “AmphiBIO, a global database for amphibian ecological traits.” <em>Scientific Data</em>, <em>4</em>, 170123. doi: 10.1038/sdata.2017.123 (URL: <a href="https://doi.org/10.1038/sdata.2017.123" class="uri">https://doi.org/10.1038/sdata.2017.123</a>).</p>
+<pre class="r"><code>amphibio &lt;- 
+  readr::read_csv(&quot;data/amphibio.csv&quot;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   .default = col_double(),
+##   id = col_character(),
+##   Order = col_character(),
+##   Family = col_character(),
+##   Genus = col_character(),
+##   Species = col_character(),
+##   Seeds = col_logical(),
+##   OBS = col_logical()
+## )</code></pre>
+<pre><code>## See spec(...) for full column specifications.</code></pre>
+<pre><code>## Warning: 125 parsing failures.
+##  row col           expected                                                           actual                file
+## 1410 OBS 1/0/T/F/TRUE/FALSE Identified as P. appendiculata in Boquimpani-Freitas et al. 2002 'data/amphibio.csv'
+## 1416 OBS 1/0/T/F/TRUE/FALSE Identified as T. miliaris in Giaretta and Facure 2004            'data/amphibio.csv'
+## 1447 OBS 1/0/T/F/TRUE/FALSE Considered endangered by Soto-Azat et al. 2013                   'data/amphibio.csv'
+## 1448 OBS 1/0/T/F/TRUE/FALSE Considered extinct by Soto-Azat et al. 2013                      'data/amphibio.csv'
+## 1471 OBS 1/0/T/F/TRUE/FALSE nomem dubitum                                                    'data/amphibio.csv'
+## .... ... .................. ................................................................ ...................
+## See problems(...) for more details.</code></pre>
+</div>
+</div>
+<div id="questions" class="section level2">
+<h2>Questions</h2>
+<p><strong>1. First, do some exploratory analysis of both data sets. What is the structure, column names, and dimensions?</strong></p>
+<div id="amniota" class="section level3">
+<h3>amniota</h3>
+<pre class="r"><code>dim(amniota)</code></pre>
+<pre><code>## [1] 21322    36</code></pre>
+<pre class="r"><code>colnames(amniota)</code></pre>
+<pre><code>##  [1] &quot;class&quot;                                
+##  [2] &quot;order&quot;                                
+##  [3] &quot;family&quot;                               
+##  [4] &quot;genus&quot;                                
+##  [5] &quot;species&quot;                              
+##  [6] &quot;subspecies&quot;                           
+##  [7] &quot;common_name&quot;                          
+##  [8] &quot;female_maturity_d&quot;                    
+##  [9] &quot;litter_or_clutch_size_n&quot;              
+## [10] &quot;litters_or_clutches_per_y&quot;            
+## [11] &quot;adult_body_mass_g&quot;                    
+## [12] &quot;maximum_longevity_y&quot;                  
+## [13] &quot;gestation_d&quot;                          
+## [14] &quot;weaning_d&quot;                            
+## [15] &quot;birth_or_hatching_weight_g&quot;           
+## [16] &quot;weaning_weight_g&quot;                     
+## [17] &quot;egg_mass_g&quot;                           
+## [18] &quot;incubation_d&quot;                         
+## [19] &quot;fledging_age_d&quot;                       
+## [20] &quot;longevity_y&quot;                          
+## [21] &quot;male_maturity_d&quot;                      
+## [22] &quot;inter_litter_or_interbirth_interval_y&quot;
+## [23] &quot;female_body_mass_g&quot;                   
+## [24] &quot;male_body_mass_g&quot;                     
+## [25] &quot;no_sex_body_mass_g&quot;                   
+## [26] &quot;egg_width_mm&quot;                         
+## [27] &quot;egg_length_mm&quot;                        
+## [28] &quot;fledging_mass_g&quot;                      
+## [29] &quot;adult_svl_cm&quot;                         
+## [30] &quot;male_svl_cm&quot;                          
+## [31] &quot;female_svl_cm&quot;                        
+## [32] &quot;birth_or_hatching_svl_cm&quot;             
+## [33] &quot;female_svl_at_maturity_cm&quot;            
+## [34] &quot;female_body_mass_at_maturity_g&quot;       
+## [35] &quot;no_sex_svl_cm&quot;                        
+## [36] &quot;no_sex_maturity_d&quot;</code></pre>
+<pre class="r"><code>glimpse(amniota)</code></pre>
+<pre><code>## Observations: 21,322
+## Variables: 36
+## $ class                                 &lt;chr&gt; &quot;Aves&quot;, &quot;Aves&quot;, &quot;Aves&quot;, &quot;Aves&quot;,…
+## $ order                                 &lt;chr&gt; &quot;Accipitriformes&quot;, &quot;Accipitrifo…
+## $ family                                &lt;chr&gt; &quot;Accipitridae&quot;, &quot;Accipitridae&quot;,…
+## $ genus                                 &lt;chr&gt; &quot;Accipiter&quot;, &quot;Accipiter&quot;, &quot;Acci…
+## $ species                               &lt;chr&gt; &quot;albogularis&quot;, &quot;badius&quot;, &quot;bicol…
+## $ subspecies                            &lt;dbl&gt; -999, -999, -999, -999, -999, -…
+## $ common_name                           &lt;chr&gt; &quot;Pied Goshawk&quot;, &quot;Shikra&quot;, &quot;Bico…
+## $ female_maturity_d                     &lt;dbl&gt; -999.000, 363.468, -999.000, -9…
+## $ litter_or_clutch_size_n               &lt;dbl&gt; -999.000, 3.250, 2.700, -999.00…
+## $ litters_or_clutches_per_y             &lt;dbl&gt; -999, 1, -999, -999, 1, -999, -…
+## $ adult_body_mass_g                     &lt;dbl&gt; 251.500, 140.000, 345.000, 142.…
+## $ maximum_longevity_y                   &lt;dbl&gt; -999.00000, -999.00000, -999.00…
+## $ gestation_d                           &lt;dbl&gt; -999, -999, -999, -999, -999, -…
+## $ weaning_d                             &lt;dbl&gt; -999, -999, -999, -999, -999, -…
+## $ birth_or_hatching_weight_g            &lt;dbl&gt; -999, -999, -999, -999, -999, -…
+## $ weaning_weight_g                      &lt;dbl&gt; -999, -999, -999, -999, -999, -…
+## $ egg_mass_g                            &lt;dbl&gt; -999.00, 21.00, 32.00, -999.00,…
+## $ incubation_d                          &lt;dbl&gt; -999.00, 30.00, -999.00, -999.0…
+## $ fledging_age_d                        &lt;dbl&gt; -999.00, 32.00, -999.00, -999.0…
+## $ longevity_y                           &lt;dbl&gt; -999.00000, -999.00000, -999.00…
+## $ male_maturity_d                       &lt;dbl&gt; -999, -999, -999, -999, -999, -…
+## $ inter_litter_or_interbirth_interval_y &lt;dbl&gt; -999, -999, -999, -999, -999, -…
+## $ female_body_mass_g                    &lt;dbl&gt; 352.500, 168.500, 390.000, -999…
+## $ male_body_mass_g                      &lt;dbl&gt; 223.000, 125.000, 212.000, 142.…
+## $ no_sex_body_mass_g                    &lt;dbl&gt; -999.0, 123.0, -999.0, -999.0, …
+## $ egg_width_mm                          &lt;dbl&gt; -999, -999, -999, -999, -999, -…
+## $ egg_length_mm                         &lt;dbl&gt; -999, -999, -999, -999, -999, -…
+## $ fledging_mass_g                       &lt;dbl&gt; -999, -999, -999, -999, -999, -…
+## $ adult_svl_cm                          &lt;dbl&gt; -999.00, 30.00, 39.50, -999.00,…
+## $ male_svl_cm                           &lt;dbl&gt; -999, -999, -999, -999, -999, -…
+## $ female_svl_cm                         &lt;dbl&gt; -999, -999, -999, -999, -999, -…
+## $ birth_or_hatching_svl_cm              &lt;dbl&gt; -999, -999, -999, -999, -999, -…
+## $ female_svl_at_maturity_cm             &lt;dbl&gt; -999, -999, -999, -999, -999, -…
+## $ female_body_mass_at_maturity_g        &lt;dbl&gt; -999, -999, -999, -999, -999, -…
+## $ no_sex_svl_cm                         &lt;dbl&gt; -999, -999, -999, -999, -999, -…
+## $ no_sex_maturity_d                     &lt;dbl&gt; -999, -999, -999, -999, -999, -…</code></pre>
+</div>
+<div id="amphibio" class="section level3">
+<h3>amphibio</h3>
+<pre class="r"><code>dim(amphibio)</code></pre>
+<pre><code>## [1] 6776   38</code></pre>
+<pre class="r"><code>colnames(amphibio)</code></pre>
+<pre><code>##  [1] &quot;id&quot;                      &quot;Order&quot;                  
+##  [3] &quot;Family&quot;                  &quot;Genus&quot;                  
+##  [5] &quot;Species&quot;                 &quot;Fos&quot;                    
+##  [7] &quot;Ter&quot;                     &quot;Aqu&quot;                    
+##  [9] &quot;Arb&quot;                     &quot;Leaves&quot;                 
+## [11] &quot;Flowers&quot;                 &quot;Seeds&quot;                  
+## [13] &quot;Fruits&quot;                  &quot;Arthro&quot;                 
+## [15] &quot;Vert&quot;                    &quot;Diu&quot;                    
+## [17] &quot;Noc&quot;                     &quot;Crepu&quot;                  
+## [19] &quot;Wet_warm&quot;                &quot;Wet_cold&quot;               
+## [21] &quot;Dry_warm&quot;                &quot;Dry_cold&quot;               
+## [23] &quot;Body_mass_g&quot;             &quot;Age_at_maturity_min_y&quot;  
+## [25] &quot;Age_at_maturity_max_y&quot;   &quot;Body_size_mm&quot;           
+## [27] &quot;Size_at_maturity_min_mm&quot; &quot;Size_at_maturity_max_mm&quot;
+## [29] &quot;Longevity_max_y&quot;         &quot;Litter_size_min_n&quot;      
+## [31] &quot;Litter_size_max_n&quot;       &quot;Reproductive_output_y&quot;  
+## [33] &quot;Offspring_size_min_mm&quot;   &quot;Offspring_size_max_mm&quot;  
+## [35] &quot;Dir&quot;                     &quot;Lar&quot;                    
+## [37] &quot;Viv&quot;                     &quot;OBS&quot;</code></pre>
+<pre class="r"><code>glimpse(amphibio)</code></pre>
+<pre><code>## Observations: 6,776
+## Variables: 38
+## $ id                      &lt;chr&gt; &quot;Anf0001&quot;, &quot;Anf0002&quot;, &quot;Anf0003&quot;, &quot;Anf0004&quot;, &quot;…
+## $ Order                   &lt;chr&gt; &quot;Anura&quot;, &quot;Anura&quot;, &quot;Anura&quot;, &quot;Anura&quot;, &quot;Anura&quot;, …
+## $ Family                  &lt;chr&gt; &quot;Allophrynidae&quot;, &quot;Alytidae&quot;, &quot;Alytidae&quot;, &quot;Aly…
+## $ Genus                   &lt;chr&gt; &quot;Allophryne&quot;, &quot;Alytes&quot;, &quot;Alytes&quot;, &quot;Alytes&quot;, &quot;…
+## $ Species                 &lt;chr&gt; &quot;Allophryne ruthveni&quot;, &quot;Alytes cisternasii&quot;, …
+## $ Fos                     &lt;dbl&gt; NA, NA, NA, NA, NA, 1, 1, 1, 1, 1, 1, 1, 1, N…
+## $ Ter                     &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+## $ Aqu                     &lt;dbl&gt; 1, 1, 1, 1, NA, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+## $ Arb                     &lt;dbl&gt; 1, 1, 1, 1, 1, 1, NA, NA, NA, NA, NA, NA, NA,…
+## $ Leaves                  &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ Flowers                 &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ Seeds                   &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ Fruits                  &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ Arthro                  &lt;dbl&gt; 1, 1, 1, NA, 1, 1, 1, 1, 1, NA, 1, 1, NA, NA,…
+## $ Vert                    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, 1, NA, NA, NA, 1, 1, …
+## $ Diu                     &lt;dbl&gt; 1, NA, NA, NA, NA, NA, 1, 1, 1, NA, 1, 1, NA,…
+## $ Noc                     &lt;dbl&gt; 1, 1, 1, NA, 1, 1, 1, 1, 1, NA, 1, 1, 1, NA, …
+## $ Crepu                   &lt;dbl&gt; 1, NA, NA, NA, NA, 1, NA, NA, NA, NA, NA, NA,…
+## $ Wet_warm                &lt;dbl&gt; NA, NA, NA, NA, 1, 1, NA, NA, NA, NA, 1, NA, …
+## $ Wet_cold                &lt;dbl&gt; 1, NA, NA, NA, NA, NA, 1, NA, NA, NA, NA, NA,…
+## $ Dry_warm                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ Dry_cold                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ Body_mass_g             &lt;dbl&gt; 31.00, 6.10, NA, NA, 2.31, 13.40, 21.80, NA, …
+## $ Age_at_maturity_min_y   &lt;dbl&gt; NA, 2.0, 2.0, NA, 3.0, 2.0, 3.0, NA, NA, NA, …
+## $ Age_at_maturity_max_y   &lt;dbl&gt; NA, 2.0, 2.0, NA, 3.0, 3.0, 5.0, NA, NA, NA, …
+## $ Body_size_mm            &lt;dbl&gt; 31.0, 50.0, 55.0, NA, 40.0, 55.0, 80.0, 60.0,…
+## $ Size_at_maturity_min_mm &lt;dbl&gt; NA, 27, NA, NA, NA, 35, NA, NA, NA, NA, NA, N…
+## $ Size_at_maturity_max_mm &lt;dbl&gt; NA, 36.0, NA, NA, NA, 40.5, NA, NA, NA, NA, N…
+## $ Longevity_max_y         &lt;dbl&gt; NA, 6, NA, NA, NA, 7, 9, NA, NA, NA, NA, NA, …
+## $ Litter_size_min_n       &lt;dbl&gt; 300, 60, 40, NA, 7, 53, 300, 1500, 1000, NA, …
+## $ Litter_size_max_n       &lt;dbl&gt; 300, 180, 40, NA, 20, 171, 1500, 1500, 1000, …
+## $ Reproductive_output_y   &lt;dbl&gt; 1, 4, 1, 4, 1, 4, 6, 1, 1, 1, 1, 1, 1, 1, NA,…
+## $ Offspring_size_min_mm   &lt;dbl&gt; NA, 2.6, NA, NA, 5.4, 2.6, 1.5, NA, 1.5, NA, …
+## $ Offspring_size_max_mm   &lt;dbl&gt; NA, 3.5, NA, NA, 7.0, 5.0, 2.0, NA, 1.5, NA, …
+## $ Dir                     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+## $ Lar                     &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+## $ Viv                     &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+## $ OBS                     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</code></pre>
+<p><strong>2. How many total NAs are in each data set? Do these values make sense? Are NAs represented by any other values?</strong></p>
+<pre class="r"><code>amniotaNA &lt;- amniota %&gt;% 
+  summarize(number_nas_amniota = sum(is.na(amniota))) 
+amphibioNA &lt;- amphibio %&gt;% 
+  summarize(number_nas_amphibio = sum(is.na(amphibio)))
 
-sapply(fisheries, class)</code></pre>
-<pre><code>##                 Country             Common name          ISSCAAP group# 
-##                &quot;factor&quot;                &quot;factor&quot;                &quot;factor&quot; 
-## ISSCAAP taxonomic group          ASFIS species#      ASFIS species name 
-##                &quot;factor&quot;                &quot;factor&quot;                &quot;factor&quot; 
-##  FAO major fishing area                 Measure                    1950 
-##                &quot;factor&quot;                &quot;factor&quot;               &quot;numeric&quot; 
-##                    1951                    1952                    1953 
-##               &quot;numeric&quot;               &quot;numeric&quot;               &quot;numeric&quot; 
-##                    1954                    1955                    1956 
-##               &quot;numeric&quot;               &quot;numeric&quot;               &quot;numeric&quot; 
-##                    1957                    1958                    1959 
-##               &quot;numeric&quot;               &quot;numeric&quot;               &quot;numeric&quot; 
-##                    1960                    1961                    1962 
-##               &quot;numeric&quot;               &quot;numeric&quot;               &quot;numeric&quot; 
-##                    1963                    1964                    1965 
-##               &quot;numeric&quot;               &quot;numeric&quot;               &quot;numeric&quot; 
-##                    1966                    1967                    1968 
-##               &quot;numeric&quot;               &quot;numeric&quot;               &quot;numeric&quot; 
-##                    1969                    1970                    1971 
-##               &quot;numeric&quot;               &quot;numeric&quot;               &quot;numeric&quot; 
-##                    1972                    1973                    1974 
-##               &quot;numeric&quot;               &quot;numeric&quot;               &quot;numeric&quot; 
-##                    1975                    1976                    1977 
-##               &quot;numeric&quot;               &quot;numeric&quot;               &quot;numeric&quot; 
-##                    1978                    1979                    1980 
-##               &quot;numeric&quot;               &quot;numeric&quot;               &quot;numeric&quot; 
-##                    1981                    1982                    1983 
-##               &quot;numeric&quot;               &quot;numeric&quot;               &quot;numeric&quot; 
-##                    1984                    1985                    1986 
-##               &quot;numeric&quot;               &quot;numeric&quot;               &quot;numeric&quot; 
-##                    1987                    1988                    1989 
-##               &quot;numeric&quot;               &quot;numeric&quot;               &quot;numeric&quot; 
-##                    1990                    1991                    1992 
-##               &quot;numeric&quot;               &quot;numeric&quot;               &quot;numeric&quot; 
-##                    1993                    1994                    1995 
-##               &quot;numeric&quot;               &quot;numeric&quot;               &quot;numeric&quot; 
-##                    1996                    1997                    1998 
-##               &quot;numeric&quot;               &quot;numeric&quot;               &quot;numeric&quot; 
-##                    1999                    2000                    2001 
-##               &quot;numeric&quot;               &quot;numeric&quot;               &quot;numeric&quot; 
-##                    2002                    2003                    2004 
-##               &quot;numeric&quot;               &quot;numeric&quot;               &quot;numeric&quot; 
-##                    2005                    2006                    2007 
-##               &quot;numeric&quot;               &quot;numeric&quot;               &quot;numeric&quot; 
-##                    2008                    2009                    2010 
-##               &quot;numeric&quot;               &quot;numeric&quot;               &quot;numeric&quot; 
-##                    2011                    2012 
-##               &quot;numeric&quot;               &quot;numeric&quot;</code></pre>
-<ol start="5" style="list-style-type: decimal">
-<li>How many countries are represented in the data? Provide a count.</li>
-</ol>
-<pre class="r"><code>nlevels(fisheries$Country)</code></pre>
-<pre><code>## [1] 204</code></pre>
-<ol start="6" style="list-style-type: decimal">
-<li>What are the names of the countries?</li>
-</ol>
-<pre class="r"><code>levels(fisheries$Country)</code></pre>
-<pre><code>##   [1] &quot;Albania&quot;                  &quot;Algeria&quot;                 
-##   [3] &quot;American Samoa&quot;           &quot;Angola&quot;                  
-##   [5] &quot;Anguilla&quot;                 &quot;Antigua and Barbuda&quot;     
-##   [7] &quot;Argentina&quot;                &quot;Aruba&quot;                   
-##   [9] &quot;Australia&quot;                &quot;Bahamas&quot;                 
-##  [11] &quot;Bahrain&quot;                  &quot;Bangladesh&quot;              
-##  [13] &quot;Barbados&quot;                 &quot;Belgium&quot;                 
-##  [15] &quot;Belize&quot;                   &quot;Benin&quot;                   
-##  [17] &quot;Bermuda&quot;                  &quot;Bonaire/S.Eustatius/Saba&quot;
-##  [19] &quot;Bosnia and Herzegovina&quot;   &quot;Brazil&quot;                  
-##  [21] &quot;British Indian Ocean Ter&quot; &quot;British Virgin Islands&quot;  
-##  [23] &quot;Brunei Darussalam&quot;        &quot;Bulgaria&quot;                
-##  [25] &quot;Cabo Verde&quot;               &quot;Cambodia&quot;                
-##  [27] &quot;Cameroon&quot;                 &quot;Canada&quot;                  
-##  [29] &quot;Cayman Islands&quot;           &quot;Channel Islands&quot;         
-##  [31] &quot;Chile&quot;                    &quot;China&quot;                   
-##  [33] &quot;China, Hong Kong SAR&quot;     &quot;China, Macao SAR&quot;        
-##  [35] &quot;Colombia&quot;                 &quot;Comoros&quot;                 
-##  [37] &quot;Congo, Dem. Rep. of the&quot;  &quot;Congo, Republic of&quot;      
-##  [39] &quot;Cook Islands&quot;             &quot;Costa Rica&quot;              
-##  [41] &quot;Croatia&quot;                  &quot;Cuba&quot;                    
-##  [43] &quot;Cura�ao&quot;                  &quot;Cyprus&quot;                  
-##  [45] &quot;C�te d'Ivoire&quot;            &quot;Denmark&quot;                 
-##  [47] &quot;Djibouti&quot;                 &quot;Dominica&quot;                
-##  [49] &quot;Dominican Republic&quot;       &quot;Ecuador&quot;                 
-##  [51] &quot;Egypt&quot;                    &quot;El Salvador&quot;             
-##  [53] &quot;Equatorial Guinea&quot;        &quot;Eritrea&quot;                 
-##  [55] &quot;Estonia&quot;                  &quot;Ethiopia&quot;                
-##  [57] &quot;Falkland Is.(Malvinas)&quot;   &quot;Faroe Islands&quot;           
-##  [59] &quot;Fiji, Republic of&quot;        &quot;Finland&quot;                 
-##  [61] &quot;France&quot;                   &quot;French Guiana&quot;           
-##  [63] &quot;French Polynesia&quot;         &quot;French Southern Terr&quot;    
-##  [65] &quot;Gabon&quot;                    &quot;Gambia&quot;                  
-##  [67] &quot;Georgia&quot;                  &quot;Germany&quot;                 
-##  [69] &quot;Ghana&quot;                    &quot;Gibraltar&quot;               
-##  [71] &quot;Greece&quot;                   &quot;Greenland&quot;               
-##  [73] &quot;Grenada&quot;                  &quot;Guadeloupe&quot;              
-##  [75] &quot;Guam&quot;                     &quot;Guatemala&quot;               
-##  [77] &quot;Guinea&quot;                   &quot;GuineaBissau&quot;            
-##  [79] &quot;Guyana&quot;                   &quot;Haiti&quot;                   
-##  [81] &quot;Honduras&quot;                 &quot;Iceland&quot;                 
-##  [83] &quot;India&quot;                    &quot;Indonesia&quot;               
-##  [85] &quot;Iran (Islamic Rep. of)&quot;   &quot;Iraq&quot;                    
-##  [87] &quot;Ireland&quot;                  &quot;Isle of Man&quot;             
-##  [89] &quot;Israel&quot;                   &quot;Italy&quot;                   
-##  [91] &quot;Jamaica&quot;                  &quot;Japan&quot;                   
-##  [93] &quot;Jordan&quot;                   &quot;Kenya&quot;                   
-##  [95] &quot;Kiribati&quot;                 &quot;Korea, Dem. People's Rep&quot;
-##  [97] &quot;Korea, Republic of&quot;       &quot;Kuwait&quot;                  
-##  [99] &quot;Latvia&quot;                   &quot;Lebanon&quot;                 
-## [101] &quot;Liberia&quot;                  &quot;Libya&quot;                   
-## [103] &quot;Lithuania&quot;                &quot;Madagascar&quot;              
-## [105] &quot;Malaysia&quot;                 &quot;Maldives&quot;                
-## [107] &quot;Malta&quot;                    &quot;Marshall Islands&quot;        
-## [109] &quot;Martinique&quot;               &quot;Mauritania&quot;              
-## [111] &quot;Mauritius&quot;                &quot;Mayotte&quot;                 
-## [113] &quot;Mexico&quot;                   &quot;Micronesia,ed.States of&quot; 
-## [115] &quot;Monaco&quot;                   &quot;Montenegro&quot;              
-## [117] &quot;Montserrat&quot;               &quot;Morocco&quot;                 
-## [119] &quot;Mozambique&quot;               &quot;Myanmar&quot;                 
-## [121] &quot;Namibia&quot;                  &quot;Nauru&quot;                   
-## [123] &quot;Netherlands&quot;              &quot;Netherlands Antilles&quot;    
-## [125] &quot;New Caledonia&quot;            &quot;New Zealand&quot;             
-## [127] &quot;Nicaragua&quot;                &quot;Nigeria&quot;                 
-## [129] &quot;Niue&quot;                     &quot;Norfolk Island&quot;          
-## [131] &quot;Northern Mariana Is.&quot;     &quot;Norway&quot;                  
-## [133] &quot;Oman&quot;                     &quot;Other nei&quot;               
-## [135] &quot;Pakistan&quot;                 &quot;Palau&quot;                   
-## [137] &quot;Palestine, Occupied Tr.&quot;  &quot;Panama&quot;                  
-## [139] &quot;Papua New Guinea&quot;         &quot;Peru&quot;                    
-## [141] &quot;Philippines&quot;              &quot;Pitcairn Islands&quot;        
-## [143] &quot;Poland&quot;                   &quot;Portugal&quot;                
-## [145] &quot;Puerto Rico&quot;              &quot;Qatar&quot;                   
-## [147] &quot;Romania&quot;                  &quot;Russianederation&quot;        
-## [149] &quot;R�union&quot;                  &quot;Saint Barth�lemy&quot;        
-## [151] &quot;Saint Helena&quot;             &quot;Saint Kitts and Nevis&quot;   
-## [153] &quot;Saint Lucia&quot;              &quot;Saint Vincent/Grenadines&quot;
-## [155] &quot;SaintMartin&quot;              &quot;Samoa&quot;                   
-## [157] &quot;Sao Tome and Principe&quot;    &quot;Saudi Arabia&quot;            
-## [159] &quot;Senegal&quot;                  &quot;Serbia and Montenegro&quot;   
-## [161] &quot;Seychelles&quot;               &quot;Sierra Leone&quot;            
-## [163] &quot;Singapore&quot;                &quot;Sint Maarten&quot;            
-## [165] &quot;Slovenia&quot;                 &quot;Solomon Islands&quot;         
-## [167] &quot;Somalia&quot;                  &quot;South Africa&quot;            
-## [169] &quot;Spain&quot;                    &quot;Sri Lanka&quot;               
-## [171] &quot;St. Pierre and Miquelon&quot;  &quot;Sudan&quot;                   
-## [173] &quot;Sudan (former)&quot;           &quot;Suriname&quot;                
-## [175] &quot;Svalbard and Jan Mayen&quot;   &quot;Sweden&quot;                  
-## [177] &quot;Syrian Arab Republic&quot;     &quot;Taiwan Province of China&quot;
-## [179] &quot;Tanzania, United Rep. of&quot; &quot;Thailand&quot;                
-## [181] &quot;TimorLeste&quot;               &quot;Togo&quot;                    
-## [183] &quot;Tokelau&quot;                  &quot;Tonga&quot;                   
-## [185] &quot;Trinidad and Tobago&quot;      &quot;Tunisia&quot;                 
-## [187] &quot;Turkey&quot;                   &quot;Turks and Caicos Is.&quot;    
-## [189] &quot;Tuvalu&quot;                   &quot;Ukraine&quot;                 
-## [191] &quot;Un. Sov. Soc. Rep.&quot;       &quot;United Arab Emirates&quot;    
-## [193] &quot;United Kingdom&quot;           &quot;United States of America&quot;
-## [195] &quot;Uruguay&quot;                  &quot;US Virgin Islands&quot;       
-## [197] &quot;Vanuatu&quot;                  &quot;Venezuela, Boliv Rep of&quot; 
-## [199] &quot;Viet Nam&quot;                 &quot;Wallis andutuna Is.&quot;     
-## [201] &quot;Western Sahara&quot;           &quot;Yemen&quot;                   
-## [203] &quot;Yugoslavia SFR&quot;           &quot;Zanzibar&quot;</code></pre>
-<ol start="7" style="list-style-type: decimal">
-<li>Use <code>rename()</code> to rename the columns and make them easier to use. The new column names should be:<br />
-</li>
-</ol>
-<ul>
-<li>country</li>
-<li>commname</li>
-<li>ASFIS_sciname</li>
-<li>ASFIS_spcode</li>
-<li>ISSCAAP_spgroup</li>
-<li>ISSCAAP_spgroupname</li>
-<li>FAO_area</li>
-<li>unit</li>
-</ul>
-<pre class="r"><code>fisheries &lt;- fisheries %&gt;% 
-  rename(country = 'Country', commname = 'Common name', ASFIS_sciname = &quot;ASFIS species name&quot;, ASFIS_spcode = 'ASFIS species#', ISSCAAP_spgroupname = 'ISSCAAP taxonomic group', ISSCAAP_spgroup = `ISSCAAP group#`, FAO_area = 'FAO major fishing area', unit = 'Measure')</code></pre>
-<ol start="8" style="list-style-type: decimal">
-<li>Are these data tidy? Why or why not, and, how do you know? Use the appropriate pivot function to tidy the data. Remove the NA’s. Put the tidy data frame into a new object <code>fisheries_tidy</code>.</li>
-</ol>
-<p>These data are not tidy, because the column names including years are data.</p>
-<pre class="r"><code>fisheries_tidy &lt;- fisheries %&gt;% 
-  pivot_longer(-c(country, commname, ASFIS_spcode, ASFIS_sciname, ISSCAAP_spgroupname, ISSCAAP_spgroup, FAO_area, unit), 
-               names_to = &quot;year&quot;,
-               values_to = &quot;catch&quot;)</code></pre>
-<ol start="9" style="list-style-type: decimal">
-<li>Refocus the data only to include country, ISSCAAP_spgroupname, ASFIS_spcode, ASFIS_sciname, year, and catch.</li>
-</ol>
-<pre class="r"><code>fisheries_tidy2 &lt;- fisheries_tidy %&gt;% 
-  select(country, ISSCAAP_spgroupname, ISSCAAP_spgroup, ASFIS_spcode, ASFIS_sciname, year, catch) %&gt;% 
-  mutate_at(vars(year), as.numeric)</code></pre>
-<ol start="10" style="list-style-type: decimal">
-<li>Re-check the classes of <code>fisheries_tidy2</code>. Notice that “catch” is shown as a character! This is a problem because we will want to treat it as a numeric. How will you deal with this?</li>
-</ol>
-<pre class="r"><code>lapply(fisheries_tidy2, class)</code></pre>
-<pre><code>## $country
-## [1] &quot;factor&quot;
-## 
-## $ISSCAAP_spgroupname
-## [1] &quot;factor&quot;
-## 
-## $ISSCAAP_spgroup
-## [1] &quot;factor&quot;
-## 
-## $ASFIS_spcode
-## [1] &quot;factor&quot;
-## 
-## $ASFIS_sciname
-## [1] &quot;factor&quot;
-## 
-## $year
-## [1] &quot;numeric&quot;
-## 
-## $catch
-## [1] &quot;numeric&quot;</code></pre>
-<p>I already changed the values of catch to numerics earlier on in the homework.</p>
-<ol start="11" style="list-style-type: decimal">
-<li>Based on the ASFIS_spcode, how many distinct taxa were caught as part of these data?</li>
-</ol>
-<pre class="r"><code>nlevels(fisheries_tidy2$ASFIS_spcode)</code></pre>
-<pre><code>## [1] 1553</code></pre>
-<p>1553 distinct taxa were caught as part of this data.</p>
-<ol start="12" style="list-style-type: decimal">
-<li>Which country had the largest overall catch in the year 2000?</li>
-</ol>
-<pre class="r"><code>fisheries_tidy2 %&gt;% 
-  filter(year == 2000) %&gt;% 
-  group_by(country) %&gt;% 
-  summarize(catch = sum(catch, na.rm = T)) %&gt;% 
-  arrange(desc(catch))</code></pre>
-<pre><code>## # A tibble: 204 x 2
-##    country                     catch
-##    &lt;fct&gt;                       &lt;dbl&gt;
-##  1 China                    12695472
-##  2 Peru                     10625010
-##  3 Japan                     4921013
-##  4 United States of America  4692229
-##  5 Chile                     4297928
-##  6 Indonesia                 3761769
-##  7 Russianederation          3678828
-##  8 Thailand                  2795719
-##  9 India                     2760632
-## 10 Norway                    2698506
-## # … with 194 more rows</code></pre>
-<p>China had the largest overal catch of 12695472 tonnes in the year 2000.</p>
-<ol start="13" style="list-style-type: decimal">
-<li>Which country caught the most sardines (<em>Sardina</em>) between the years 1990-2000?</li>
-</ol>
-<pre class="r"><code>fisheries_tidy2 %&gt;% 
-  select(country, catch, year, ASFIS_sciname) %&gt;%
-  filter(str_detect(ASFIS_sciname, &quot;Sardina&quot;)) %&gt;% 
-  filter(year &lt;= 2000 &amp; year &gt;= 1990) %&gt;% 
-  group_by(country) %&gt;% 
-  summarize(catch = sum(catch, na.rm = T)) %&gt;% 
-  arrange(desc(catch, by.group = TRUE))</code></pre>
-<pre><code>## # A tibble: 46 x 2
-##    country            catch
-##    &lt;fct&gt;              &lt;dbl&gt;
-##  1 Morocco          4785190
-##  2 Spain            2056817
-##  3 Russianederation 1035139
-##  4 Portugal          926318
-##  5 Ukraine           784730
-##  6 Algeria           631733
-##  7 Italy             377907
-##  8 Turkey            273565
-##  9 France            263871
-## 10 Denmark           242017
-## # … with 36 more rows</code></pre>
-<p>Morocco had the largest catch of 4785190 tonnes.</p>
-<ol start="14" style="list-style-type: decimal">
-<li>Which five countries caught the most cephalopods between 2008-2012?</li>
-</ol>
-<pre class="r"><code>fisheries_tidy2 %&gt;% 
-  filter(str_detect(ISSCAAP_spgroupname, &quot;Squids&quot;)) %&gt;% 
-  filter(year &lt;= 2012 &amp; year &gt;= 2008) %&gt;% 
-  group_by(country) %&gt;% 
-  summarize(catch = sum(catch, na.rm = T)) %&gt;% 
-  arrange(desc(catch, by.group = TRUE))</code></pre>
-<pre><code>## # A tibble: 139 x 2
-##    country                    catch
-##    &lt;fct&gt;                      &lt;dbl&gt;
-##  1 China                    4785139
-##  2 Peru                     2274232
-##  3 Japan                    1644085
-##  4 Korea, Republic of       1535454
-##  5 Viet Nam                 1292000
-##  6 Chile                     723186
-##  7 Indonesia                 684567
-##  8 United States of America  613400
-##  9 Thailand                  603529
-## 10 Taiwan Province of China  593638
-## # … with 129 more rows</code></pre>
-<p>China caught the most cephalopods betwen 2008-2012.</p>
-<ol start="15" style="list-style-type: decimal">
-<li>Given the top five countries from question 14 above, which species was the highest catch total? The lowest?</li>
-</ol>
-<pre class="r"><code>fisheries_tidy2 %&gt;% 
-  filter(str_detect(ISSCAAP_spgroupname, &quot;Squids&quot;)) %&gt;% 
-  filter(year &lt;= 2012 &amp; year &gt;= 2008) %&gt;% 
-  group_by(ASFIS_sciname) %&gt;% 
-  summarize(catch_total=sum(catch, na.rm=T)) %&gt;% 
-  arrange(desc(catch_total))</code></pre>
-<pre><code>## # A tibble: 35 x 2
-##    ASFIS_sciname               catch_total
-##    &lt;fct&gt;                             &lt;dbl&gt;
-##  1 Dosidicus gigas                 4211138
-##  2 Loliginidae, Ommastrephidae     2951507
-##  3 Cephalopoda                     2040955
-##  4 Todarodes pacificus             1936561
-##  5 Illex argentinus                1834620
-##  6 Octopodidae                     1497654
-##  7 Sepiidae, Sepiolidae            1338968
-##  8 Loligo spp                      1293727
-##  9 Loligo opalescens                477536
-## 10 Loligo gahi                      317535
-## # … with 25 more rows</code></pre>
-<p>Dosidicus gigas had the highest catch total of 4211138 tons.</p>
-<pre class="r"><code>fisheries_tidy2 %&gt;% 
-  filter(str_detect(ISSCAAP_spgroupname, &quot;Squids&quot;)) %&gt;% 
-  filter(year &lt;= 2012 &amp; year &gt;= 2008) %&gt;% 
-  group_by(ASFIS_sciname) %&gt;% 
-  summarize(catch_total=sum(catch, na.rm=T)) %&gt;% 
-  arrange(catch_total)</code></pre>
-<pre><code>## # A tibble: 35 x 2
-##    ASFIS_sciname        catch_total
-##    &lt;fct&gt;                      &lt;dbl&gt;
-##  1 Eledone moschata               0
-##  2 Gonatidae                      0
-##  3 Moroteuthis robustus           0
-##  4 Pareledone spp                 0
-##  5 Todarodes filippovae           1
-##  6 Martialia hyadesi              4
-##  7 Moroteuthis ingens           194
-##  8 Loligo vulgaris              398
-##  9 Eledone cirrhosa             920
-## 10 Loligo duvauceli            1843
-## # … with 25 more rows</code></pre>
-<p>The species with the lowest catch total is Todarodes filippovae with 1 ton (excluding fish with 0 tonnes)</p>
-<ol start="16" style="list-style-type: decimal">
-<li>In some cases, the taxonomy of the fish being caught is unclear. Make a new data frame called <code>coastal_fish</code> that shows the taxonomic composition of “Miscellaneous coastal fishes” within the ISSCAAP_spgroupname column.</li>
-</ol>
-<pre class="r"><code>coastal_fish &lt;- fisheries_tidy2 %&gt;% 
-  filter(ISSCAAP_spgroupname == 'Miscellaneous coastal fishes')</code></pre>
-<ol start="17" style="list-style-type: decimal">
-<li>Use the data to do at least one exploratory analysis of your choice. What can you learn?</li>
-</ol>
-<p>I am going to explore which country caught the most variety of coastal fish.</p>
-<pre class="r"><code>coastal_fish %&gt;% 
-  group_by(country) %&gt;% 
-  summarize(types_of_fish = n_distinct(ASFIS_sciname)) %&gt;% 
-  arrange(desc(types_of_fish))</code></pre>
-<pre><code>## # A tibble: 150 x 2
-##    country                  types_of_fish
-##    &lt;fct&gt;                            &lt;int&gt;
-##  1 United States of America            84
-##  2 Saudi Arabia                        76
-##  3 Spain                               66
-##  4 Portugal                            63
-##  5 Brazil                              42
-##  6 France                              42
-##  7 Senegal                             42
-##  8 Un. Sov. Soc. Rep.                  41
-##  9 Korea, Republic of                  40
-## 10 Mexico                              39
-## # … with 140 more rows</code></pre>
-<p>The United States of America caught the most variety of coastal fish with Saudi Arabia coming in second.</p>
+totalNA &lt;- merge(amphibioNA, amniotaNA)
+totalNA</code></pre>
+<pre><code>##   number_nas_amphibio number_nas_amniota
+## 1              170691                  0</code></pre>
+<p>Amniota should have NAs, and they are represented by -999 or -999.00</p>
+<p><strong>3. Make any necessary replacements in the data such that all NAs appear as “NA”.</strong></p>
+<pre class="r"><code>amniota2 &lt;- 
+  amniota %&gt;% 
+  na_if(&quot;-999&quot;)
+
+glimpse(amniota2)</code></pre>
+<pre><code>## Observations: 21,322
+## Variables: 36
+## $ class                                 &lt;chr&gt; &quot;Aves&quot;, &quot;Aves&quot;, &quot;Aves&quot;, &quot;Aves&quot;,…
+## $ order                                 &lt;chr&gt; &quot;Accipitriformes&quot;, &quot;Accipitrifo…
+## $ family                                &lt;chr&gt; &quot;Accipitridae&quot;, &quot;Accipitridae&quot;,…
+## $ genus                                 &lt;chr&gt; &quot;Accipiter&quot;, &quot;Accipiter&quot;, &quot;Acci…
+## $ species                               &lt;chr&gt; &quot;albogularis&quot;, &quot;badius&quot;, &quot;bicol…
+## $ subspecies                            &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ common_name                           &lt;chr&gt; &quot;Pied Goshawk&quot;, &quot;Shikra&quot;, &quot;Bico…
+## $ female_maturity_d                     &lt;dbl&gt; NA, 363.468, NA, NA, 363.468, N…
+## $ litter_or_clutch_size_n               &lt;dbl&gt; NA, 3.250, 2.700, NA, 4.000, NA…
+## $ litters_or_clutches_per_y             &lt;dbl&gt; NA, 1, NA, NA, 1, NA, NA, 1, NA…
+## $ adult_body_mass_g                     &lt;dbl&gt; 251.500, 140.000, 345.000, 142.…
+## $ maximum_longevity_y                   &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, 19.…
+## $ gestation_d                           &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ weaning_d                             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ birth_or_hatching_weight_g            &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ weaning_weight_g                      &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ egg_mass_g                            &lt;dbl&gt; NA, 21.00, 32.00, NA, 21.85, NA…
+## $ incubation_d                          &lt;dbl&gt; NA, 30.00, NA, NA, 32.50, NA, N…
+## $ fledging_age_d                        &lt;dbl&gt; NA, 32.00, NA, NA, 42.50, NA, N…
+## $ longevity_y                           &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, 12.…
+## $ male_maturity_d                       &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, 365…
+## $ inter_litter_or_interbirth_interval_y &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ female_body_mass_g                    &lt;dbl&gt; 352.500, 168.500, 390.000, NA, …
+## $ male_body_mass_g                      &lt;dbl&gt; 223.000, 125.000, 212.000, 142.…
+## $ no_sex_body_mass_g                    &lt;dbl&gt; NA, 123.0, NA, NA, NA, NA, NA, …
+## $ egg_width_mm                          &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ egg_length_mm                         &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ fledging_mass_g                       &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ adult_svl_cm                          &lt;dbl&gt; NA, 30.00, 39.50, NA, 33.50, NA…
+## $ male_svl_cm                           &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ female_svl_cm                         &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ birth_or_hatching_svl_cm              &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ female_svl_at_maturity_cm             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ female_body_mass_at_maturity_g        &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ no_sex_svl_cm                         &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA,…
+## $ no_sex_maturity_d                     &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA,…</code></pre>
+<p><strong>4. Use the package <code>naniar</code> to produce a summary, including percentages, of missing data in each column for both data sets.</strong></p>
+<pre class="r"><code>naniar::miss_var_summary(amniota2)</code></pre>
+<pre><code>## # A tibble: 36 x 3
+##    variable                       n_miss pct_miss
+##    &lt;chr&gt;                           &lt;int&gt;    &lt;dbl&gt;
+##  1 subspecies                      21322    100  
+##  2 female_body_mass_at_maturity_g  21318    100. 
+##  3 female_svl_at_maturity_cm       21120     99.1
+##  4 fledging_mass_g                 21111     99.0
+##  5 male_svl_cm                     21040     98.7
+##  6 no_sex_maturity_d               20860     97.8
+##  7 egg_width_mm                    20727     97.2
+##  8 egg_length_mm                   20702     97.1
+##  9 weaning_weight_g                20258     95.0
+## 10 female_svl_cm                   20242     94.9
+## # … with 26 more rows</code></pre>
+<pre class="r"><code>naniar::miss_var_summary(amphibio)</code></pre>
+<pre><code>## # A tibble: 38 x 3
+##    variable n_miss pct_miss
+##    &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt;
+##  1 OBS        6776    100  
+##  2 Fruits     6774    100. 
+##  3 Flowers    6772     99.9
+##  4 Seeds      6772     99.9
+##  5 Leaves     6752     99.6
+##  6 Dry_cold   6735     99.4
+##  7 Vert       6657     98.2
+##  8 Wet_cold   6625     97.8
+##  9 Crepu      6608     97.5
+## 10 Dry_warm   6572     97.0
+## # … with 28 more rows</code></pre>
+<p><strong>5. For the <code>amniota</code> data, calculate the number of NAs in the <code>egg_mass_g</code> column sorted by taxonomic class; i.e. how many NAs are present in the <code>egg_mass_g</code> column in birds, mammals, and reptiles? Does this results make sense biologically? How do these results affect your interpretation of NAs?</strong></p>
+<p><strong>6. Which taxonomic classes are represented in the data? Summarize this in a chart then make a barplot that shows the proportion of observations in each taxonomic class.</strong></p>
+<p><strong>7. Let’s explore the taxonomic composition of the data a bit more. How many genera are represented by taxonomic class? Present this as a data table and bar plot.</strong></p>
+<p><strong>8. Lastly, how many species are represented in each taxonomic class? Present this as a data table and bar plot.</strong></p>
+<p><strong>9. The <code>amphibio</code> data includes information on ecology. Each species is classified as fossorial, terrestrial, aquatic, or arboreal. How many species are in each of these categories? Make a bar plot to visualize these results. Which category is most/ least represented in the data?</strong></p>
+<p><strong>10. For the amphibio data, we are interested to know if body size is correlated with litter size? Make a plot that shows this relationship. You should notice that there are outliers. Can you think of a way to identify the outliers for both body size and litter size? What happens when you then re-plot the data?</strong></p>
+</div>
 </div>
 <div id="push-your-final-code-to-github" class="section level2">
 <h2>Push your final code to GitHub!</h2>

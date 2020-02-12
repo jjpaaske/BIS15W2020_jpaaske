@@ -23,18 +23,18 @@ library(tidyverse)
 ```
 
 ```
-## <U+2500><U+2500> Attaching packages <U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500> tidyverse 1.3.0 <U+2500><U+2500>
+## ── Attaching packages ──────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
 ```
 
 ```
-## <U+2713> ggplot2 3.2.1     <U+2713> purrr   0.3.3
-## <U+2713> tibble  2.1.3     <U+2713> dplyr   0.8.3
-## <U+2713> tidyr   1.0.0     <U+2713> stringr 1.4.0
-## <U+2713> readr   1.3.1     <U+2713> forcats 0.4.0
+## ✓ ggplot2 3.2.1     ✓ purrr   0.3.3
+## ✓ tibble  2.1.3     ✓ dplyr   0.8.4
+## ✓ tidyr   1.0.2     ✓ stringr 1.4.0
+## ✓ readr   1.3.1     ✓ forcats 0.4.0
 ```
 
 ```
-## <U+2500><U+2500> Conflicts <U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500><U+2500> tidyverse_conflicts() <U+2500><U+2500>
+## ── Conflicts ─────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()
 ```
@@ -264,17 +264,17 @@ levels(fisheries$Country)
 ##  [19] "Bosnia and Herzegovina"   "Brazil"                  
 ##  [21] "British Indian Ocean Ter" "British Virgin Islands"  
 ##  [23] "Brunei Darussalam"        "Bulgaria"                
-##  [25] "C<U+FFFD>te d'Ivoire"     "Cabo Verde"              
-##  [27] "Cambodia"                 "Cameroon"                
-##  [29] "Canada"                   "Cayman Islands"          
-##  [31] "Channel Islands"          "Chile"                   
-##  [33] "China"                    "China, Hong Kong SAR"    
-##  [35] "China, Macao SAR"         "Colombia"                
-##  [37] "Comoros"                  "Congo, Dem. Rep. of the" 
-##  [39] "Congo, Republic of"       "Cook Islands"            
-##  [41] "Costa Rica"               "Croatia"                 
-##  [43] "Cuba"                     "Cura<U+FFFD>ao"          
-##  [45] "Cyprus"                   "Denmark"                 
+##  [25] "Cabo Verde"               "Cambodia"                
+##  [27] "Cameroon"                 "Canada"                  
+##  [29] "Cayman Islands"           "Channel Islands"         
+##  [31] "Chile"                    "China"                   
+##  [33] "China, Hong Kong SAR"     "China, Macao SAR"        
+##  [35] "Colombia"                 "Comoros"                 
+##  [37] "Congo, Dem. Rep. of the"  "Congo, Republic of"      
+##  [39] "Cook Islands"             "Costa Rica"              
+##  [41] "Croatia"                  "Cuba"                    
+##  [43] "Cura�ao"                  "Cyprus"                  
+##  [45] "C�te d'Ivoire"            "Denmark"                 
 ##  [47] "Djibouti"                 "Dominica"                
 ##  [49] "Dominican Republic"       "Ecuador"                 
 ##  [51] "Egypt"                    "El Salvador"             
@@ -325,8 +325,8 @@ levels(fisheries$Country)
 ## [141] "Philippines"              "Pitcairn Islands"        
 ## [143] "Poland"                   "Portugal"                
 ## [145] "Puerto Rico"              "Qatar"                   
-## [147] "R<U+FFFD>union"           "Romania"                 
-## [149] "Russianederation"         "Saint Barth<U+FFFD>lemy" 
+## [147] "Romania"                  "Russianederation"        
+## [149] "R�union"                  "Saint Barth�lemy"        
 ## [151] "Saint Helena"             "Saint Kitts and Nevis"   
 ## [153] "Saint Lucia"              "Saint Vincent/Grenadines"
 ## [155] "SaintMartin"              "Samoa"                   
@@ -346,10 +346,10 @@ levels(fisheries$Country)
 ## [183] "Tokelau"                  "Tonga"                   
 ## [185] "Trinidad and Tobago"      "Tunisia"                 
 ## [187] "Turkey"                   "Turks and Caicos Is."    
-## [189] "Tuvalu"                   "US Virgin Islands"       
-## [191] "Ukraine"                  "Un. Sov. Soc. Rep."      
-## [193] "United Arab Emirates"     "United Kingdom"          
-## [195] "United States of America" "Uruguay"                 
+## [189] "Tuvalu"                   "Ukraine"                 
+## [191] "Un. Sov. Soc. Rep."       "United Arab Emirates"    
+## [193] "United Kingdom"           "United States of America"
+## [195] "Uruguay"                  "US Virgin Islands"       
 ## [197] "Vanuatu"                  "Venezuela, Boliv Rep of" 
 ## [199] "Viet Nam"                 "Wallis andutuna Is."     
 ## [201] "Western Sahara"           "Yemen"                   
@@ -437,10 +437,10 @@ nlevels(fisheries_tidy2$ASFIS_spcode)
 
 ```r
 fisheries_tidy2 %>% 
-  filter(year == "2000") %>% 
+  filter(year == 2000) %>% 
   group_by(country) %>% 
   summarize(catch = sum(catch, na.rm = T)) %>% 
-  arrange(desc(catch, by.group = TRUE))
+  arrange(desc(catch))
 ```
 
 ```
@@ -457,7 +457,7 @@ fisheries_tidy2 %>%
 ##  8 Thailand                  2795719
 ##  9 India                     2760632
 ## 10 Norway                    2698506
-## # <U+2026> with 194 more rows
+## # … with 194 more rows
 ```
 China had the largest overal catch of 12695472 tonnes in the year 2000.
 
@@ -487,7 +487,7 @@ fisheries_tidy2 %>%
 ##  8 Turkey            273565
 ##  9 France            263871
 ## 10 Denmark           242017
-## # <U+2026> with 36 more rows
+## # … with 36 more rows
 ```
 Morocco had the largest catch of 4785190 tonnes. 
 
@@ -516,7 +516,7 @@ fisheries_tidy2 %>%
 ##  8 United States of America  613400
 ##  9 Thailand                  603529
 ## 10 Taiwan Province of China  593638
-## # <U+2026> with 129 more rows
+## # … with 129 more rows
 ```
 China caught the most cephalopods betwen 2008-2012. 
 
@@ -545,7 +545,7 @@ fisheries_tidy2 %>%
 ##  8 Loligo spp                      1293727
 ##  9 Loligo opalescens                477536
 ## 10 Loligo gahi                      317535
-## # <U+2026> with 25 more rows
+## # … with 25 more rows
 ```
 Dosidicus gigas had the highest catch total of 4211138 tons. 
 
@@ -573,7 +573,7 @@ fisheries_tidy2 %>%
 ##  8 Loligo vulgaris              398
 ##  9 Eledone cirrhosa             920
 ## 10 Loligo duvauceli            1843
-## # <U+2026> with 25 more rows
+## # … with 25 more rows
 ```
 The species with the lowest catch total is Todarodes filippovae with 1 ton (excluding fish with 0 tonnes) 
 
@@ -609,7 +609,7 @@ coastal_fish %>%
 ##  8 Un. Sov. Soc. Rep.                  41
 ##  9 Korea, Republic of                  40
 ## 10 Mexico                              39
-## # <U+2026> with 140 more rows
+## # … with 140 more rows
 ```
 The United States of America caught the most variety of coastal fish with Saudi Arabia coming in second. 
 

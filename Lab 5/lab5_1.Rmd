@@ -19,8 +19,8 @@ In the last section we practiced wrangling untidy data using `tidyr`. We also le
 
 ## Install `naniar` and `skimr`
 ```{r}
-install.packages("naniar")
-install.packages("skimr")
+#install.packages("naniar")
+#install.packages("skimr")
 ```
 
 ## Load the libraries

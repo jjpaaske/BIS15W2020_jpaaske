@@ -1,11 +1,11 @@
 ---
 title: "Lab 5 Homework"
-author: "Please Add Your Name Here"
-date: "Please Add the Date Here"
+author: "Joshua Paaske"
+date: "2/14/20"
 output:
-  html_document:
+  html_document: 
+    keep_md: yes
     theme: spacelab
-    toc: no
 ---
 
 ```{r setup, include=FALSE}
@@ -15,11 +15,17 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Instructions
 Answer the following questions and complete the exercises in RMarkdown. Please embed all of your code and push your final work to your repository. Your final lab report should be organized, clean, and run free from errors. Remember, you must remove the `#` for the included code chunks to run.  
 
+```{r}
+install.packages("anomalize")
+```
+
+
 ## Libraries
 ```{r}
 library(tidyverse)
 library(naniar)
 library(skimr)
+library(anomalize)
 ```
 
 ## Data
@@ -44,34 +50,150 @@ amphibio <-
 ```
 
 ## Questions  
-**1. First, do some exploratory analysis of both data sets. What is the structure, column names, and dimensions?**  
+**1. First, do some exploratory analysis of both data sets. What is the structure, column names, and dimensions?** 
 
+### amniota
+```{r}
+dim(amniota)
+
+colnames(amniota)
+
+glimpse(amniota)
+```
+
+### amphibio
+```{r}
+dim(amphibio)
+
+colnames(amphibio)
+
+glimpse(amphibio)
+```
 
 **2. How many total NAs are in each data set? Do these values make sense? Are NAs represented by any other values?**   
+```{r}
+amniotaNA <- amniota %>% 
+  summarize(number_nas_amniota = sum(is.na(amniota))) 
+amphibioNA <- amphibio %>% 
+  summarize(number_nas_amphibio = sum(is.na(amphibio)))
 
+totalNA <- merge(amphibioNA, amniotaNA)
+totalNA
+```
+Amniota should have NAs, and they are represented by -999 or -999.00
 
 **3. Make any necessary replacements in the data such that all NAs appear as "NA".**   
+```{r}
+amniota2 <- 
+  amniota %>% 
+  na_if("-999")
 
+glimpse(amniota2)
+```
 
 **4. Use the package `naniar` to produce a summary, including percentages, of missing data in each column for both data sets.**  
+```{r}
+naniar::miss_var_summary(amniota2)
 
+naniar::miss_var_summary(amphibio)
+```
 
 **5. For the `amniota` data, calculate the number of NAs in the `egg_mass_g` column sorted by taxonomic class; i.e. how many NAs are present in the `egg_mass_g` column in birds, mammals, and reptiles? Does this results make sense biologically? How do these results affect your interpretation of NAs?**  
+```{r}
+numberclassesamniota <- amniota2 %>% 
+  group_by(class) %>% 
+  summarize(count = n())
 
+numbernasamniota<- amniota2 %>% 
+  group_by(class) %>% 
+  summarize(number_nas_amphibio = sum(is.na(egg_mass_g)))
+  
+amniota5 <- merge(numbernasamniota, numberclassesamniota)
+amniota5
+```
+Obviously all of the mammals would be NAs because there are only 5 mammals that lay eggs at all. Weirdly enough, most of the reptiles and half of the aves are missing their egg masses. 
 
 **6. Which taxonomic classes are represented in the data? Summarize this in a chart then make a barplot that shows the proportion of observations in each taxonomic class.**
+```{r}
+amniota2 %>% 
+  group_by(class) %>% 
+  summarize(number_observations = n())
+```
 
+```{r}
+ggplot(data = amniota2, mapping = aes(x = class,)) +
+  geom_bar(stat = "count")
+```
 
 **7. Let's explore the taxonomic composition of the data a bit more. How many genera are represented by taxonomic class? Present this as a data table and bar plot.**
+```{r}
+amniota2 %>% 
+  group_by(class) %>% 
+  summarize(number_of_genera = n_distinct(genus))
+```
+
+```{r}
+amniota2 %>% 
+  group_by(class) %>% 
+  summarize(number_of_genera = n_distinct(genus)) %>% 
+  ggplot(aes(x = class, y = number_of_genera)) +
+  geom_bar(stat = "identity")
+```
 
 
 **8. Lastly, how many species are represented in each taxonomic class? Present this as a data table and bar plot.**
+```{r}
+amniota2 %>% 
+  group_by(class) %>% 
+  summarize(number_of_species = n_distinct(species))
+```
 
+```{r}
+amniota2 %>% 
+  group_by(class) %>% 
+  summarize(number_of_species = n_distinct(species)) %>% 
+  ggplot(aes(x = class, y = number_of_species)) +
+  geom_bar(stat = "identity")
+```
 
 **9. The `amphibio` data includes information on ecology. Each species is classified as fossorial, terrestrial, aquatic, or arboreal. How many species are in each of these categories? Make a bar plot to visualize these results. Which category is most/ least represented in the data?**
+```{r}
+amphibio2 <- amphibio %>% 
+  pivot_longer(Fos:Arb, 
+               names_to = "classification",
+               values_to = "count")
 
+amphibio2 %>% 
+  group_by(classification) %>% 
+  summarize(number_of_species = sum(count, na.rm = T)) %>% 
+  ggplot(aes(x = classification, y = number_of_species)) +
+  geom_bar(stat = "identity")
+```
+Ter is the most represented and Fos is the least represented. 
 
 **10. For the amphibio data, we are interested to know if body size is correlated with litter size? Make a plot that shows this relationship. You should notice that there are outliers. Can you think of a way to identify the outliers for both body size and litter size? What happens when you then re-plot the data?**
+```{r}
+amphibio3 <- amphibio2 %>% 
+  rowwise() %>% mutate(Avg_litter_size=mean(c(Litter_size_max_n, Litter_size_min_n), na.rm=T)) 
+  ggplot(data = amphibio3, mapping = aes(y = Body_size_mm, x = Avg_litter_size)) +
+  geom_jitter()
+```
+
+```{r}
+amphibio3 %>%
+  ggplot(aes(y = Body_size_mm)) +
+  geom_boxplot()
+
+amphibio3 %>%
+  ggplot(aes(y = Avg_litter_size)) +
+  geom_boxplot()
+```
+```{r}
+amphibio3 %>% 
+  filter(Body_size_mm <= 250 & Avg_litter_size <= 2500) %>% 
+  ggplot(aes(y = Body_size_mm, x = Avg_litter_size)) +
+  geom_jitter()
+```
 
 
 ## Push your final code to GitHub!

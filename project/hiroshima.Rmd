@@ -17,10 +17,12 @@ hiroshima_nagasaki <- read.fortran("r10cancrfix.dat",fstr)
 
 names(hiroshima_nagasaki) <-  c("city", "sex", "ageatb", "dose_centigray", "time", "index", "total_year", "alldeaths", "alldis", "allneo", "allmal", "leuk", "nonleuk", "digest", "esoph", "stomach", "colon", "rectum", "liver", "gallbldr", "pancreas", "othrdig", "resp", "lung", "fbreast", "fgenital", "cervix", "ovary", "prostate", "urinary", "lymphoma", "myeloma", "othrca")
 
-hiroshima_nagasaki %>% 
-  mutate_at(vars(city), ~str_replace_all(., "0", "H")) %>% 
-  mutate_at(vars(city), ~str_replace_all(., "1", "N")) %>% 
+hiroshima_nagasaki <- hiroshima_nagasaki %>% 
+  mutate_at(vars(city), ~str_replace_all(., "0", "Hiroshima")) %>% 
+  mutate_at(vars(city), ~str_replace_all(., "1", "Nagasaki")) %>% 
   mutate_at(vars(sex), ~str_replace_all(., "0", "M")) %>% 
   mutate_at(vars(sex), ~str_replace_all(., "1", "F"))
+
+hiroshima_nagasaki
 ```
 
