@@ -62,12 +62,43 @@ homerange %>%
 
 ## Practice
 1. There are more herbivores than carnivores in the homerange data, but how do their masses compare? Make a summary and boxplot that compares their masses. Use `log10.mass`.
+```{r}
+homerange %>% 
+  group_by(trophic.guild) %>% 
+  summarize(min_log10.mass=min(log10.mass),
+            max_log10.mass=max(log10.mass),
+            mean_log10.mass=mean(log10.mass),
+            median_log10.mass=median(log10.mass), 
+            n = n())
+```
 
+```{r}
+homerange %>% 
+  ggplot(aes(x = trophic.guild, y = log10.mass)) +
+  geom_boxplot()
+```
 
 2. Have a closer look at carnivorous mammals. Summarize and visualize the range of log10.mass by family.
+```{r}
+homerange %>%
+  filter(taxon == "mammals" & trophic.guild == "carnivore") %>% 
+  group_by(family) %>% 
+  summarize(min_log10.mass=min(log10.mass),
+            max_log10.mass=max(log10.mass),
+            mean_log10.mass=mean(log10.mass),
+            median_log10.mass=median(log10.mass),
+            n = n())
+```
 
 
 3. Now use a boxplot to visualize the range of body mass by family of carnivore.
+```{r}
+homerange %>% 
+  filter(taxon == "mammals" & trophic.guild == "carnivore") %>% 
+  ggplot(aes(x = family, y = log10.mass)) +
+  geom_boxplot()+
+  coord_flip()
+```
 
 
 ## Aesthetics: Labels
@@ -112,6 +143,16 @@ ggplot(data = homerange, mapping = aes(x = log10.mass, y = log10.hra)) +
 
 ## Practice
 1. Make a barplot that shows the number of individuals per locomotion type. Be sure to provide a title and label the axes appropriately.
+```{r}
+homerange %>% 
+  ggplot(aes(x = locomotion, fill = locomotion)) +
+  geom_bar() +
+  labs(title = "Number of Individuals by Locomotion Type",
+       x = "Locomotion Type",
+       y = "Number of Individuals")+ 
+  theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
+  
+```
 
 
 ## Other Aesthetics
@@ -147,9 +188,28 @@ homerange %>%
 
 ## Practice
 1. Make a barplot that shows counts of ectotherms and endotherms. Label the axes, provide a title, and fill by thermoregulation type.
+```{r}
+homerange %>% 
+  ggplot(aes(x = thermoregulation, fill = thermoregulation)) +
+  geom_bar(alpha = 0.8) +
+  labs(title = "Number of Indiduals by Thermoregulation Type",
+       x = "Thermoregulation Type",
+       y = NULL)+ 
+  theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
+  
+```
 
 
 2. Make a boxplot that compares thermoregulation type by log10.mass. Group and fill by class. Label the axes and provide a title.
+```{r}
+homerange %>% 
+  ggplot(aes(x = thermoregulation, y = log10.mass, fill = class)) +
+  geom_boxplot(alpha = 0.8) + 
+   labs(title = "Number of Indiduals by Thermoregulation Type and Class",
+       x = "Thermoregulation Type",
+       y = "Number of Individuals")+ 
+  theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
+```
 
 
 ## That's it, let's take a break!   

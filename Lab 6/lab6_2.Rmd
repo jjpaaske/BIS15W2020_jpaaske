@@ -103,7 +103,23 @@ homerange %>%
 
 ## Practice
 1. Make a barplot that shows locomotion type by `primarymethod`. Try both a stacked barplot and `position="dodge"`.
+```{r}
+homerange %>% 
+  ggplot(aes(x = locomotion, fill = primarymethod)) +
+  geom_bar() +
+  labs(title = "Observations by Locomotion in Homerange Data",
+       x = "Locomotion Type",
+       fill = "Primary Method of Observation")
+```
 
+```{r}
+homerange %>% 
+  ggplot(aes(x = locomotion, fill = primarymethod)) +
+  geom_bar(position = "dodge") +
+  labs(title = "Observations by Locomotion in Homerange Data",
+       x = "Locomotion Type",
+       fill = "Primary Method of Observation")
+```
 
 ## Histograms and Density Plots
 Histograms are frequently used by biologists; they show the distribution of continuous variables. As students, you almost certainly have seen histograms of grade distributions. Without getting into the statistics, a histogram `bins` the data and you specify the number of bins that encompass a range of observations. For something like grades, this is easy because the number of bins corresponds to the grades A-F. By default, R uses a formula to calculate the number of bins but some adjustment is often required.  
@@ -135,12 +151,31 @@ homerange %>%
 
 ## Practice
 1. Make a histogram of `log10.hra`. Make sure to add a title.
+```{r message=FALSE}
+homerange %>% 
+  ggplot(aes(x = log10.hra)) +
+  geom_histogram(alpha = 0.6, color = "black")+
+  labs(title = "Distribution of Homerange Size")
+```
 
 
 2. Now plot the same variable using `geom_density()`.
+```{r}
+homerange %>% 
+  ggplot(aes(x = log10.hra)) +
+  geom_density(fill="steelblue", alpha  =0.6, color = "black")+
+  labs(title = "Distribution of Homerange Size")
+```
 
 
 3. Combine them both!
+```{r}
+homerange %>% 
+  ggplot(aes(x=log10.hra)) +
+  geom_histogram(aes(y = ..density..), fill = "steelblue", alpha = 0.8, color = "black")+
+  geom_density(color = "red")+
+  labs(title = "Distribution of Homerange Size")
+```
 
 
 ## Create Categories with mutate and case_when()
@@ -158,18 +193,42 @@ homerange %>%
   ggplot(aes(x = mass_category, fill = trophic.guild)) +
   geom_bar() +
   coord_flip() +
-  labs(title = "Observations by Taxon and Mass Category in Homerange Data",
+  labs(title = "Observations by Trophic Guild and Mass Category in Homerange Data",
        x = "Mass Category",
        fill = "Trophic Guild")
 ```
 
 ## Practice
 1. Use case_when() to make a new column `range_category` that breaks down `log10.hra` into very small, small, medium, and large classes based on quartile.
+```{r}
+summary(homerange)
+```
+
+```{r}
+homerange <- homerange %>% 
+             mutate(range_category = case_when(log10.hra <= 3.653 ~ "very small",
+                                              log10.hra > 3.653 & log10.hra <= 4.595 ~ "small",
+                                              log10.hra > 4.595 & log10.hra <= 6.016 ~ "medium", 
+                                              log10.hra <= 9.550 ~ "large"))
+```
 
 2. How many and which taxonomic classes are represented in each of the `range_category` classes?
-
+```{r}
+homerange %>% 
+  ggplot(aes(x = range_category, fill = taxon)) +
+  geom_bar(position = "dodge") +
+  labs(title = "Observations by Taxon and Range Category in Homerange Data",
+       x = "Mass Category",
+       fill = "Trophic Guild")
+```
 
 3. Isolate the small `range_category` and plot the range of `log10.mass` by taxonomic class.
+```{r}
+homerange %>% 
+  filter(range_category == "small") %>% 
+  ggplot(aes(x = taxon, y = log10.mass))+
+  geom_bar()
+```
 
 ## Faceting: `facet_wrap()`
 Faceting is one of the most amazing features of ggplot. It allows you to make multi-panel plots for easy comparison. Here, I am making histograms of log10.mass for every taxon. We read the `~` in the `facet_wrap()` layer as `by`.
