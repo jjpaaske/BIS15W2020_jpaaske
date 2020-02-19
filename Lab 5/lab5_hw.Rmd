@@ -190,7 +190,7 @@ amphibio3 %>%
 ```
 ```{r}
 amphibio3 %>% 
-  filter(Body_size_mm <= 250 & Avg_litter_size <= 2500) %>% 
+  filter(Body_size_mm <= 500 & Avg_litter_size <= 7500) %>% 
   ggplot(aes(y = Body_size_mm, x = Avg_litter_size)) +
   geom_jitter()
 ```
