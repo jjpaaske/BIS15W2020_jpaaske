@@ -73,3 +73,13 @@ tidy_hiroshima_nagasaki %>%
   theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
 ```
 
+```{r}
+tidy_hiroshima_nagasaki %>% 
+  ggplot(aes(x = ageatb, y = alldeaths)) + 
+  geom_jitter() +
+  labs(title = "Number of Cancer Deaths by Age at Exposure",
+       x = "Age at Exposure",
+       y = "Number of Deaths")+ 
+  theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
+```
+
