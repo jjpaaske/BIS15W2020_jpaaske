@@ -11,6 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ```
 
+##Opening file with Fortran format and cleaning up column names
 ```{r}
 fstr <- c("2I3","I4","F7.1","I5","I4","F10.2","26I4")
 hiroshima_nagasaki <- read.fortran("r10cancrfix.dat",fstr)
@@ -21,8 +22,44 @@ hiroshima_nagasaki <- hiroshima_nagasaki %>%
   mutate_at(vars(city), ~str_replace_all(., "0", "Hiroshima")) %>% 
   mutate_at(vars(city), ~str_replace_all(., "1", "Nagasaki")) %>% 
   mutate_at(vars(sex), ~str_replace_all(., "0", "M")) %>% 
-  mutate_at(vars(sex), ~str_replace_all(., "1", "F"))
+  mutate_at(vars(sex), ~str_replace_all(., "1", "F")) %>% 
+  rowid_to_column(var='observation')
 
 hiroshima_nagasaki
+```
+
+#Tidying Data
+```{r}
+tidy_hiroshima_nagasaki <- hiroshima_nagasaki %>% 
+  pivot_longer(-c(observation, city, sex, ageatb, dose_centigray, time, index, total_year, alldeaths),
+               names_to = "type_death",
+               values_to = "number_death")
+
+tidy_hiroshima_nagasaki
+```
+
+
+```{r}
+tidy_hiroshima_nagasaki %>% 
+  filter(type_death != "alldis") %>% 
+  group_by(type_death) %>% 
+  ggplot(aes(x = type_death, y = number_death, fill = sex)) + 
+  geom_bar(stat = "identity") +
+  labs(title = "Number of Cancer Deaths by Type",
+       x = "Cancer Type",
+       y = "Number of Deaths")+ 
+  theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))+
+  coord_flip()
+```
+
+```{r}
+tidy_hiroshima_nagasaki %>% 
+  group_by(sex) %>% 
+  ggplot(aes(x = sex, y = alldeaths)) + 
+  geom_bar(stat = "identity") +
+  labs(title = "Number of Cancer Deaths by Sex",
+       x = "Sex",
+       y = "Number of Deaths")+ 
+  theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
 ```
 
