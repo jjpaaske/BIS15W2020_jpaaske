@@ -67,7 +67,7 @@ tidy_hiroshima_nagasaki %>%
 ```{r}
 tidy_hiroshima_nagasaki %>% 
   ggplot(aes(x = dose_centigray, y = alldeaths)) + 
-  geom_bar(stat = "identity") +
+  geom_jitter() +
   labs(title = "Number of Cancer Deaths by Dose",
        x = "Dose in Centigray",
        y = "Number of Deaths")+ 
@@ -76,7 +76,7 @@ tidy_hiroshima_nagasaki %>%
 
 ```{r}
 tidy_hiroshima_nagasaki %>% 
-  ggplot(aes(x = ageatb, y = alldeaths)) + 
+  ggplot(aes(x = ageatb, y = alldeaths, fill = sex)) + 
   geom_bar(stat = "identity") +
   labs(title = "Number of Cancer Deaths by Age at Exposure",
        x = "Age at Exposure",
