@@ -135,7 +135,7 @@ gapminder %>%
 **4. Your answer above doesn't tell the whole story since life expectancy varies by region. Make a summary that shows the min, mean, and max life expectancy by continent for all years represented in the data.**
 
 ```r
-gapminder %>% 
+gapminder2 <- gapminder %>% 
   group_by(continent) %>% 
   summarize(min_lifeExp=min(lifeExp),
             max_lifeExp=max(lifeExp),
@@ -143,24 +143,13 @@ gapminder %>%
   arrange(mean_lifeExp)
 ```
 
-```
-## # A tibble: 5 x 4
-##   continent min_lifeExp max_lifeExp mean_lifeExp
-##   <fct>           <dbl>       <dbl>        <dbl>
-## 1 Africa           23.6        76.4         48.9
-## 2 Asia             28.8        82.6         60.1
-## 3 Americas         37.6        80.7         64.7
-## 4 Europe           43.6        81.8         71.9
-## 5 Oceania          69.1        81.2         74.3
-```
-
 **5. How has life expectancy changed between 1952-2007 for each continent? Try using `geom_line()` for this, including all continents on the same  plot.**
 
 ```r
 gapminder %>% 
-  filter(year <= 2007 & year >= 1952) %>% 
-  group_by(continent) %>% 
-  ggplot(aes(x = year, y = lifeExp, color = continent)) + 
+  group_by(year, continent) %>% 
+  summarize(mean = mean(lifeExp)) %>% 
+  ggplot(aes(x = year, y = mean, group = continent, color = continent)) + 
   geom_line()+
   labs(title = "Global life Expectancy between 1952 and 2007",
        x = "Year",
@@ -230,7 +219,7 @@ gapminder %>%
 ##  8 Nigeria          33119096  135031164 101912068
 ##  9 Mexico           30144317  108700891  78556574
 ## 10 Philippines      22438691   91077287  68638596
-## # … with 132 more rows
+## # <U+2026> with 132 more rows
 ```
 
 China and India had the largest population growth since 1952
