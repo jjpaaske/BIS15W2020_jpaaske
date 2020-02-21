@@ -80,7 +80,7 @@ gapminder %>%
 
 **4. Your answer above doesn't tell the whole story since life expectancy varies by region. Make a summary that shows the min, mean, and max life expectancy by continent for all years represented in the data.**
 ```{r}
-gapminder %>% 
+gapminder2 <- gapminder %>% 
   group_by(continent) %>% 
   summarize(min_lifeExp=min(lifeExp),
             max_lifeExp=max(lifeExp),
@@ -90,11 +90,12 @@ gapminder %>%
 
 **5. How has life expectancy changed between 1952-2007 for each continent? Try using `geom_line()` for this, including all continents on the same  plot.**
 ```{r}
-gapminder %>% 
-  filter(year <= 2007 & year >= 1952) %>% 
+gapminder2 <- gapminder %>% 
   group_by(continent) %>% 
   ggplot(aes(x = year, y = lifeExp, color = continent)) + 
   geom_line()+
+  scale_x_continuous(breaks = seq(1950, 2010, by = 5), limits = c(1950,2010))+
+  scale_y_continuous(breaks= seq(30,85, by=10), limits = c(30,85))+
   labs(title = "Global life Expectancy between 1952 and 2007",
        x = "Year",
        y = "Global Life Expectancy")+ 
