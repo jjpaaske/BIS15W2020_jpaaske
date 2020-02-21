@@ -9,6 +9,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 library(tidyverse)
+library(dplyr)
+library(ggplot2)
+```
+
+
+```{r}
+options(scipen=999)
 ```
 
 ##Opening file with Fortran format and cleaning up column names
@@ -24,7 +31,10 @@ hiroshima_nagasaki <- hiroshima_nagasaki %>%
   mutate_at(vars(sex), ~str_replace_all(., "0", "M")) %>% 
   mutate_at(vars(sex), ~str_replace_all(., "1", "F")) %>%
   mutate_at(vars(time), ~paste0("19", .)) %>% 
-  rowid_to_column(var='observation')
+  rowid_to_column(var='observation') %>% 
+  mutate_at(vars(dose_centigray), as.factor) %>% 
+mutate_at(vars(ageatb), as.factor)
+
 
 hiroshima_nagasaki
 ```
@@ -55,8 +65,9 @@ tidy_hiroshima_nagasaki %>%
 
 ```{r}
 tidy_hiroshima_nagasaki %>% 
-  group_by(sex) %>% 
-  ggplot(aes(x = sex, y = alldeaths)) + 
+  group_by(sex, city) %>% 
+  summarise(sum = sum(alldeaths)) %>% 
+  ggplot(aes(x = sex, y = sum, fill = city)) + 
   geom_bar(stat = "identity") +
   labs(title = "Number of Cancer Deaths by Sex",
        x = "Sex",
@@ -66,8 +77,16 @@ tidy_hiroshima_nagasaki %>%
 
 ```{r}
 tidy_hiroshima_nagasaki %>% 
-  ggplot(aes(x = dose_centigray, y = alldeaths)) + 
-  geom_jitter() +
+  select(dose_centigray, alldeaths)
+```
+
+
+```{r}
+tidy_hiroshima_nagasaki %>% 
+  group_by(dose_centigray, sex) %>% 
+  summarise(sum = sum(alldeaths)) %>% 
+  ggplot(aes(x = dose_centigray, y = sum, fill = sex)) + 
+  geom_bar(stat = "identity") +
   labs(title = "Number of Cancer Deaths by Dose",
        x = "Dose in Centigray",
        y = "Number of Deaths")+ 
@@ -76,7 +95,9 @@ tidy_hiroshima_nagasaki %>%
 
 ```{r}
 tidy_hiroshima_nagasaki %>% 
-  ggplot(aes(x = ageatb, y = alldeaths, fill = sex)) + 
+  group_by(sex, ageatb) %>% 
+  summarise(sum = sum(alldeaths)) %>% 
+  ggplot(aes(x = ageatb, y = sum, fill = sex)) + 
   geom_bar(stat = "identity") +
   labs(title = "Number of Cancer Deaths by Age at Exposure",
        x = "Age at Exposure",
@@ -87,7 +108,9 @@ tidy_hiroshima_nagasaki %>%
 
 ```{r}
 tidy_hiroshima_nagasaki %>% 
-  ggplot(aes(x = time, y = alldeaths, fill = sex)) + 
+  group_by(sex, time) %>% 
+  summarise(sum = sum(alldeaths)) %>% 
+  ggplot(aes(x = time, y = sum, fill = sex)) + 
   geom_bar(stat = "identity") +
   labs(title = "Number of Cancer Deaths by Year of Death",
        x = "Year",
@@ -97,8 +120,12 @@ tidy_hiroshima_nagasaki %>%
 
 ```{r}
 tidy_hiroshima_nagasaki %>% 
-  group_by(city) %>% 
-  ggplot(aes(x=city, y = alldeaths, fill = sex))+geom_bar(stat="identity")+labs(title = "Death by City", x= "City", y= "Deaths")
+  group_by(sex, city) %>% 
+  summarise(sum = sum(alldeaths)) %>% 
+  ggplot(aes(x=city, y = sum, fill = sex))+
+  geom_bar(stat="identity")+
+  labs(title = "Death by City", x= "City", y= "Deaths")+
+  theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
 ```
 
 lol this one is useless
