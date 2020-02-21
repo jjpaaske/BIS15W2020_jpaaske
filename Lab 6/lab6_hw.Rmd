@@ -93,7 +93,7 @@ gapminder %>%
 gapminder %>% 
   group_by(year, continent) %>% 
   summarize(mean = mean(lifeExp)) %>% 
-  ggplot(aes(x = year, y = mean, group = continent, color = continent)) + 
+  ggplot(aes(x = year, y = mean, color = continent)) + 
   geom_line()+
   labs(title = "Global life Expectancy between 1952 and 2007",
        x = "Year",
@@ -105,7 +105,7 @@ gapminder %>%
 **6. We are interested in the relationship between per capita GDP and life expectancy; i.e. does having more money help you live longer?**
 ```{r}
 gapminder %>% 
-  ggplot(aes(x = gdpPercap, y = lifeExp)) + 
+  ggplot(aes(x = gdpPercap, y = lifeExp, color = continent)) + 
   geom_jitter()+
   labs(title = "GDP per capita vs. Life Expectancy",
        x = "GDP Per Capita",
@@ -118,7 +118,7 @@ It is hard to tell if there is a relationship or not.
 **7. There is extreme disparity in per capita GDP. Rescale the x axis to make this easier to interpret. How would you characterize the relationship?**
 ```{r}
 gapminder %>% 
-  ggplot(aes(x = gdpPercap, y = lifeExp)) + 
+  ggplot(aes(x = gdpPercap, y = lifeExp, color = continent)) + 
   geom_jitter()+
   scale_x_log10() +
   labs(title = "GDP per capita vs. Life Expectancy",
@@ -149,7 +149,7 @@ China and India had the largest population growth since 1952
 gapminder %>% 
   filter(country == "China" | country == "India" | country == "United States" | country == "Indonesia" | country == "Brazil" ) %>% 
   ggplot(aes(x = year, y = pop, color = country)) +
-  geom_jitter() +
+  geom_line() +
   labs(title = "Population of the countries with the largest growth since 1952",
        x = "Year",
        y = "Population")+ 
@@ -163,7 +163,7 @@ gapminder %>%
 gapminder %>% 
   filter(country == "China" | country == "India" | country == "United States" | country == "Indonesia" | country == "Brazil" ) %>% 
   ggplot(aes(x = year, y = gdpPercap, color = country)) +
-  geom_jitter() +
+  geom_line() +
   labs(title = "Gdp per capita of countries with the largest growth since 1952",
        x = "Year",
        y = "GDP Per Capita")+ 

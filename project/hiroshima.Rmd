@@ -75,11 +75,6 @@ tidy_hiroshima_nagasaki %>%
   theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
 ```
 
-```{r}
-tidy_hiroshima_nagasaki %>% 
-  select(dose_centigray, alldeaths)
-```
-
 
 ```{r}
 tidy_hiroshima_nagasaki %>% 
@@ -135,4 +130,5 @@ tidy_hiroshima_nagasaki %>%
   group_by(type_death) %>%
   ggplot(aes(x=type_death, y = ageatb, fill = sex))+geom_jitter()+coord_flip()
 ```
+
 
