@@ -47,10 +47,11 @@ naniar::miss_var_summary(gapminder)
 
 There are no NAs in the data. 
 
+
+
 **2. Among the interesting variables in gapminder is life expectancy. How has global life expectancy changed between 1952 and 2007?**
 ```{r}
 gapminder %>% 
-  filter(year <= 2007 & year >= 1952) %>% 
   group_by(year) %>% 
   summarize(global_lifeExp = sum(lifeExp)) %>% 
   ggplot(aes(x = year, y = global_lifeExp)) +
@@ -66,7 +67,6 @@ Life expectancy increases as time goes on.
 **3. How do the distributions of life expectancy compare for the years 1952 and 2007? _Challenge: Can you put both distributions on a single plot?_**
 ```{r}
 gapminder %>% 
-  filter(year == "2007" | year == "1952") %>% 
   mutate_at(vars(year), as.factor) %>% 
   group_by(year) %>% 
   ggplot(aes(x = year, y = lifeExp)) + 
@@ -80,7 +80,7 @@ gapminder %>%
 
 **4. Your answer above doesn't tell the whole story since life expectancy varies by region. Make a summary that shows the min, mean, and max life expectancy by continent for all years represented in the data.**
 ```{r}
-gapminder2 <- gapminder %>% 
+gapminder %>% 
   group_by(continent) %>% 
   summarize(min_lifeExp=min(lifeExp),
             max_lifeExp=max(lifeExp),
@@ -132,7 +132,6 @@ With GDP Per Capita scaled to log values, it is clear that GDP per capita does i
 **8. Which countries have had the largest population growth since 1952?**
 ```{r}
 gapminder %>% 
-  filter(year >= 1952) %>% 
   group_by(country) %>% 
   summarize(initial_pop= first(pop),
             max_pop=max(pop)) %>% 
