@@ -47,10 +47,11 @@ naniar::miss_var_summary(gapminder)
 
 There are no NAs in the data. 
 
+
+
 **2. Among the interesting variables in gapminder is life expectancy. How has global life expectancy changed between 1952 and 2007?**
 ```{r}
 gapminder %>% 
-  filter(year <= 2007 & year >= 1952) %>% 
   group_by(year) %>% 
   summarize(global_lifeExp = sum(lifeExp)) %>% 
   ggplot(aes(x = year, y = global_lifeExp)) +
@@ -66,7 +67,6 @@ Life expectancy increases as time goes on.
 **3. How do the distributions of life expectancy compare for the years 1952 and 2007? _Challenge: Can you put both distributions on a single plot?_**
 ```{r}
 gapminder %>% 
-  filter(year == "2007" | year == "1952") %>% 
   mutate_at(vars(year), as.factor) %>% 
   group_by(year) %>% 
   ggplot(aes(x = year, y = lifeExp)) + 
@@ -91,9 +91,9 @@ gapminder %>%
 **5. How has life expectancy changed between 1952-2007 for each continent? Try using `geom_line()` for this, including all continents on the same  plot.**
 ```{r}
 gapminder %>% 
-  filter(year <= 2007 & year >= 1952) %>% 
-  group_by(continent) %>% 
-  ggplot(aes(x = year, y = lifeExp, color = continent)) + 
+  group_by(year, continent) %>% 
+  summarize(mean = mean(lifeExp)) %>% 
+  ggplot(aes(x = year, y = mean, color = continent)) + 
   geom_line()+
   labs(title = "Global life Expectancy between 1952 and 2007",
        x = "Year",
@@ -105,7 +105,7 @@ gapminder %>%
 **6. We are interested in the relationship between per capita GDP and life expectancy; i.e. does having more money help you live longer?**
 ```{r}
 gapminder %>% 
-  ggplot(aes(x = gdpPercap, y = lifeExp)) + 
+  ggplot(aes(x = gdpPercap, y = lifeExp, color = continent)) + 
   geom_jitter()+
   labs(title = "GDP per capita vs. Life Expectancy",
        x = "GDP Per Capita",
@@ -118,7 +118,7 @@ It is hard to tell if there is a relationship or not.
 **7. There is extreme disparity in per capita GDP. Rescale the x axis to make this easier to interpret. How would you characterize the relationship?**
 ```{r}
 gapminder %>% 
-  ggplot(aes(x = gdpPercap, y = lifeExp)) + 
+  ggplot(aes(x = gdpPercap, y = lifeExp, color = continent)) + 
   geom_jitter()+
   scale_x_log10() +
   labs(title = "GDP per capita vs. Life Expectancy",
@@ -132,7 +132,6 @@ With GDP Per Capita scaled to log values, it is clear that GDP per capita does i
 **8. Which countries have had the largest population growth since 1952?**
 ```{r}
 gapminder %>% 
-  filter(year >= 1952) %>% 
   group_by(country) %>% 
   summarize(initial_pop= first(pop),
             max_pop=max(pop)) %>% 
@@ -150,7 +149,7 @@ China and India had the largest population growth since 1952
 gapminder %>% 
   filter(country == "China" | country == "India" | country == "United States" | country == "Indonesia" | country == "Brazil" ) %>% 
   ggplot(aes(x = year, y = pop, color = country)) +
-  geom_jitter() +
+  geom_line() +
   labs(title = "Population of the countries with the largest growth since 1952",
        x = "Year",
        y = "Population")+ 
@@ -164,7 +163,7 @@ gapminder %>%
 gapminder %>% 
   filter(country == "China" | country == "India" | country == "United States" | country == "Indonesia" | country == "Brazil" ) %>% 
   ggplot(aes(x = year, y = gdpPercap, color = country)) +
-  geom_jitter() +
+  geom_line() +
   labs(title = "Gdp per capita of countries with the largest growth since 1952",
        x = "Year",
        y = "GDP Per Capita")+ 
