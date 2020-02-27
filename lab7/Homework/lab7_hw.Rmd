@@ -1,0 +1,97 @@
+---
+title: "Lab 7 Homework"
+author: "Joshua Paaske"
+date: "`r Sys.Date()`"
+output:
+  html_document: 
+    keep_md: yes
+    theme: spacelab
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Instructions
+Answer the following questions and complete the exercises in RMarkdown. Please embed all of your code and push your final work to your repository. Your final lab report should be organized, clean, and run free from errors. Remember, you must remove the `#` for any included code chunks to run.  
+
+```{r}
+options(scipen=999)
+```
+
+## Libraries
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(shiny)
+library(shinydashboard)
+```
+
+
+## Data
+The data for this assignment come from the [University of California Information Center](https://www.universityofcalifornia.edu/infocenter). Admissions data were collected for the years 2010-2019 for each UC campus. Admissions are broken down into three categories: applications, admits, and enrollees. The number of individuals in each category are presented by demographic.  
+```{r}
+UC_admit <- readr::read_csv("data/UC_admit.csv") %>% 
+  mutate_at(vars(Ethnicity), as.factor) %>% 
+  mutate_at(vars(Academic_Yr), as.factor)
+```
+
+**1. Use the function(s) of your choice to get an idea of the overall structure of the data frame, including its dimensions, column names, variable classes, etc. As part of this, determine if there are NA's and how they are treated.**  
+```{r}
+names(UC_admit)
+dim(UC_admit)
+glimpse(UC_admit)
+```
+
+```{r}
+naniar::miss_var_summary(UC_admit)
+```
+
+**2. The president of UC has asked you to build a shiny app that shows admissions by ethnicity across all UC campuses. Your app should allow users to explore year, campus, and admit category as interactive variables. Use shiny dashboard and try to incorporate the aesthetics you have learned in ggplot to make the app neat and clean.**
+```{r}
+ui <- dashboardPage(
+  dashboardHeader(title = "Plot UC App"),
+  dashboardSidebar(),
+  dashboardBody(
+    selectInput("x", "Select Fill", choices = c("Campus", "Academic_Yr", "Category"), 
+                selected = "Campus"),
+    radioButtons("y", "Would you like a stacked or clustered bar graph?", choices = c("Stacked", "Clustered"), 
+                 selected = "Stacked"),
+    plotOutput("plot", width = "500px", height = "400px"))
+)
+
+server <- function(input, output, session) { 
+  # the code to make the plot of UC data with fill as the choice.
+  output$plot <- renderPlot({
+    if(input$y=="Stacked"){
+      UC_admit %>% 
+        ggplot(aes_string(x = "Ethnicity", y = "FilteredCountFR", fill = input$x))+ theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
+                                                                                            element_text(size  = 10,
+                                                                                                         angle = 45,
+                                                                                                         hjust = 1,
+                                                                                                         vjust = 1)) + geom_bar(stat = "identity") + labs(title = "Admittance by Ethnicity", x = "Ethnicity",
+                                                                                                                                                          y = "Filtered Count FR") 
+    }
+    
+    else{
+      UC_admit %>% 
+        ggplot(aes_string(x = "Ethnicity", y = "FilteredCountFR", fill = input$x))+theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
+                                                                                           element_text(size  = 10,
+                                                                                                        angle = 45,
+                                                                                                        hjust = 1,
+                                                                                                        vjust = 1)) + geom_bar(stat = "identity", position = "dodge") + labs(title = "Admittance by Ethnicity", x = "Ethnicity",
+                                                                                                                                                         y = "Filtered Count FR") 
+    }
+  })
+  
+  # stop the app when we close it
+  session$onSessionEnded(stopApp)
+  
+}
+
+shinyApp(ui, server)
+```
+
+
+## Push your final code to GitHub!
+Please be sure that you check the `keep md` file in the knit preferences. 

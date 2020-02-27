@@ -451,22 +451,33 @@ library(shinydashboard)</code></pre>
   dashboardBody(
   selectInput(&quot;x&quot;, &quot;Select Fill&quot;, choices = c(&quot;Campus&quot;, &quot;Academic_Yr&quot;, &quot;Category&quot;), 
               selected = &quot;Campus&quot;),
+  radioButtons(&quot;y&quot;, &quot;Would you like a stacked or clustered bar graph?&quot;, choices = c(&quot;Stacked&quot;, &quot;Clustered&quot;), 
+              selected = &quot;Stacked&quot;),
   plotOutput(&quot;plot&quot;, width = &quot;500px&quot;, height = &quot;400px&quot;))
 )
 
 server &lt;- function(input, output, session) { 
-  
   # the code to make the plot of UC data with fill as the choice.
   output$plot &lt;- renderPlot({
+  if(input$y==&quot;Stacked&quot;){
     UC_admit %&gt;% 
-      group_by(Ethnicity, Academic_Yr, Campus, Category) %&gt;% 
-      summarise(sum = sum(FilteredCountFR)) %&gt;% 
-      ggplot(aes_string(x = &quot;Ethnicity&quot;, y = &quot;sum&quot;, fill = input$x))+ theme(axis.text.x =
+      ggplot(aes_string(x = &quot;Ethnicity&quot;, y = &quot;FilteredCountFR&quot;, fill = input$x))+ theme(axis.text.x =
                    element_text(size  = 10,
                                 angle = 45,
                                 hjust = 1,
-                                vjust = 1)) + geom_bar(stat = &quot;identity&quot;) + labs(x = &quot;Ethnicity&quot;,
+                                vjust = 1)) + geom_bar(stat = &quot;identity&quot;) + labs(x = &quot;Academic Year&quot;,
        y = &quot;Filtered Count FR&quot;) 
+  }
+    
+  else{
+     UC_admit %&gt;% 
+      ggplot(aes_string(x = &quot;Ethnicity&quot;, y = &quot;FilteredCountFR&quot;, fill = input$x))+ theme(axis.text.x =
+                   element_text(size  = 10,
+                                angle = 45,
+                                hjust = 1,
+                                vjust = 1)) + geom_bar(stat = &quot;identity&quot;, position = &quot;dodge&quot;) + labs(x = &quot;Academic Year&quot;,
+       y = &quot;Filtered Count FR&quot;) 
+  }
   })
   
   # stop the app when we close it
