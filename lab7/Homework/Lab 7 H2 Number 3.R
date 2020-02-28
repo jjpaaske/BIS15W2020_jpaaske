@@ -7,6 +7,9 @@ library("shiny")
 if (!require("shinydashboard")) install.packages('shinydashboard')
 library("shinydashboard")
 
+if(!require("ggplot2")) install.packages('ggplot2')
+library("ggplot2")
+
 options(scipen=999)
 
 UC_admit <- readr::read_csv("data/UC_admit.csv") %>% 
