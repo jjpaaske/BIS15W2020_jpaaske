@@ -40,7 +40,7 @@ server <- function(input, output, session) {
                                                                                               element_text(size  = 10,
                                                                                                            angle = 45,
                                                                                                            hjust = 1,
-                                                                                                           vjust = 1)) + geom_bar(stat = "identity", fill = "steelblue") + labs(title = "Applicants by Academic Year", x = "Academic Year",
+                                                                                                           vjust = 1)) + geom_bar(stat = "identity", fill = "steelblue") + labs(title = "UC Admissions by Academic Year", x = "Academic Year",
                                                                                                                                                             y = "Filtered Count FR") 
    
   
