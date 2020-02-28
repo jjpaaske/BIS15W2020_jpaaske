@@ -20,8 +20,7 @@ ui <- dashboardPage(
   dashboardHeader(title = "Plot UC App"),
   dashboardSidebar(radioButtons("x", "Select Campus", choices = c("Berkeley", "Merced", "Davis", "Irvine", "Los_Angeles", "Riverside", "San_Diego", "Santa_Barbara", "Santa_Cruz"), 
                                 selected = "Davis"),
-                   radioButtons("y", "What would group would you like to view?", choices = c("Applicants", "Admits", "Enrollees"), 
-                                selected = "Admits"),
+                   radioButtons("y", "What would group would you like to view?", choices = c("Applicants", "Admits", "Enrollees")),
                    radioButtons("z", "Select Ethnicity", choices = unique(UC_admit$Ethnicity))),
   dashboardBody(
     

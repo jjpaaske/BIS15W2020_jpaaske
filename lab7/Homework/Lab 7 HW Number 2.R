@@ -35,6 +35,7 @@ server <- function(input, output, session) {
         filter(Campus == input$x) %>% 
         filter(Category == input$y) %>% 
         filter(Academic_Yr == input$z) %>% 
+        filter(Ethnicity != "All") %>% 
         ggplot(aes_string(x = "Ethnicity", y = "FilteredCountFR"))+ theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
                                                                                             element_text(size  = 10,
                                                                                                          angle = 45,
@@ -45,19 +46,7 @@ server <- function(input, output, session) {
   })
   
   
-  output$plot <- renderPlot({
-    UC_admit %>% 
-      filter(Category == input$y) %>% 
-      filter(Academic_Yr == input$z) %>% 
-      filter(Ethnicity != "All") %>% 
-      ggplot(aes_string(x = "Ethnicity", y = "FilteredCountFR"))+ theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
-                                                                          element_text(size  = 10,
-                                                                                       angle = 45,
-                                                                                       hjust = 1,
-                                                                                       vjust = 1)) + geom_bar(stat = "identity", fill = "steelblue") + labs(title = "Applicants by Ethnicity", x = "Ethnicity",
-                                                                                                                                                            y = "Filtered Count FR") 
-    
-  })
+  
   # stop the app when we close it
   session$onSessionEnded(stopApp)
   
