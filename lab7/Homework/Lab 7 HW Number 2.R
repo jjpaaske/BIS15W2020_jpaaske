@@ -23,6 +23,7 @@ ui <- dashboardPage(
                  selected = "Stacked"),
     radioButtons("y", "What would group would you like to view?", choices = c("Applicants", "Admits", "Enrollees"), 
                  selected = "Admits"),
+    helpText("Reference: University of California Information Center"),
     plotOutput("plot", width = "500px", height = "400px"))
 )
 

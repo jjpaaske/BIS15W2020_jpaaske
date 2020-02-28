@@ -59,6 +59,7 @@ ui <- dashboardPage(
                  selected = "Stacked"),
     radioButtons("y", "What would group would you like to view?", choices = c("Applicants", "Admits", "Enrollees"), 
                  selected = "Admits"),
+     helpText("Reference: University of California Information Center"),
     plotOutput("plot", width = "500px", height = "400px"))
 )
 
@@ -155,6 +156,7 @@ ui <- dashboardPage(
                  selected = "Admits"),
     radioButtons("z", "Would you like a stacked bar graph or clustered bar graph?", choices = c("Stacked", "Clustered"), 
                  selected = "Stacked"),
+    helpText("Reference: University of California Information Center"),
     plotOutput("plot", width = "500px", height = "400px"))
 )
 
@@ -244,6 +246,9 @@ server <- function(input, output, session) {
 
 shinyApp(ui, server)
 ```
+
+
+
 
 
 ## Push your final code to GitHub!
