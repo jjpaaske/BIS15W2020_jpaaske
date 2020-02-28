@@ -1,7 +1,7 @@
 ---
 title: "Lab 7 Homework"
 author: "Joshua Paaske"
-date: "2020-02-26"
+date: "2020-02-27"
 output:
   html_document: 
     keep_md: yes
@@ -10,8 +10,14 @@ output:
 
 
 
+
 ## Instructions
 Answer the following questions and complete the exercises in RMarkdown. Please embed all of your code and push your final work to your repository. Your final lab report should be organized, clean, and run free from errors. Remember, you must remove the `#` for any included code chunks to run.  
+
+
+```r
+options(scipen=999)
+```
 
 ## Libraries
 
@@ -101,47 +107,59 @@ ui <- dashboardPage(
   dashboardHeader(title = "Plot UC App"),
   dashboardSidebar(),
   dashboardBody(
-  selectInput("x", "Select Fill", choices = c("Campus", "Academic_Yr", "Category"), 
-              selected = "Campus"),
-  radioButtons("y", "Would you like a stacked or clustered bar graph?", choices = c("Stacked", "Clustered"), 
-              selected = "Stacked"),
-  plotOutput("plot", width = "500px", height = "400px"))
+    selectInput("x", "Select Fill", choices = c("Campus", "Academic_Yr"), 
+                selected = "Campus"),
+    radioButtons("y", "What would group would you like to view?", choices = c("Applicants", "Admits", "Enrollees"), 
+                 selected = "Admits"),
+    plotOutput("plot", width = "500px", height = "400px"))
 )
 
 server <- function(input, output, session) { 
   # the code to make the plot of UC data with fill as the choice.
   output$plot <- renderPlot({
-  if(input$y=="Stacked"){
-    UC_admit %>% 
-      ggplot(aes_string(x = "Ethnicity", y = "FilteredCountFR", fill = input$x))+ theme(axis.text.x =
-                   element_text(size  = 10,
-                                angle = 45,
-                                hjust = 1,
-                                vjust = 1)) + geom_bar(stat = "identity") + labs(x = "Academic Year",
-       y = "Filtered Count FR") 
-  }
+    if(input$y=="Applicants"){
+      UC_admit %>% 
+        filter(Category == "Applicants") %>% 
+        ggplot(aes_string(x = "Ethnicity", y = "FilteredCountFR", fill = input$x))+ theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
+                                                                                            element_text(size  = 10,
+                                                                                                         angle = 45,
+                                                                                                         hjust = 1,
+                                                                                                         vjust = 1)) + geom_bar(stat = "identity") + labs(title = "Applicants by Ethnicity", x = "Ethnicity",
+                                                                                                                                                          y = "Filtered Count FR") 
+    }
+  
+    else if(input$y == "Enrollees"){
+      UC_admit %>% 
+        filter(Category == "Enrollees") %>% 
+        ggplot(aes_string(x = "Ethnicity", y = "FilteredCountFR", fill = input$x))+theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
+                                                                                           element_text(size  = 10,
+                                                                                                        angle = 45,
+                                                                                                        hjust = 1,
+                                                                                                        vjust = 1)) + geom_bar(stat = "identity") + labs(title = "Enrollees by Ethnicity", x = "Ethnicity",
+                                                                                                                                                         y = "Filtered Count FR") 
+    }
     
-  else{
-     UC_admit %>% 
-      ggplot(aes_string(x = "Ethnicity", y = "FilteredCountFR", fill = input$x))+ theme(axis.text.x =
-                   element_text(size  = 10,
-                                angle = 45,
-                                hjust = 1,
-                                vjust = 1)) + geom_bar(stat = "identity", position = "dodge") + labs(x = "Academic Year",
-       y = "Filtered Count FR") 
-  }
+   else{
+      UC_admit %>% 
+        filter(Category == "Admits") %>% 
+        ggplot(aes_string(x = "Ethnicity", y = "FilteredCountFR", fill = input$x))+theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
+                                                                                           element_text(size  = 10,
+                                                                                                        angle = 45,
+                                                                                                        hjust = 1,
+                                                                                                        vjust = 1)) + geom_bar(stat = "identity") + labs(title = "Admits by Ethnicity", x = "Ethnicity",
+                                                                                                                                                         y = "Filtered Count FR") 
+    }
   })
   
   # stop the app when we close it
   session$onSessionEnded(stopApp)
-
-  }
+  
+}
 
 shinyApp(ui, server)
 ```
 
 <!--html_preserve--><div style="width: 100% ; height: 400px ; text-align: center; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;" class="muted well">Shiny applications not supported in static R Markdown documents</div><!--/html_preserve-->
-
 
 **3. Make alternate version of your app above by tracking enrollment at a campus over all of the represented years while allowing users to interact with campus, category, and ethnicity.**
 
@@ -150,48 +168,54 @@ ui <- dashboardPage(
   dashboardHeader(title = "Plot UC App"),
   dashboardSidebar(),
   dashboardBody(
-  selectInput("x", "Select Fill", choices = c("Campus", "Ethnicity", "Category"), 
-              selected = "Campus"),
-  radioButtons("y", "Would you like a stacked or clustered bar graph?", choices = c("Stacked", "Clustered"), 
-              selected = "Stacked"),
-  plotOutput("plot", width = "500px", height = "400px"))
+    selectInput("x", "Select Fill", choices = c("Campus", "Ethnicity"), 
+                selected = "Campus"),
+    radioButtons("y", "What would group would you like to view?", choices = c("Applicants", "Admits", "Enrollees"), 
+                 selected = "Admits"),
+    plotOutput("plot", width = "500px", height = "400px"))
 )
-
 
 server <- function(input, output, session) { 
   # the code to make the plot of UC data with fill as the choice.
   output$plot <- renderPlot({
-  if(input$y=="Stacked"){
-    UC_admit %>% 
-      group_by(Ethnicity, Academic_Yr, Campus, Category) %>% 
-      filter(Ethnicity != "All") %>% 
-      summarise(sum = sum(FilteredCountFR)) %>% 
-      ggplot(aes_string(x = "Academic_Yr", y = "sum", fill = input$x))+ theme(axis.text.x =
-                   element_text(size  = 10,
-                                angle = 45,
-                                hjust = 1,
-                                vjust = 1)) + geom_bar(stat = "identity") + labs(x = "Academic Year",
-       y = "Filtered Count FR") 
-  }
+    if(input$y=="Applicants"){
+      UC_admit %>% 
+        filter(Category == "Applicants") %>% 
+        ggplot(aes_string(x = "Academic_Yr", y = "FilteredCountFR", fill = input$x))+ theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
+                                                                                            element_text(size  = 10,
+                                                                                                         angle = 45,
+                                                                                                         hjust = 1,
+                                                                                                         vjust = 1)) + geom_bar(stat = "identity") + labs(title = "Applicants by Academic Year", x = "Academic Year",
+                                                                                                                                                          y = "Filtered Count FR") 
+    }
     
-  else{
-     UC_admit %>% 
-      group_by(Ethnicity, Academic_Yr, Campus, Category) %>% 
-      filter(Ethnicity != "All") %>% 
-      summarise(sum = sum(FilteredCountFR)) %>% 
-      ggplot(aes_string(x = "Academic_Yr", y = "sum", fill = input$x))+ theme(axis.text.x =
-                   element_text(size  = 10,
-                                angle = 45,
-                                hjust = 1,
-                                vjust = 1)) + geom_bar(stat = "identity", position = "dodge") + labs(x = "Academic Year",
-       y = "Filtered Count FR") 
-  }
+    else if(input$y == "Enrollees"){
+      UC_admit %>% 
+        filter(Category == "Enrollees") %>% 
+        ggplot(aes_string(x = "Academic_Yr", y = "FilteredCountFR", fill = input$x))+theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
+                                                                                           element_text(size  = 10,
+                                                                                                        angle = 45,
+                                                                                                        hjust = 1,
+                                                                                                        vjust = 1)) + geom_bar(stat = "identity") +  labs(title = "Applicants by Academic Year", x = "Academic Year",
+                                                                                                                                                          y = "Filtered Count FR") 
+    }
+    
+    else{
+      UC_admit %>% 
+        filter(Category == "Admits") %>% 
+        ggplot(aes_string(x = "Academic_Yr", y = "FilteredCountFR", fill = input$x))+theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
+                                                                                           element_text(size  = 10,
+                                                                                                        angle = 45,
+                                                                                                        hjust = 1,
+                                                                                                        vjust = 1)) + geom_bar(stat = "identity") +  labs(title = "Applicants by Academic Year", x = "Academic Year",
+                                                                                                                                                          y = "Filtered Count FR") 
+    }
   })
   
   # stop the app when we close it
   session$onSessionEnded(stopApp)
-
-  }
+  
+}
 
 shinyApp(ui, server)
 ```

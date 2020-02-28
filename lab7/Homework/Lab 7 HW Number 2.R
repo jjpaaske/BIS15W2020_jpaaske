@@ -14,37 +14,88 @@ UC_admit <- readr::read_csv("data/UC_admit.csv") %>%
   mutate_at(vars(Academic_Yr), as.factor)
 
 ui <- dashboardPage(
-  dashboardHeader(title = "Plot UC Admittance App"),
+  dashboardHeader(title = "Plot UC App"),
   dashboardSidebar(),
   dashboardBody(
-    selectInput("x", "Select Fill", choices = c("Campus", "Academic_Yr", "Category"), 
+    selectInput("x", "Select Fill", choices = c("Campus", "Academic_Yr"), 
                 selected = "Campus"),
-    radioButtons("y", "Would you like a stacked or clustered bar graph?", choices = c("Stacked", "Clustered"), 
+    radioButtons("z", "Would you like a stacked bar graph or clustered bar graph?", choices = c("Stacked", "Clustered"), 
                  selected = "Stacked"),
+    radioButtons("y", "What would group would you like to view?", choices = c("Applicants", "Admits", "Enrollees"), 
+                 selected = "Admits"),
     plotOutput("plot", width = "500px", height = "400px"))
 )
 
 server <- function(input, output, session) { 
   # the code to make the plot of UC data with fill as the choice.
   output$plot <- renderPlot({
-    if(input$y=="Stacked"){
+    if(input$z == "Stacked"){
+    if(input$y=="Applicants"){
       UC_admit %>% 
+        filter(Category == "Applicants") %>% 
         ggplot(aes_string(x = "Ethnicity", y = "FilteredCountFR", fill = input$x))+ theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
                                                                                             element_text(size  = 10,
                                                                                                          angle = 45,
                                                                                                          hjust = 1,
-                                                                                                         vjust = 1)) + geom_bar(stat = "identity") + labs(title = "Admissions by Ethnicity", x = "Ethnicity",
+                                                                                                         vjust = 1)) + geom_bar(stat = "identity") + labs(title = "Applicants by Ethnicity", x = "Ethnicity",
                                                                                                                                                           y = "Filtered Count FR") 
     }
     
-    else{
+    else if(input$y == "Enrollees"){
       UC_admit %>% 
+        filter(Category == "Enrollees") %>% 
         ggplot(aes_string(x = "Ethnicity", y = "FilteredCountFR", fill = input$x))+theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
                                                                                            element_text(size  = 10,
                                                                                                         angle = 45,
                                                                                                         hjust = 1,
-                                                                                                        vjust = 1)) + geom_bar(stat = "identity", position = "dodge") + labs(title = "Admissions by Ethnicity", x = "Ethnicity",
+                                                                                                        vjust = 1)) + geom_bar(stat = "identity") + labs(title = "Enrollees by Ethnicity", x = "Ethnicity",
                                                                                                                                                          y = "Filtered Count FR") 
+    }
+    
+    else{
+      UC_admit %>% 
+        filter(Category == "Admits") %>% 
+        ggplot(aes_string(x = "Ethnicity", y = "FilteredCountFR", fill = input$x))+theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
+                                                                                           element_text(size  = 10,
+                                                                                                        angle = 45,
+                                                                                                        hjust = 1,
+                                                                                                        vjust = 1)) + geom_bar(stat = "identity") + labs(title = "Admits by Ethnicity", x = "Ethnicity",
+                                                                                                                                                         y = "Filtered Count FR") 
+    }
+    }
+    else{
+      if(input$y=="Applicants"){
+        UC_admit %>% 
+          filter(Category == "Applicants") %>% 
+          ggplot(aes_string(x = "Ethnicity", y = "FilteredCountFR", fill = input$x))+ theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
+                                                                                              element_text(size  = 10,
+                                                                                                           angle = 45,
+                                                                                                           hjust = 1,
+                                                                                                           vjust = 1)) + geom_bar(stat = "identity", position = "dodge") + labs(title = "Applicants by Ethnicity", x = "Ethnicity",
+                                                                                                                                                            y = "Filtered Count FR") 
+      }
+      
+      else if(input$y == "Enrollees"){
+        UC_admit %>% 
+          filter(Category == "Enrollees") %>% 
+          ggplot(aes_string(x = "Ethnicity", y = "FilteredCountFR", fill = input$x))+theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
+                                                                                             element_text(size  = 10,
+                                                                                                          angle = 45,
+                                                                                                          hjust = 1,
+                                                                                                          vjust = 1)) + geom_bar(stat = "identity", position = "dodge") + labs(title = "Enrollees by Ethnicity", x = "Ethnicity",
+                                                                                                                                                           y = "Filtered Count FR") 
+      }
+      
+      else{
+        UC_admit %>% 
+          filter(Category == "Admits") %>% 
+          ggplot(aes_string(x = "Ethnicity", y = "FilteredCountFR", fill = input$x))+theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
+                                                                                             element_text(size  = 10,
+                                                                                                          angle = 45,
+                                                                                                          hjust = 1,
+                                                                                                          vjust = 1)) + geom_bar(stat = "identity", position = "dodge") + labs(title = "Admits by Ethnicity", x = "Ethnicity",
+                                                                                                                                                           y = "Filtered Count FR") 
+      }
     }
   })
   
