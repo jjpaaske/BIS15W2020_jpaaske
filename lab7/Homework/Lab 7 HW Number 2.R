@@ -7,6 +7,9 @@ library("shiny")
 if (!require("shinydashboard")) install.packages('shinydashboard')
 library("shinydashboard")
 
+if(!require("ggplot2")) install.packages('ggplot2')
+library("ggplot2")
+
 options(scipen=999)
 
 UC_admit <- readr::read_csv("data/UC_admit.csv") %>% 
@@ -15,14 +18,12 @@ UC_admit <- readr::read_csv("data/UC_admit.csv") %>%
 
 ui <- dashboardPage(
   dashboardHeader(title = "Plot UC App"),
-  dashboardSidebar(),
+  dashboardSidebar(radioButtons("x", "Select Campus", choices = c("Berkeley", "Merced", "Davis", "Irvine", "Los_Angeles", "Riverside", "San_Diego", "Santa_Barbara", "Santa_Cruz"), 
+                                selected = "Davis"),
+                   radioButtons("z", "Select Year", choices = unique(UC_admit$Academic_Yr)),
+                   radioButtons("y", "What would group would you like to view?", choices = c("Applicants", "Admits", "Enrollees"), 
+                                selected = "Admits")),
   dashboardBody(
-    selectInput("x", "Select Fill", choices = c("Campus", "Academic_Yr"), 
-                selected = "Campus"),
-    radioButtons("z", "Would you like a stacked bar graph or clustered bar graph?", choices = c("Stacked", "Clustered"), 
-                 selected = "Stacked"),
-    radioButtons("y", "What would group would you like to view?", choices = c("Applicants", "Admits", "Enrollees"), 
-                 selected = "Admits"),
     helpText("Reference: University of California Information Center"),
     plotOutput("plot", width = "500px", height = "400px"))
 )
@@ -30,75 +31,21 @@ ui <- dashboardPage(
 server <- function(input, output, session) { 
   # the code to make the plot of UC data with fill as the choice.
   output$plot <- renderPlot({
-    if(input$z == "Stacked"){
-    if(input$y=="Applicants"){
       UC_admit %>% 
-        filter(Category == "Applicants") %>% 
-        ggplot(aes_string(x = "Ethnicity", y = "FilteredCountFR", fill = input$x))+ theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
+        filter(Campus == input$x) %>% 
+        filter(Category == input$y) %>% 
+        filter(Academic_Yr == input$z) %>% 
+        filter(Ethnicity != "All") %>% 
+        ggplot(aes_string(x = "Ethnicity", y = "FilteredCountFR"))+ theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
                                                                                             element_text(size  = 10,
                                                                                                          angle = 45,
                                                                                                          hjust = 1,
-                                                                                                         vjust = 1)) + geom_bar(stat = "identity") + labs(title = "Applicants by Ethnicity", x = "Ethnicity",
+                                                                                                         vjust = 1)) + geom_bar(stat = "identity", fill = "steelblue") + labs(title = "UC Admissions by Ethnicity", x = "Ethnicity",
                                                                                                                                                           y = "Filtered Count FR") 
-    }
-    
-    else if(input$y == "Enrollees"){
-      UC_admit %>% 
-        filter(Category == "Enrollees") %>% 
-        ggplot(aes_string(x = "Ethnicity", y = "FilteredCountFR", fill = input$x))+theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
-                                                                                           element_text(size  = 10,
-                                                                                                        angle = 45,
-                                                                                                        hjust = 1,
-                                                                                                        vjust = 1)) + geom_bar(stat = "identity") + labs(title = "Enrollees by Ethnicity", x = "Ethnicity",
-                                                                                                                                                         y = "Filtered Count FR") 
-    }
-    
-    else{
-      UC_admit %>% 
-        filter(Category == "Admits") %>% 
-        ggplot(aes_string(x = "Ethnicity", y = "FilteredCountFR", fill = input$x))+theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
-                                                                                           element_text(size  = 10,
-                                                                                                        angle = 45,
-                                                                                                        hjust = 1,
-                                                                                                        vjust = 1)) + geom_bar(stat = "identity") + labs(title = "Admits by Ethnicity", x = "Ethnicity",
-                                                                                                                                                         y = "Filtered Count FR") 
-    }
-    }
-    else{
-      if(input$y=="Applicants"){
-        UC_admit %>% 
-          filter(Category == "Applicants") %>% 
-          ggplot(aes_string(x = "Ethnicity", y = "FilteredCountFR", fill = input$x))+ theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
-                                                                                              element_text(size  = 10,
-                                                                                                           angle = 45,
-                                                                                                           hjust = 1,
-                                                                                                           vjust = 1)) + geom_bar(stat = "identity", position = "dodge") + labs(title = "Applicants by Ethnicity", x = "Ethnicity",
-                                                                                                                                                            y = "Filtered Count FR") 
-      }
-      
-      else if(input$y == "Enrollees"){
-        UC_admit %>% 
-          filter(Category == "Enrollees") %>% 
-          ggplot(aes_string(x = "Ethnicity", y = "FilteredCountFR", fill = input$x))+theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
-                                                                                             element_text(size  = 10,
-                                                                                                          angle = 45,
-                                                                                                          hjust = 1,
-                                                                                                          vjust = 1)) + geom_bar(stat = "identity", position = "dodge") + labs(title = "Enrollees by Ethnicity", x = "Ethnicity",
-                                                                                                                                                           y = "Filtered Count FR") 
-      }
-      
-      else{
-        UC_admit %>% 
-          filter(Category == "Admits") %>% 
-          ggplot(aes_string(x = "Ethnicity", y = "FilteredCountFR", fill = input$x))+theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
-                                                                                             element_text(size  = 10,
-                                                                                                          angle = 45,
-                                                                                                          hjust = 1,
-                                                                                                          vjust = 1)) + geom_bar(stat = "identity", position = "dodge") + labs(title = "Admits by Ethnicity", x = "Ethnicity",
-                                                                                                                                                           y = "Filtered Count FR") 
-      }
-    }
+ 
   })
+  
+  
   
   # stop the app when we close it
   session$onSessionEnded(stopApp)

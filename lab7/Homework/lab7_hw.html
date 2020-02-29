@@ -11,7 +11,7 @@
 
 <meta name="author" content="Joshua Paaske" />
 
-<meta name="date" content="2020-02-27" />
+<meta name="date" content="2020-02-28" />
 
 <title>Lab 7 Homework</title>
 
@@ -389,7 +389,7 @@ summary {
 
 <h1 class="title toc-ignore">Lab 7 Homework</h1>
 <h4 class="author">Joshua Paaske</h4>
-<h4 class="date">2020-02-27</h4>
+<h4 class="date">2020-02-28</h4>
 
 </div>
 
@@ -429,12 +429,12 @@ library(shinydashboard)</code></pre>
 <pre class="r"><code>glimpse(UC_admit)</code></pre>
 <pre><code>## Observations: 2,160
 ## Variables: 6
-## $ Campus          &lt;chr&gt; &quot;Davis&quot;, &quot;Davis&quot;, &quot;Davis&quot;, &quot;Davis&quot;, &quot;Davis&quot;, &quot;Davis&quot;,…
-## $ Academic_Yr     &lt;fct&gt; 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2018,…
-## $ Category        &lt;chr&gt; &quot;Applicants&quot;, &quot;Applicants&quot;, &quot;Applicants&quot;, &quot;Applicants…
-## $ Ethnicity       &lt;fct&gt; International, Unknown, White, Asian, Chicano/Latino,…
-## $ `Perc FR`       &lt;chr&gt; &quot;21.16%&quot;, &quot;2.51%&quot;, &quot;18.39%&quot;, &quot;30.76%&quot;, &quot;22.44%&quot;, &quot;0.3…
-## $ FilteredCountFR &lt;dbl&gt; 16522, 1959, 14360, 24024, 17526, 277, 3425, 78093, 1…</code></pre>
+## $ Campus          &lt;chr&gt; &quot;Davis&quot;, &quot;Davis&quot;, &quot;Davis&quot;, &quot;Davis&quot;, &quot;Davis&quot;, &quot;Davis&quot;,&lt;U+2026&gt;
+## $ Academic_Yr     &lt;fct&gt; 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2018,&lt;U+2026&gt;
+## $ Category        &lt;chr&gt; &quot;Applicants&quot;, &quot;Applicants&quot;, &quot;Applicants&quot;, &quot;Applicants&lt;U+2026&gt;
+## $ Ethnicity       &lt;fct&gt; International, Unknown, White, Asian, Chicano/Latino,&lt;U+2026&gt;
+## $ `Perc FR`       &lt;chr&gt; &quot;21.16%&quot;, &quot;2.51%&quot;, &quot;18.39%&quot;, &quot;30.76%&quot;, &quot;22.44%&quot;, &quot;0.3&lt;U+2026&gt;
+## $ FilteredCountFR &lt;dbl&gt; 16522, 1959, 14360, 24024, 17526, 277, 3425, 78093, 1&lt;U+2026&gt;</code></pre>
 <pre class="r"><code>naniar::miss_var_summary(UC_admit)</code></pre>
 <pre><code>## # A tibble: 6 x 3
 ##   variable        n_miss pct_miss
@@ -448,52 +448,45 @@ library(shinydashboard)</code></pre>
 <p><strong>2. The president of UC has asked you to build a shiny app that shows admissions by ethnicity across all UC campuses. Your app should allow users to explore year, campus, and admit category as interactive variables. Use shiny dashboard and try to incorporate the aesthetics you have learned in ggplot to make the app neat and clean.</strong></p>
 <pre class="r"><code>ui &lt;- dashboardPage(
   dashboardHeader(title = &quot;Plot UC App&quot;),
-  dashboardSidebar(),
+  dashboardSidebar(radioButtons(&quot;x&quot;, &quot;Select Campus&quot;, choices = c(&quot;Berkeley&quot;, &quot;Merced&quot;, &quot;Davis&quot;, &quot;Irvine&quot;, &quot;Los_Angeles&quot;, &quot;Riverside&quot;, &quot;San_Diego&quot;, &quot;Santa_Barbara&quot;, &quot;Santa_Cruz&quot;), 
+                                selected = &quot;Davis&quot;),
+                   radioButtons(&quot;z&quot;, &quot;Select Year&quot;, choices = unique(UC_admit$Academic_Yr)),
+                   radioButtons(&quot;y&quot;, &quot;What would group would you like to view?&quot;, choices = c(&quot;Applicants&quot;, &quot;Admits&quot;, &quot;Enrollees&quot;), 
+                                selected = &quot;Admits&quot;)),
   dashboardBody(
-    selectInput(&quot;x&quot;, &quot;Select Fill&quot;, choices = c(&quot;Campus&quot;, &quot;Academic_Yr&quot;), 
-                selected = &quot;Campus&quot;),
-    radioButtons(&quot;y&quot;, &quot;What would group would you like to view?&quot;, choices = c(&quot;Applicants&quot;, &quot;Admits&quot;, &quot;Enrollees&quot;), 
-                 selected = &quot;Admits&quot;),
+    helpText(&quot;Reference: University of California Information Center&quot;),
     plotOutput(&quot;plot&quot;, width = &quot;500px&quot;, height = &quot;400px&quot;))
 )
 
 server &lt;- function(input, output, session) { 
   # the code to make the plot of UC data with fill as the choice.
   output$plot &lt;- renderPlot({
-    if(input$y==&quot;Applicants&quot;){
       UC_admit %&gt;% 
-        filter(Category == &quot;Applicants&quot;) %&gt;% 
-        ggplot(aes_string(x = &quot;Ethnicity&quot;, y = &quot;FilteredCountFR&quot;, fill = input$x))+ theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
+        filter(Campus == input$x) %&gt;% 
+        filter(Category == input$y) %&gt;% 
+        filter(Academic_Yr == input$z) %&gt;% 
+        ggplot(aes_string(x = &quot;Ethnicity&quot;, y = &quot;FilteredCountFR&quot;))+ theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
                                                                                             element_text(size  = 10,
                                                                                                          angle = 45,
                                                                                                          hjust = 1,
-                                                                                                         vjust = 1)) + geom_bar(stat = &quot;identity&quot;) + labs(title = &quot;Applicants by Ethnicity&quot;, x = &quot;Ethnicity&quot;,
+                                                                                                         vjust = 1)) + geom_bar(stat = &quot;identity&quot;, fill = &quot;steelblue&quot;) + labs(title = &quot;Applicants by Ethnicity&quot;, x = &quot;Ethnicity&quot;,
                                                                                                                                                           y = &quot;Filtered Count FR&quot;) 
-    }
-  
-    else if(input$y == &quot;Enrollees&quot;){
-      UC_admit %&gt;% 
-        filter(Category == &quot;Enrollees&quot;) %&gt;% 
-        ggplot(aes_string(x = &quot;Ethnicity&quot;, y = &quot;FilteredCountFR&quot;, fill = input$x))+theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
-                                                                                           element_text(size  = 10,
-                                                                                                        angle = 45,
-                                                                                                        hjust = 1,
-                                                                                                        vjust = 1)) + geom_bar(stat = &quot;identity&quot;) + labs(title = &quot;Enrollees by Ethnicity&quot;, x = &quot;Ethnicity&quot;,
-                                                                                                                                                         y = &quot;Filtered Count FR&quot;) 
-    }
-    
-   else{
-      UC_admit %&gt;% 
-        filter(Category == &quot;Admits&quot;) %&gt;% 
-        ggplot(aes_string(x = &quot;Ethnicity&quot;, y = &quot;FilteredCountFR&quot;, fill = input$x))+theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
-                                                                                           element_text(size  = 10,
-                                                                                                        angle = 45,
-                                                                                                        hjust = 1,
-                                                                                                        vjust = 1)) + geom_bar(stat = &quot;identity&quot;) + labs(title = &quot;Admits by Ethnicity&quot;, x = &quot;Ethnicity&quot;,
-                                                                                                                                                         y = &quot;Filtered Count FR&quot;) 
-    }
+ 
   })
   
+  
+  output$plot &lt;- renderPlot({
+    UC_admit %&gt;% 
+      filter(Category == input$y) %&gt;% 
+      filter(Academic_Yr == input$z) %&gt;% 
+      ggplot(aes_string(x = &quot;Ethnicity&quot;, y = &quot;FilteredCountFR&quot;))+ theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
+                                                                          element_text(size  = 10,
+                                                                                       angle = 45,
+                                                                                       hjust = 1,
+                                                                                       vjust = 1)) + geom_bar(stat = &quot;identity&quot;, fill = &quot;steelblue&quot;) + labs(title = &quot;Applicants by Ethnicity&quot;, x = &quot;Ethnicity&quot;,
+                                                                                                                                                            y = &quot;Filtered Count FR&quot;) 
+    
+  })
   # stop the app when we close it
   session$onSessionEnded(stopApp)
   
@@ -504,50 +497,32 @@ shinyApp(ui, server)</code></pre>
 <p><strong>3. Make alternate version of your app above by tracking enrollment at a campus over all of the represented years while allowing users to interact with campus, category, and ethnicity.</strong></p>
 <pre class="r"><code>ui &lt;- dashboardPage(
   dashboardHeader(title = &quot;Plot UC App&quot;),
-  dashboardSidebar(),
+  dashboardSidebar(radioButtons(&quot;x&quot;, &quot;Select Campus&quot;, choices = c(&quot;Berkeley&quot;, &quot;Merced&quot;, &quot;Davis&quot;, &quot;Irvine&quot;, &quot;Los_Angeles&quot;, &quot;Riverside&quot;, &quot;San_Diego&quot;, &quot;Santa_Barbara&quot;, &quot;Santa_Cruz&quot;), 
+                                selected = &quot;Davis&quot;),
+                   radioButtons(&quot;y&quot;, &quot;What would group would you like to view?&quot;, choices = c(&quot;Applicants&quot;, &quot;Admits&quot;, &quot;Enrollees&quot;), 
+                                selected = &quot;Admits&quot;),
+                   radioButtons(&quot;z&quot;, &quot;Select Ethnicity&quot;, choices = unique(UC_admit$Ethnicity))),
   dashboardBody(
-    selectInput(&quot;x&quot;, &quot;Select Fill&quot;, choices = c(&quot;Campus&quot;, &quot;Ethnicity&quot;), 
-                selected = &quot;Campus&quot;),
-    radioButtons(&quot;y&quot;, &quot;What would group would you like to view?&quot;, choices = c(&quot;Applicants&quot;, &quot;Admits&quot;, &quot;Enrollees&quot;), 
-                 selected = &quot;Admits&quot;),
+    
+    helpText(&quot;Reference: University of California Information Center&quot;),
     plotOutput(&quot;plot&quot;, width = &quot;500px&quot;, height = &quot;400px&quot;))
 )
 
 server &lt;- function(input, output, session) { 
   # the code to make the plot of UC data with fill as the choice.
   output$plot &lt;- renderPlot({
-    if(input$y==&quot;Applicants&quot;){
       UC_admit %&gt;% 
-        filter(Category == &quot;Applicants&quot;) %&gt;% 
-        ggplot(aes_string(x = &quot;Academic_Yr&quot;, y = &quot;FilteredCountFR&quot;, fill = input$x))+ theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
-                                                                                            element_text(size  = 10,
-                                                                                                         angle = 45,
-                                                                                                         hjust = 1,
-                                                                                                         vjust = 1)) + geom_bar(stat = &quot;identity&quot;) + labs(title = &quot;Applicants by Academic Year&quot;, x = &quot;Academic Year&quot;,
-                                                                                                                                                          y = &quot;Filtered Count FR&quot;) 
-    }
-    
-    else if(input$y == &quot;Enrollees&quot;){
-      UC_admit %&gt;% 
-        filter(Category == &quot;Enrollees&quot;) %&gt;% 
-        ggplot(aes_string(x = &quot;Academic_Yr&quot;, y = &quot;FilteredCountFR&quot;, fill = input$x))+theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
-                                                                                           element_text(size  = 10,
-                                                                                                        angle = 45,
-                                                                                                        hjust = 1,
-                                                                                                        vjust = 1)) + geom_bar(stat = &quot;identity&quot;) +  labs(title = &quot;Applicants by Academic Year&quot;, x = &quot;Academic Year&quot;,
-                                                                                                                                                          y = &quot;Filtered Count FR&quot;) 
-    }
-    
-    else{
-      UC_admit %&gt;% 
-        filter(Category == &quot;Admits&quot;) %&gt;% 
-        ggplot(aes_string(x = &quot;Academic_Yr&quot;, y = &quot;FilteredCountFR&quot;, fill = input$x))+theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
-                                                                                           element_text(size  = 10,
-                                                                                                        angle = 45,
-                                                                                                        hjust = 1,
-                                                                                                        vjust = 1)) + geom_bar(stat = &quot;identity&quot;) +  labs(title = &quot;Applicants by Academic Year&quot;, x = &quot;Academic Year&quot;,
-                                                                                                                                                          y = &quot;Filtered Count FR&quot;) 
-    }
+        filter(Ethnicity == input$z) %&gt;% 
+        filter(Category == input$y) %&gt;% 
+        filter(Campus == input$x) %&gt;% 
+        ggplot(aes_string(x = &quot;Academic_Yr&quot;, y = &quot;FilteredCountFR&quot;))+ theme(plot.title = element_text(size = rel(1.5), hjust = 0.5), axis.text.x =
+                                                                                              element_text(size  = 10,
+                                                                                                           angle = 45,
+                                                                                                           hjust = 1,
+                                                                                                           vjust = 1)) + geom_bar(stat = &quot;identity&quot;, fill = &quot;steelblue&quot;) + labs(title = &quot;Applicants by Academic Year&quot;, x = &quot;Academic Year&quot;,
+                                                                                                                                                            y = &quot;Filtered Count FR&quot;) 
+   
+  
   })
   
   # stop the app when we close it
