@@ -51,10 +51,9 @@ tidy_hiroshima_nagasaki
 ```
 
 
-
 ```{r}
 tidy_hiroshima_nagasaki %>% 
-  filter(type_death != "alldis") %>% 
+  filter(type_death != "alldis" & type_death != "allneo" & type_death != "allmal" & type_death != "nonleuk") %>% 
   group_by(type_death) %>% 
   ggplot(aes(x = type_death, y = number_death, fill = sex)) + 
   geom_bar(stat = "identity") +
@@ -119,11 +118,40 @@ hiroshima_nagasaki%>%
 ```{r}
 tidy_hiroshima_nagasaki%>% 
   mutate_at(vars(time), as.integer) %>% 
-  group_by(time, sex) %>% 
+  group_by(time) %>% 
   summarise(sum = sum(number_death)) %>% 
+  ggplot(aes(x = time, y = sum)) + 
+  geom_line() +
+  labs(title = "Number of Cancer Deaths by Year of Death",
+       x = "Year",
+       y = "Number of Deaths")+ 
+  theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
+```
+
+
+```{r}
+hiroshima_nagasaki%>% 
+  mutate_at(vars(time), as.integer) %>% 
+  group_by(time, sex) %>% 
+  summarise(sum = sum(alldeaths)) %>% 
   ggplot(aes(x = time, y = sum, col = sex)) + 
   geom_line() +
   labs(title = "Number of Cancer Deaths by Year of Death",
+       x = "Year",
+       y = "Number of Deaths")+ 
+  theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
+```
+#more middle aged females took longer to die
+
+```{r}
+tidy_hiroshima_nagasaki %>% 
+  mutate_at(vars(time), as.integer) %>% 
+  filter(type_death == "fgenital"| type_death == "cervix"| type_death == "uterus") %>% 
+  group_by(time, ageatb) %>% 
+  summarise(sum = sum(number_death)) %>% 
+  ggplot(aes(x = time, y = sum, fill = ageatb)) + 
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Number of Female-Specific Cancer Deaths by Year of Death",
        x = "Year",
        y = "Number of Deaths")+ 
   theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
@@ -134,14 +162,15 @@ tidy_hiroshima_nagasaki %>%
   mutate_at(vars(time), as.integer) %>% 
   filter(type_death == "fgenital"| type_death == "cervix"| type_death == "uterus") %>% 
   group_by(time) %>% 
-  summarise(sum = sum(number_death)) %>% 
-  ggplot(aes(x = time, y = sum)) + 
+  summarise(sum1 = sum(number_death)) %>% 
+  ggplot(aes(x = time, y = sum1)) + 
   geom_line() +
   labs(title = "Number of Female-Specific Cancer Deaths by Year of Death",
        x = "Year",
        y = "Number of Deaths")+ 
   theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
 ```
+
 
 ```{r}
 tidy_hiroshima_nagasaki %>% 
@@ -154,6 +183,17 @@ tidy_hiroshima_nagasaki %>%
   labs(title = "Number of Male-Specific Cancer Deaths by Year of Death",
        x = "Year",
        y = "Number of Deaths")+ 
+  theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
+```
+
+```{r}
+hiroshima_nagasaki %>% 
+  group_by(sex, ageatb) %>% 
+  ggplot(aes(x = ageatb, fill = sex)) + 
+  geom_bar(position = "dodge") +
+  labs(title = "Number of People by age at Bombing",
+       x = "Age at Bombing",
+       y = "Number of People")+ 
   theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
 ```
 
