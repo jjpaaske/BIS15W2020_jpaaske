@@ -138,7 +138,7 @@ server <- function(input, output, session) {
 shinyApp(ui, server)
 ```
 
-
+##These look good. The independant apps work. Good job!
 
 ## Push your final code to GitHub!
 Please be sure that you check the `keep md` file in the knit preferences. 
