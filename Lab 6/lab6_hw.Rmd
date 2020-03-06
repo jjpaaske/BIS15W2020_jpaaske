@@ -50,6 +50,8 @@ There are no NAs in the data.
 
 
 **2. Among the interesting variables in gapminder is life expectancy. How has global life expectancy changed between 1952 and 2007?**
+##Just a note, remember creating a data table to go along with graphs is always a nice idea.
+##jitter works just fine, especially when the relationshp is this strong, but a line is another option.
 ```{r}
 gapminder %>% 
   group_by(year) %>% 
@@ -65,6 +67,7 @@ gapminder %>%
 Life expectancy increases as time goes on. 
 
 **3. How do the distributions of life expectancy compare for the years 1952 and 2007? _Challenge: Can you put both distributions on a single plot?_**
+##Good attention to detail with all the labels. A density plot is another option for showing this data.
 ```{r}
 gapminder %>% 
   mutate_at(vars(year), as.factor) %>% 
@@ -79,6 +82,7 @@ gapminder %>%
 
 
 **4. Your answer above doesn't tell the whole story since life expectancy varies by region. Make a summary that shows the min, mean, and max life expectancy by continent for all years represented in the data.**
+##Remeber to add the code to generate the summary
 ```{r}
 gapminder %>% 
   group_by(continent) %>% 
@@ -86,6 +90,7 @@ gapminder %>%
             max_lifeExp=max(lifeExp),
             mean_lifeExp=mean(lifeExp)) %>% 
   arrange(mean_lifeExp)
+gapminder
 ```
 
 **5. How has life expectancy changed between 1952-2007 for each continent? Try using `geom_line()` for this, including all continents on the same  plot.**
@@ -128,6 +133,7 @@ gapminder %>%
 ```
 
 With GDP Per Capita scaled to log values, it is clear that GDP per capita does influence life expectancy. 
+##Yes! You can even add a regression lineusing geom_smooth() to make it even more obvious.
 
 **8. Which countries have had the largest population growth since 1952?**
 ```{r}
@@ -145,6 +151,7 @@ gapminder %>%
 China and India had the largest population growth since 1952
 
 **9. Use your results from the question above to plot population growth for the top five countries since 1952.**
+These points get a little muddled. Perhaps using geom_line() would make the change over time more evident?
 ```{r}
 gapminder %>% 
   filter(country == "China" | country == "India" | country == "United States" | country == "Indonesia" | country == "Brazil" ) %>% 
