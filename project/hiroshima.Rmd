@@ -1,25 +1,29 @@
 ---
-title: "hiroshima_nagasaki"
-output: html_document
+title: "Cancer Deaths in Hiroshima and Nagasaki Survivors"
+author: "Joshua Paaske and Lily Karim"
+date: "Winter 2020"
+output: ioslides_presentation
 ---
 
+
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
+library("jpeg")
 ```
 
-```{r}
+```{r echo=TRUE, message=FALSE}
 library(tidyverse)
 library(dplyr)
 library(ggplot2)
 ```
 
 
-```{r}
+```{r include=FALSE}
 options(scipen=999)
 ```
 
-##Opening file with Fortran format and cleaning up column names
-```{r}
+## Opening file with Fortran format and cleaning up column names
+```{r echo=TRUE, message=FALSE}
 fstr <- c("2I3","I4","F7.1","I5","I4","F10.2","26I4")
 hiroshima_nagasaki <- read.fortran("r10cancrfix.dat",fstr)
 
@@ -33,15 +37,19 @@ hiroshima_nagasaki <- hiroshima_nagasaki %>%
   mutate_at(vars(time), ~paste0("19", .)) %>% 
   rowid_to_column(var='observation') %>% 
   mutate_at(vars(dose_centigray), as.factor) %>% 
-mutate_at(vars(ageatb), as.factor)
+  mutate_at(vars(ageatb), as.factor) 
 
 
 hiroshima_nagasaki
 ```
 
+## How many NA's?
+```{r echo=TRUE}
+naniar::miss_var_summary(hiroshima_nagasaki)
+```
 
-#Tidying Data
-```{r}
+## Tidying Data
+```{r echo=TRUE, message=FALSE}
 tidy_hiroshima_nagasaki <- hiroshima_nagasaki %>% 
   pivot_longer(-c(observation, city, sex, ageatb, dose_centigray, time, index, total_year, alldeaths),
                names_to = "type_death",
@@ -50,10 +58,36 @@ tidy_hiroshima_nagasaki <- hiroshima_nagasaki %>%
 tidy_hiroshima_nagasaki
 ```
 
+## 
+```{r warning=FALSE}
+hiroshima_nagasaki %>% 
+  group_by(sex, ageatb) %>% 
+  ggplot(aes(x = ageatb, fill = sex)) + 
+  geom_bar(position = "dodge") +
+  labs(title = "Number of Groups by age at Bombing",
+       x = "Age at Bombing",
+       y = "Number of People")+ 
+  theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
+```
 
-```{r}
+##
+```{r warning=FALSE}
+
+hiroshima_nagasaki %>% 
+  group_by(sex, time) %>% 
+  ggplot(aes(x = time, fill = sex)) + 
+  geom_bar(position = "dodge") +
+  labs(title = "Number of Groups by Year of Death",
+       x = "Year of Death",
+       y = "Number of People")+ 
+  theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
+```
+
+
+##
+```{r warning=FALSE}
 tidy_hiroshima_nagasaki %>% 
-  filter(type_death != "alldis" & type_death != "allneo" & type_death != "allmal" & type_death != "nonleuk") %>% 
+  filter(type_death != "alldis" & type_death != "allneo" & type_death != "allmal" & type_death != "nonleuk" & type_death != "digest") %>% 
   group_by(type_death) %>% 
   ggplot(aes(x = type_death, y = number_death, fill = sex)) + 
   geom_bar(stat = "identity") +
@@ -64,20 +98,14 @@ tidy_hiroshima_nagasaki %>%
   coord_flip()
 ```
 
-```{r}
-hiroshima_nagasaki %>% 
-  group_by(sex, city) %>% 
-  summarise(sum = sum(alldeaths)) %>% 
-  ggplot(aes(x = sex, y = sum, fill = city)) + 
-  geom_bar(stat = "identity") +
-  labs(title = "Number of Cancer Deaths by Sex",
-       x = "Sex",
-       y = "Number of Deaths")+ 
-  theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
-```
+This graph summarizes the number of deaths for each cancer type. Most notably, and stomach cancers were the most prevalent. 
 
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1860129/
 
-```{r}
+Japanese people more susceptible to gastritis (inflammation of protective lining of the stomach), and therefore more susceptible to stomach cancers. 
+
+##
+```{r warning=FALSE}
 hiroshima_nagasaki %>% 
   group_by(dose_centigray, sex) %>% 
   summarise(sum = sum(alldeaths)) %>% 
@@ -88,8 +116,11 @@ hiroshima_nagasaki %>%
        y = "Number of Deaths")+ 
   theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
 ```
+Many more people died of cancer at extremely low doses (most people had an exposure of less than .1 centigray). This is most likely because people who had much higher doses had died of the atomic bomb.  
 
-```{r}
+
+##
+```{r warning=FALSE}
 hiroshima_nagasaki %>% 
   group_by(sex, ageatb) %>% 
   summarise(sum = sum(alldeaths)) %>% 
@@ -100,36 +131,40 @@ hiroshima_nagasaki %>%
        y = "Number of Deaths")+ 
   theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
 ```
-
-```{r}
-hiroshima_nagasaki%>% 
-  mutate_at(vars(time), as.factor) %>% 
-  group_by(time, sex) %>% 
-  summarise(sum = sum(alldeaths)) %>% 
-  ggplot(aes(x = time, y = sum, fill = sex)) + 
-  geom_col(position = "dodge") +
-  labs(title = "Number of Cancer Deaths by Year of Death",
-       x = "Year",
-       y = "Number of Deaths")+ 
-  theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
-```
+There were more deaths in people who were older at the time of the bombing. 
 
 
-```{r}
+##
+```{r warning=FALSE}
 tidy_hiroshima_nagasaki%>% 
   mutate_at(vars(time), as.integer) %>% 
   group_by(time) %>% 
   summarise(sum = sum(number_death)) %>% 
   ggplot(aes(x = time, y = sum)) + 
-  geom_line() +
+  geom_line(color = "steelblue") +
   labs(title = "Number of Cancer Deaths by Year of Death",
        x = "Year",
        y = "Number of Deaths")+ 
   theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
 ```
+There is a positive trend in the people who died over the years. After 1976, there was a drop in the number of deaths. 
 
+##
+```{r warning=FALSE}
+hiroshima_nagasaki %>% 
+  group_by(sex, city) %>% 
+  summarise(sum = sum(alldeaths)) %>% 
+  ggplot(aes(x = sex, y = sum, fill = city)) + 
+  geom_bar(stat = "identity") +
+  labs(title = "Number of Cancer Deaths by Sex",
+       x = "Sex",
+       y = "Number of Deaths")+ 
+  theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
+```
+Females had more cancer deaths than males in total, and we are unsure of the reasons why. 
 
-```{r}
+##
+```{r warning=FALSE}
 hiroshima_nagasaki%>% 
   mutate_at(vars(time), as.integer) %>% 
   group_by(time, sex) %>% 
@@ -141,9 +176,10 @@ hiroshima_nagasaki%>%
        y = "Number of Deaths")+ 
   theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
 ```
-#more middle aged females took longer to die
+For some reason, the number of females who died from cancer increased over the whole time interval, but the males who died from cancer stayed somewhat constant. 
 
-```{r}
+##
+```{r warning=FALSE}
 tidy_hiroshima_nagasaki %>% 
   mutate_at(vars(time), as.integer) %>% 
   filter(type_death == "fgenital"| type_death == "cervix"| type_death == "uterus") %>% 
@@ -156,48 +192,43 @@ tidy_hiroshima_nagasaki %>%
        y = "Number of Deaths")+ 
   theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
 ```
+There is a downward trend in the number of deaths among 60 year olds and an upward trend among 27 year olds and 15 year olds at the time of the bombing. 
 
-```{r}
+##
+```{r warning=FALSE}
 tidy_hiroshima_nagasaki %>% 
   mutate_at(vars(time), as.integer) %>% 
-  filter(type_death == "fgenital"| type_death == "cervix"| type_death == "uterus") %>% 
+  filter(type_death == "fgenital"| type_death == "cervix"| type_death == "ovary" | type_death == "fbreast") %>% 
   group_by(time) %>% 
   summarise(sum1 = sum(number_death)) %>% 
   ggplot(aes(x = time, y = sum1)) + 
-  geom_line() +
+  geom_line(color = "red") +
   labs(title = "Number of Female-Specific Cancer Deaths by Year of Death",
        x = "Year",
        y = "Number of Deaths")+ 
   theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
 ```
+Between 1960 and 1970, there was a dip in female-specific cancer deaths (although we are not sure of why)
 
 
-```{r}
+##
+```{r warning=FALSE}
 tidy_hiroshima_nagasaki %>% 
   mutate_at(vars(time), as.integer) %>% 
   filter(type_death == "prostate") %>% 
   group_by(time) %>% 
   summarise(sum1 = sum(number_death)) %>% 
   ggplot(aes(x = time, y = sum1)) + 
-  geom_line() +
+  geom_line(color = "blue") +
   labs(title = "Number of Male-Specific Cancer Deaths by Year of Death",
        x = "Year",
        y = "Number of Deaths")+ 
   theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
 ```
+There was a dip in male-specific cancer deaths in 1968, but this is probably not statistically significant (it's a difference in two deaths)
 
-```{r}
-hiroshima_nagasaki %>% 
-  group_by(sex, ageatb) %>% 
-  ggplot(aes(x = ageatb, fill = sex)) + 
-  geom_bar(position = "dodge") +
-  labs(title = "Number of People by age at Bombing",
-       x = "Age at Bombing",
-       y = "Number of People")+ 
-  theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
-```
-
-```{r}
+##
+```{r warning=FALSE}
 hiroshima_nagasaki %>% 
   group_by(sex, city) %>% 
   summarise(sum = sum(alldeaths)) %>% 
@@ -206,13 +237,11 @@ hiroshima_nagasaki %>%
   labs(title = "Death by City", x= "City", y= "Deaths")+
   theme(plot.title = element_text(size = rel(1.5), hjust = 0.5))
 ```
-
-lol this one is useless
-```{r}
-tidy_hiroshima_nagasaki %>% 
-  filter(type_death != "alldis" & type_death != "all_death") %>% 
-  group_by(type_death) %>%
-  ggplot(aes(x=type_death, y = ageatb, fill = sex))+geom_bar(stat = "identity")+coord_flip()
-```
+There were many more deaths in hiroshima than nagasaki, and this is because the population of Hiroshima was much bigger. Hiroshima = 350,000, Nagasaki = 263,000
 
 
+
+
+
+
+https://www.cancer.gov/about-cancer/understanding/statistics
