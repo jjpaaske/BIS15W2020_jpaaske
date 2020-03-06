@@ -72,6 +72,8 @@ sleep[1,]
 small <- subset(sleep, bodywt <= 1)
 small
 ```
+
+
 ```{r}
 large <- subset(sleep, bodywt >= 200)
 large
@@ -82,12 +84,16 @@ large
 ```{r}
 sw <- small$bodywt
 mean(sw)
+#a little less work will also get you this-
+#mean(small$bodywt)
 ```
 The mean weight for small mammals is .259667 kg. 
 
 ```{r}
 lw <- large$bodywt
 mean(lw)
+#a little less work will also get you this-
+#mean(large$bodywt)
 ```
 The mean weight for large mammals is 1747.071 kg. 
 
@@ -95,6 +101,8 @@ The mean weight for large mammals is 1747.071 kg.
 ```{r}
 lsleep <- large$sleep_total
 mean(lsleep)
+#same principle will apply here
+#mean(large$sleep_total, na.rm=T)
 ```
 
 
@@ -102,6 +110,8 @@ mean(lsleep)
 ```{r}
 ssleep <- small$sleep_total
 mean(ssleep)
+#and here
+mean(small$sleep_total, na.rm=T)
 ```
 
 

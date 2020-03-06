@@ -52,6 +52,8 @@ names(homerange)
 
 ```{r}
 lapply(homerange, class)
+#just another option
+#glimpse(homerange)
 ```
 
 ### Statistical Summary
@@ -91,7 +93,6 @@ deer <- homerange %>%
   select(mean.mass.g, log10.mass, family, genus, species) %>% 
   filter(family == "cervidae") %>% 
   arrange(desc(log10.mass))
-
 deer
 ```
 ### The largest deer is the alces alces.  
@@ -100,10 +101,10 @@ deer
 
 ```{r}
 snake <- homerange %>% 
-  select(taxon, family, genus, species, mean.hra.m2, log10.hra) %>% 
+  #you don't technically need to select columns for this problem, though it doesn't hurt anything
+  #select(taxon, family, genus, species, mean.hra.m2, log10.hra) %>% 
   filter(taxon == "snakes") %>% 
   arrange(log10.hra)
-
 snake
 ```
 
@@ -116,7 +117,6 @@ hra_ratio <- homerange %>%
   filter(taxon == "birds") %>% 
   select(genus, species, mean.mass.g, log10.mass, log10.hra) %>% 
   arrange(mean.mass.g)
-
 hra_ratio
 ```
 
@@ -126,8 +126,13 @@ hra_ratio
 hra.mass.ratio <- hra_ratio %>% 
   mutate(ratio = log10.hra/log10.mass) %>% 
   arrange(desc(mean.mass.g))
-
 hra.mass.ratio
+#not a big deal, but he intended for hra.mass.ratio to be the variable, not the object, so something like this-
+#hra_ratio <- 
+  #hra_ratio %>% 
+  #mutate(hra.mass.ratio=log10.hra/log10.mass) %>% 
+  #arrange(desc(mean.mass.g))
+#hra_ratio
 ```
 
 10. What is the lowest mass for birds with a `hra.mass.ratio` greater than or equal to 4.0?
@@ -153,6 +158,9 @@ homerange %>%
 ```{r}
 hra.mass.ratio %>% 
   filter(species == "camelus")
+#you're safe in this instance, but remember that some species can have the same specific epithet so a safer option might be-
+#hra_ratio %>% 
+  #filter(genus=="struthio" & species=="camelus")
 ```
 ### The hra.mass.ratio for an ostrich is 1.602565 m^2/g. 
 

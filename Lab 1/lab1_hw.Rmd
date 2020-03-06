@@ -19,8 +19,9 @@ Answer the following questions and complete the exercises in RMarkdown. Please e
   + 8 / 2 ** 2  
   
 ```{r}
-+ 5 - 3 * 2
-+ 8 / 2 **2
+#the plusses are just to make bullets in the rmd file
+5 - 3 * 2
+8 / 2 **2
 ```
   
   
@@ -86,6 +87,9 @@ sum(roulette, na.rm = TRUE)
 e. Build a `total_week` vector to show how much you lost or won on each day over the week. Which days seem lucky or unlucky for you?
 ```{r}
 total_week <- c(blackjack + roulette)
+#giving s tidier option, also note the results don't print out in the md file, adding a line for that as well
+#total_week <- blackjack + roulette
+#total_week
 ```
 tuesday is unlucky because I only made 30 dollars total, and thursday is extremely unlucky as I lost $420. 
 
@@ -99,6 +103,7 @@ sum(blackjack, na.rm = TRUE) > sum(roulette, na.rm = TRUE)
 this shows that the total money that I got from blackjack is greater than the total money made from roulette. 
 
 I'm trying something like lily did here! Done after due date!
+#Ha! I like it, I'm a sucker for more interactive code!
 ```{r}
 sum_b <- sum(blackjack, na.rm = TRUE)
 sum_r <- sum(roulette, na.rm = TRUE)
