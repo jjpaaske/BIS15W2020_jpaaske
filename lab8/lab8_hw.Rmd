@@ -39,9 +39,13 @@ coronaseq  <- corona[[1]]
 **2. Explore this sequence using functions we learned in class. What is the length of the genome? Create a table showing the nucleotide composition of the sequence, and calculate the GC content.**
 ```{r}
 length(coronaseq)
+```
 
+```{r}
 table(coronaseq)
+```
 
+```{r}
 GC(coronaseq)
 ```
 
