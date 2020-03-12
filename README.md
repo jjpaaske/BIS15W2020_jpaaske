@@ -12,4 +12,4 @@
 * [datascibiol repository](https://github.com/jmledford3115/datascibiol)
 * [College of Biological Sciences](https://biology.ucdavis.edu/)
 
-## Special Thanks to Professors Joel Ledford and Rebecca Godwin for their help making R exciting and easy.
+Special Thanks to Professors Joel Ledford and Rebecca Godwin for their help making R exciting and easy.
