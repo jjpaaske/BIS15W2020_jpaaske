@@ -227,8 +227,9 @@ homerange %>%
 homerange %>% 
   filter(range_category == "small") %>% 
   ggplot(aes(x = taxon, y = log10.mass))+
-  geom_bar()
+  geom_bar(stat = "identity")
 ```
+
 
 ## Faceting: `facet_wrap()`
 Faceting is one of the most amazing features of ggplot. It allows you to make multi-panel plots for easy comparison. Here, I am making histograms of log10.mass for every taxon. We read the `~` in the `facet_wrap()` layer as `by`.
