@@ -1,7 +1,7 @@
 ---
 title: "BIS 15L Practice Midterm"
 author: "Joshua Paaske"
-date: "1/31/20"
+date: "2/7/20"
 output:
   html_document: 
     keep_md: yes
@@ -27,7 +27,7 @@ library(tidyverse)
 ```
 
 ```
-## ── Attaching packages ──────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
+## ── Attaching packages ─────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
 ```
 
 ```
@@ -38,7 +38,7 @@ library(tidyverse)
 ```
 
 ```
-## ── Conflicts ─────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()
 ```
