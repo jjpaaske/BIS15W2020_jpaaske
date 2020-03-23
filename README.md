@@ -15,4 +15,4 @@
 Special Thanks to Professors Joel Ledford and Rebecca Godwin for their help making R exciting and easy.
 
 ## Project
-for updated project files head to [here](https://github.com/jjpaaske/BIS15W2020_Project_Karim_Paaske)
+for updated project files head [here](https://github.com/jjpaaske/BIS15W2020_Project_Karim_Paaske)
